@@ -1,9 +1,11 @@
 let currentLocation; 
 let currentCourse;
 let currentHole;
+createCurrentLocation();
 
-function updateDistances(){
-  createCurrentLocation();
+function updateDistances(currentLocation){
+  currentHole = document.getElementById('holeDisp').textContent;
+  currentCourse = document.getElementById('courseDisp').textContent;
   [frontPoint, centerPoint, backPoint] = currentGreenPoints(currentCourse, currentHole);
   let distanceToFront = findDistance(currentLocation, frontPoint);
   let distanceToCenter = findDistance(currentLocation, centerPoint);
