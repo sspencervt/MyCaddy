@@ -1,4 +1,43 @@
-let currentLocation;
+let currentLocation; 
+let currentCourse;
+let currentHole;
+
+function updateDistances(){
+  createCurrentLocation();
+  [frontPoint, centerPoint, backPoint] = currentGreenPoints(currentCourse, currentHole);
+  let distanceToFront = findDistance(currentLocation, frontPoint);
+  let distanceToCenter = findDistance(currentLocation, centerPoint);
+  let distanceToBack = findDistance(currentLocation, backPoint);
+  document.getElementById('distanceToFront').textContent = distanceToFront + ' yards';
+  document.getElementById('distanceToCenter').textContent = distanceToCenter + ' yards';
+  document.getElementById('distanceToBack').textContent = distanceToBack + ' yards';
+}
+
+function updateCourse(changeCourse){
+  currentCourse = changeCourse;
+  console.log("Changed currentCourse to :" + currentCourse)
+  document.getElementById('courseDisp').textContent = currentCourse;
+}
+
+function updateHole(changeToThisHole){
+  currentHole = changeToThisHole;
+  console.log("Changed currentHole to :" + currentHole)
+  document.getElementById('holeDisp').textContent = currentHole;
+
+}
+function currentGreenPoints(currentCourse, currentHole){
+  let frontLat = courses[currentCourse].holes[currentHole].green.front[0];
+  let frontLon = courses[currentCourse].holes[currentHole].green.front[1];
+  let centerLat = courses[currentCourse].holes[currentHole].green.center[0];
+  let centerLon = courses[currentCourse].holes[currentHole].green.center[1];
+  let backLat = courses[currentCourse].holes[currentHole].green.back[0];
+  let backLon = courses[currentCourse].holes[currentHole].green.back[1];
+  let frontPoint = new Point(frontLat, frontLon);
+  let centerPoint = new Point(centerLat, centerLon);
+  let backPoint = new Point(backLat, backLon);
+  return [frontPoint, centerPoint, backPoint];
+}
+
 
 class Point {
   constructor(latitude, longitude){
@@ -7,7 +46,7 @@ class Point {
   }
 }
 
-let distance = findDistance(pointOne, pointTwo);
+// let distance = findDistance(pointOne, pointTwo);
 
 function findDistance(pointOne, pointTwo){
   var R = 6378137; // metres - was 6371e3

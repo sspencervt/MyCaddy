@@ -1,0 +1,23 @@
+.dropdownGrid{
+    display: grid;
+    grid-template-rows: 200px 200px;
+    grid-template-columns: 200px 200px;
+    grid-template-areas: 'courseDrop   holeDrop'
+                         'courseDisp   holeDisp';
+}
+
+#courseDrop {
+    grid-area: courseDrop;
+}
+
+#holeDrop {
+    grid-area: holeDrop;
+}
+
+#courseDisp {
+    grid-area: courseDisp;
+}
+
+#holeDisp {
+    grid-area: holeDisp;
+}
