@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <link href="main.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>My Caddy</h1>
+        <div id="buttoncontainer">
+            <button onclick = "showSignIn()">Sign In</button>
+            <button>Start a Round</button>
+            <button>My Stats</button>
+            <button>My Profile</button>
+            <button>Setting</button>
+        </div>
+        <div id="signin">
+            <div>Username</div>
+            <input id="text">
+            <div>Password</div>
+            <input id="text">
+            <button onclick="back()">Back</button>
+            <button>Sign In</button>
+        </div>
+        <script>
+        $("#signin").hide()
+
+        function showSignIn() {
+            $("#signin").show()
+            $("#buttoncontainer").hide()
+        }
+        function back() {
+            $("#buttoncontainer").show()
+            $("#signin").hide()
+        }
+        </script>
 </body>
 </html>
