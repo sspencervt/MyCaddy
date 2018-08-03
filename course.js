@@ -1,5 +1,6 @@
 let courses = {
     'Rocky_Ridge'       : {
+        'courseName'    :'Rocky_Ridge',
         'address'       : {
             'street': '7470 VT-116',
             'town'  : 'St George',
@@ -331,12 +332,13 @@ let courses = {
                     'red': 4,
                     'white': 4,
                     'blue': 2
-                } //closes handicap
-            } //closes eighteen
-        }//closes holes
-    },//closes Rocky Ridge
+                }
+            }
+        }       
+    },
 
     'Williston'       : {
+        'courseName' : "Williston",
         'address'       : ['424 Golf Course Rd, Williston, VT 05495'],
         'difficulty'  : {
             'course_rating' : 68.3,
@@ -663,10 +665,10 @@ let courses = {
                     'red': 4,
                     'white': 4,
                     'blue': 4
-                } //closes handicap
-            } //closes eighteen          
-        } // closes holes
-    }, // closes Williston
+                }
+            }          
+        }
+    },
 
     'Arrowhead'       : {
         'address'       : {

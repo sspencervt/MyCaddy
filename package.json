@@ -1,0 +1,23 @@
+{
+  "name": "mycaddy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "course.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sspencervt/MyCaddy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sspencervt/MyCaddy/issues"
+  },
+  "homepage": "https://github.com/sspencervt/MyCaddy#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^3.1.1"
+  }
+}
