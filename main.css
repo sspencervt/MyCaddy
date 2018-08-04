@@ -1,7 +1,5 @@
 @media only screen and (max-width : 500px) {
-    body {
-        
-    }
+    
     html {
         background-image: url(myCaddybackground.jpg);
         background-size: cover;

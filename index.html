@@ -25,16 +25,16 @@
 </head>
 <body class="bg-transparent">
 
-    <h1>My Caddy</h1>
+    <h1 class="col-sm-12">My Caddy App</h1>
 
 <!-- HOME PAGE DIV -->
 
 <div id="buttoncontainer">
     <button id="homePageButton" onclick = "showSignIn()">Sign In</button>
     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#startaround" id="homePageButton">Start a Round</button>
-    <button id="homePageButton">My Stats</button>
+    <button type="button" data-toggle="modal" data-target="#statistics" id="homePageButton">My Stats</button>
     <button id="homePageButton">My Profile</button>
-    <button id="homePageButton">Setting</button>
+    <button id="homePageButton">Settings</button>
 </div>
 
 <!-- SIGN IN DIV -->
@@ -53,7 +53,7 @@
 </div>
 
 
-<!-- START A ROUND DIV -->
+<!-- START A ROUND DIV MODAL -->
 
 <div id="startaround" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -79,6 +79,32 @@
         </div>
     </div>
 </div>
+
+<!-- STATISTICS MODAL -->
+
+<div id="statistics" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Statistics
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Scores</label>
+                        <label><input type="checkbox" value="">Putts Per Green</label>
+                        <label><input type="checkbox" value="">Fairways Hit</label>
+                        <label><input type="checkbox" value="">Green in Regulation (GIR)</label>
+                    </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!-- BOOTSTRAP SCRIPTS -->
 
