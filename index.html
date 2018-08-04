@@ -13,19 +13,21 @@
 <body>
     <h1>My Caddy</h1>
         <div id="buttoncontainer">
-            <button onclick = "showSignIn()">Sign In</button>
-            <button>Start a Round</button>
-            <button>My Stats</button>
-            <button>My Profile</button>
-            <button>Setting</button>
+            <button id="homePageButton" onclick = "showSignIn()">Sign In</button>
+            <button id="homePageButton">Start a Round</button>
+            <button id="homePageButton">My Stats</button>
+            <button id="homePageButton">My Profile</button>
+            <button id="homePageButton">Setting</button>
         </div>
         <div id="signin">
-            <div>Username</div>
-            <input id="text">
-            <div>Password</div>
-            <input id="text">
-            <button onclick="back()">Back</button>
-            <button>Sign In</button>
+            <form>
+                <div>Username</div>
+                <input id="text">
+                <div>Password</div>
+                <input id="text">
+                <button onclick="back()">Back</button>
+                <button>Sign In</button>
+            </form>
         </div>
         <script>
         $("#signin").hide()

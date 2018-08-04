@@ -1,6 +1,19 @@
 @media only screen and (max-width : 500px) {
     body {
-        background-color: lightblue;
+        
     }
-    
+    #buttoncontainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 80vh;
+    }
+    #homePageButton {
+        border: 1px solid white;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        height: 80px;
+    }
 }
