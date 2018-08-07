@@ -1,4 +1,4 @@
-@media only screen and (max-width : 500px) {
+
     
     html {
         background-image: url(myCaddybackground.jpg);
@@ -33,4 +33,4 @@
         background-color: rgba(255, 255, 255, .5);
         border-radius: 20px;
     }
-}
+
