@@ -40,12 +40,13 @@
 <!-- SIGN IN DIV -->
 
 <div id="signin">
-    <form>
+    <form method="POST" action="/users/add">
 
         <div>Username</div>
-        <input id="text usernametext">
+        <input id="text username" name="username">
         <div>Password</div>
-        <input id="text passwordtext">
+        <input id="text password" name="password">
+        <button id="submit" onClick="submit()" value="Submit">Submit</button>
         <button id="signInButton" onclick="back()">Back</button>
         <button id="signInButton">Sign In</button>
 
