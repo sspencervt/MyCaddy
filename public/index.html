@@ -39,20 +39,28 @@
 
 <!-- SIGN IN DIV -->
 
-<div id="signin">
+<div id="createAccount">
     <form method="POST" action="/users/add">
 
         <div>Username</div>
         <input id="text username" name="username">
         <div>Password</div>
         <input id="text password" name="password">
-        <button id="submit" onClick="submit()" value="Submit">Submit</button>
+        <button id="submit" onClick="submit()" value="Submit">Create Account</button>
         <button id="signInButton" onclick="back()">Back</button>
-        <button id="signInButton">Sign In</button>
-
     </form>
 </div>
 
+<div id="signin">
+    <form method="POST" action="/users/verify">
+        <div>Username</div>
+        <input id="text username" name="username">
+        <div>Password</div>
+        <input id="text password" name="password">
+        <button id="submit" onClick="submit()" value="Submit">Sign In!</button>
+        <button id="signInButton" onclick="back()">Back</button>
+    </form>
+</div>
 
 <!-- START A ROUND DIV MODAL -->
 
@@ -117,10 +125,12 @@
         <script>
         $("#signin").hide()
         $("#startaround").hide()
+        $("#createAccount").hide()
 
         function showSignIn() {
             $("#signin").show()
             $("#buttoncontainer").hide()
+            $("#createAccount").show()
         }
         function showStartARound() {
             $("#buttoncontainer").hide()
