@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="distance.js"></script>
+    <script src="course.js" type="text/javascript"></script>
+
+<!-- JQUERY -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<!-- BOOTSTRAP -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!-- CUSTOM CSS -->
+
+    <link href="main.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body class="bg-transparent">
+
+    <h1 class="col-sm-12">My Caddy App</h1>
+
+<!-- HOME PAGE DIV -->
+
+<div id="buttoncontainer">
+    <button id="homePageButton" onclick = "showSignIn()">Sign In</button>
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#startaround" id="homePageButton">Start a Round</button>
+    <button type="button" data-toggle="modal" data-target="#statistics" id="homePageButton">My Stats</button>
+    <button id="homePageButton">My Profile</button>
+    <button id="homePageButton">Settings</button>
+</div>
+
+<!-- SIGN IN DIV -->
+
+<div id="signin">
+    <form method="POST" action="/users/add">
+
+        <div>Username</div>
+        <input id="text username" name="username">
+        <div>Password</div>
+        <input id="text password" name="password">
+        <button id="submit" onClick="submit()" value="Submit">Submit</button>
+        <button id="signInButton" onclick="back()">Back</button>
+        <button id="signInButton">Sign In</button>
+
+    </form>
+</div>
+
+
+<!-- START A ROUND DIV MODAL -->
+
+<div id="startaround" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Select Course
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="courseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course List</button>
+                    <div class="dropdown-menu" aria-labelledby="courseDropdown">
+                        <a class="dropdown-item" href="#">Williston</a>
+                        <a class="dropdown-item" href="#">Rocky Ridge</a>
+                        <a class="dropdown-item" href="#">Arrowhead</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default">Start Round Now</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- STATISTICS MODAL -->
+
+<div id="statistics" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Statistics
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="">Scores</label>
+                        <label><input type="checkbox" value="">Putts Per Green</label>
+                        <label><input type="checkbox" value="">Fairways Hit</label>
+                        <label><input type="checkbox" value="">Green in Regulation (GIR)</label>
+                    </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- BOOTSTRAP SCRIPTS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+        <script>
+        $("#signin").hide()
+        $("#startaround").hide()
+
+        function showSignIn() {
+            $("#signin").show()
+            $("#buttoncontainer").hide()
+        }
+        function showStartARound() {
+            $("#buttoncontainer").hide()
+            $("#startaround").show()
+        }
+        function back() {
+            $("#buttoncontainer").show()
+            $("#signin").hide()
+        }
+        </script>
+</body>
+</html>
