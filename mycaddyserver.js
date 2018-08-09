@@ -10,7 +10,8 @@ const users = db.collection('Users')
 const app = express()
 const bcrypt = require('bcryptjs')
 
-
+// TO ACCESS DATABASE FROM COMMAND LINE - NEED dbuser and password
+// mongo ds225608.mlab.com:25608/mycaddy -u <dbuser> -p <dbpassword>
 
 //  BODY PARSER MIDDLEWARE
 
