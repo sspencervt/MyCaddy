@@ -8,6 +8,7 @@ const courses = db.collection('Courses')
 const scorecard = db.collection('Scorecard')
 const users = db.collection('Users')
 const app = express()
+const bcrypt = require('bcryptjs')
 
 
 
@@ -38,7 +39,7 @@ app.post('/users/add/', function (req, res) {
     console.log(req.body)
     let newUser = {
         username: req.body.username,
-        password: req.body.password
+        password: bcrypt.hashSync('req.body.password', 10)
     }
 
     users.insert(newUser, function(result) {
@@ -48,12 +49,16 @@ app.post('/users/add/', function (req, res) {
 })
 
 app.post('/users/verify', function(req, res) {
-    console.log(req.body)
+console.log(req.body)
+    let userPassword;
 
-    users.count(req.body, (err, usercount) => {
-        console.log(usercount)
-        if (usercount === 1) {
-            console.log("you have logged in")
+    db.Users.findOne({username:req.body.username}, (err, userObject) => {
+        console.log('in db.users, userObject is:' + userObject)
+        let userPassword = userObject.password
+        console.log(userPassword + ': userPassword')
+
+        if (bcrypt.compareSync('req.body.password', userPassword)){
+            console.log("you have logged in, passwords match")
             res.cookie("loggedin", "true")
             res.redirect('/')
         } else {
@@ -61,6 +66,19 @@ app.post('/users/verify', function(req, res) {
             res.redirect('/')
         }
     })
+    // console.log(req.body)
+    // console.log(req.body.username)
+    // console.log(req.body.password)
+    // users.count(req.body.username, req.body.password, (err, usercount) => {
+    //     console.log(usercount)
+    //     if (usercount === 1) {
+    //         console.log("you have logged in")
+    //         res.cookie("loggedin", "true")
+    //         res.redirect('/')
+    //     } else {
+            
+    //     }
+    // })
 })
 
 app.get('/', (req, res) => res.send('/index.html'))
