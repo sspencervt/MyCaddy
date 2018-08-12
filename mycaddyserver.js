@@ -10,6 +10,7 @@ const users = db.collection('Users')
 const app = express()
 const bcrypt = require('bcryptjs')
 
+
 // TO ACCESS DATABASE FROM COMMAND LINE - NEED dbuser and password
 // mongo ds225608.mlab.com:25608/mycaddy -u <dbuser> -p <dbpassword>
 
@@ -84,6 +85,6 @@ console.log(req.body)
 
 app.get('/', (req, res) => res.send('/index.html'))
 
-
+app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
 
 app.listen(3000, () => console.log('listening on port 3000'))

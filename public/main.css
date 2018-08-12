@@ -19,7 +19,10 @@
         /* overflow: hidden; */
         height: 100%;
     }
-
+.checkbox {
+    display: flex;
+    flex-direction: column;
+}
 
     #navbarDiv {
         background-color: white; 
