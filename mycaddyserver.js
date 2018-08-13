@@ -17,7 +17,7 @@ const bcrypt = require('bcryptjs')
 //  BODY PARSER MIDDLEWARE
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // SET STATIC PATH
 
@@ -50,6 +50,25 @@ app.post('/users/add/', function (req, res) {
     
 })
 
+app.post('/courses/set', function(req, res) {
+    console.log("inside courses/set");
+    console.log(req.body);
+    let currentCourse = req.body.courseName;
+    console.log(currentCourse);
+    
+    db.Courses.findOne({courseName:currentCourse}, (err,courseObject)=>{
+        console.log(courseObject);
+        console.log(courseObject.holes.ten.tees)
+        console.log(courseObject.holes.fourteen.par)
+        console.log('in db courses, courseObject is:' + courseObject.holes);
+        
+        res.set('Content-Type', 'text/json');
+        res.send(JSON.stringify(courseObject));    
+
+        
+    })
+})
+
 app.post('/users/verify', function(req, res) {
 console.log(req.body)
     let userPassword;
@@ -68,19 +87,6 @@ console.log(req.body)
             res.redirect('/')
         }
     })
-    // console.log(req.body)
-    // console.log(req.body.username)
-    // console.log(req.body.password)
-    // users.count(req.body.username, req.body.password, (err, usercount) => {
-    //     console.log(usercount)
-    //     if (usercount === 1) {
-    //         console.log("you have logged in")
-    //         res.cookie("loggedin", "true")
-    //         res.redirect('/')
-    //     } else {
-            
-    //     }
-    // })
 })
 
 app.get('/', (req, res) => res.send('/index.html'))

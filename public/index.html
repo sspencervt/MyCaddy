@@ -85,7 +85,6 @@
 
     <div id="signin">
         <form method="POST" action="/users/add">
-
             <div>Username</div>
             <input id="text username" name="username">
             <div>Password</div>
@@ -93,7 +92,6 @@
             <button id="submit" onClick="submit()" value="Submit">Submit</button>
             <button id="signInButton" onclick="back()">Back</button>
             <button id="signInButton">Sign In</button>
-
         </form>
     </div>
 
@@ -108,12 +106,32 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="dropdown">
-                        <button class="btn course btn-secondary dropdown-toggle" type="button" id="courseDropdown" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Course List</button>
-                        <ul class="course dropdown-menu" aria-labelledby="courseDropdown">
-                            <li><a class="dropdown-item" href="#">Williston</a></li>
-                            <li><a class="dropdown-item" href="#">Rocky Ridge</a></li>
+                    <div class="coursedropdown dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select Courses
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="courseDropdown">
+                                <li><a onClick="handleSubmitofCourse('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item" href="scorecard.html">Rocky Ridge</a></li>
+                                <li><a onClick="handleSubmitofCourse('Williston')" value="Williston" class="dropdown-item" href="scorecard.html">Williston</a></li>
+                            </ul>
+                    </div>
+                 <!-- <form method="POST" action="/courses/set">
+                    <select name="Courses">
+                        <option value="Williston">Williston</option>
+                        <option value="Rocky_Ridge">Rocky Ridge</option>
+                    </select>
+                    <br><br>
+                    <button id="submit" onClick="handleSubmitofCourse(event)" value="Submit">Submit</button>
+                </form> -->
+                </div>
+                    <div class="teesdropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Tees
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="courseDropdown">
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -165,9 +183,26 @@
         crossorigin="anonymous"></script>
 
     <script>
+
+        function handleSubmitofCourse(course) {
+            console.log("Current Course is: " + course)
+            fetch('/courses/set', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({"courseName": course})
+            }).then(response => response.json())
+              .then(objects => buildThePage(objects))
+        }
+
+        function buildThePage(objects) {
+            console.log("inside buildThePage")
+            console.log(objects);
+        }
+
         $("#signin").hide()
         $("#startaround").hide()
         $("#createAccount").hide()
+        $(".teesdropdown").hide()
         $(function(){
             $(".course li a").click(function(){
                 $(".course:first-child").text($(this).text());
