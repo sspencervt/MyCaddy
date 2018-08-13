@@ -109,17 +109,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="courseDropdown" data-toggle="dropdown" aria-haspopup="true"
+                        <button class="btn course btn-secondary dropdown-toggle" type="button" id="courseDropdown" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Course List</button>
-                        <div class="dropdown-menu" aria-labelledby="courseDropdown">
-                            <a class="dropdown-item" href="#">Williston</a>
-                            <a class="dropdown-item" href="#">Rocky Ridge</a>
-                            <a class="dropdown-item" href="#">Arrowhead</a>
-                        </div>
+                        <ul class="course dropdown-menu" aria-labelledby="courseDropdown">
+                            <li><a class="dropdown-item" href="#">Williston</a></li>
+                            <li><a class="dropdown-item" href="#">Rocky Ridge</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="scorecard.html"></button type="button" class="btn btn-default">Start Round Now</button></a>
+                    <a href="scorecard.html"><button type="button" class="btn btn-default">Start Round Now</button></a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -169,8 +168,13 @@
         $("#signin").hide()
         $("#startaround").hide()
         $("#createAccount").hide()
+        $(function(){
+            $(".course li a").click(function(){
+                $(".course:first-child").text($(this).text());
+                $(".course:first-child").val($(this).text());
+            });
+        });
        
-
         function showSignIn() {
             $("#signin").show()
             $("#buttoncontainer").hide()
@@ -184,6 +188,8 @@
             $("#buttoncontainer").show()
             $("#signin").hide()
         }
+
+
     </script>
 </body>
 
