@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="holescontainer">
-        <span class="firstbox"></span>
+        <span class="firstbox">Hole</span>
         <span class="holes" id="numberHole1">1</span>
         <span class="holes" id="numberHole2">2</span>
         <span class="holes" id="numberHole3">3</span>
@@ -37,8 +37,8 @@
         <span class="holes" id="numberHole18">18</span>
     </div>
     <div id="yardagecontainer">
-        <span class="firstbox"></span>
-        <span class="holes" id="yardhole1"></span>
+        <span class="firstbox">Yardage</span>
+        <span class="holes" id="yardHole1"></span>
         <span class="holes" id="yardHole2"></span>
         <span class="holes" id="yardHole3"></span>
         <span class="holes" id="yardHole4"></span>
@@ -57,29 +57,8 @@
         <span class="holes" id="yardHole17"></span>
         <span class="holes" id="yardHole18"></span>
     </div>
-    <div id="scorecontainer">
-        <span class="firstbox"></span>
-        <span class="holes" id="scoreHole1"></span>
-        <span class="holes" id="scoreHole2"></span>
-        <span class="holes" id="scoreHole3"></span>
-        <span class="holes" id="scoreHole4"></span>
-        <span class="holes" id="scoreHole5"></span>
-        <span class="holes" id="scoreHole6"></span>
-        <span class="holes" id="scoreHole7"></span>
-        <span class="holes" id="scoreHole8"></span>
-        <span class="holes" id="scoreHole9"></span>
-        <span class="holes" id="scoreHole11"></span>
-        <span class="holes" id="scoreHole12"></span>
-        <span class="holes" id="scoreHole13"></span>
-        <span class="holes" id="scoreHole14"></span>
-        <span class="holes" id="scoreHole15"></span>
-        <span class="holes" id="scoreHole16"></span>
-        <span class="holes" id="scoreHole17"></span>
-        <span class="holes" id="scoreHole18"></span>
-        <span class="holes" id="scoreHole19"></span>
-    </div>
     <div id="handicapcontainer">
-        <span class="firstbox"></span>
+        <span class="firstbox">Handicap</span>
         <span class="holes" id="handicapHole1"></span>
         <span class="holes" id="handicapHole2"></span>
         <span class="holes" id="handicapHole3"></span>
@@ -99,8 +78,29 @@
         <span class="holes" id="handicapHole17"></span>
         <span class="holes" id="handicapHole18"></span>
     </div>
+    <div id="scorecontainer">
+        <span class="firstbox">Score</span>
+        <span class="holes" id="scoreHole1"></span>
+        <span class="holes" id="scoreHole2"></span>
+        <span class="holes" id="scoreHole3"></span>
+        <span class="holes" id="scoreHole4"></span>
+        <span class="holes" id="scoreHole5"></span>
+        <span class="holes" id="scoreHole6"></span>
+        <span class="holes" id="scoreHole7"></span>
+        <span class="holes" id="scoreHole8"></span>
+        <span class="holes" id="scoreHole9"></span>
+        <span class="holes" id="scoreHole11"></span>
+        <span class="holes" id="scoreHole12"></span>
+        <span class="holes" id="scoreHole13"></span>
+        <span class="holes" id="scoreHole14"></span>
+        <span class="holes" id="scoreHole15"></span>
+        <span class="holes" id="scoreHole16"></span>
+        <span class="holes" id="scoreHole17"></span>
+        <span class="holes" id="scoreHole18"></span>
+        <span class="holes" id="scoreHole19"></span>
+    </div>
     <div id="gircontainer">
-        <span class="firstbox"></span>
+        <span class="firstbox">GIR</span>
         <span class="holes" id="girHole1"></span>
         <span class="holes" id="girHole2"></span>
         <span class="holes" id="girHole3"></span>
@@ -121,7 +121,7 @@
         <span class="holes" id="girHole18"></span>
     </div>
     <div id="puttscontainer">
-        <span class="firstbox"></span>
+        <span class="firstbox">Putts</span>
         <span class="holes" id="puttsHole1"></span>
         <span class="holes" id="puttsHole2"></span>
         <span class="holes" id="puttsHole3"></span>
@@ -196,4 +196,68 @@
             <pre id="distanceToBack"></pre>
         </div>
 </body>
+<script>
+    let course = localStorage.getItem('currentCourse');
+    let currentTee = localStorage.getItem('currentTee');
+    let courseObject = JSON.parse(localStorage.getItem('courseObject'));
+    currentHole = 1;
+
+    buildThePage(courseObject);
+
+    function buildThePage(objects){
+        console.log(objects);
+        console.log("inside build page")
+        buildYards(objects)
+        buildUser(objects)
+        buildHandicap(objects)
+    }
+
+    function buildYards(objects){
+        console.log('objects below is within buildYards');
+        console.log(objects);
+        document.getElementById("yardHole1").textContent=objects.holes['one'].tees[currentTee][0]
+        document.getElementById("yardHole3").textContent=objects.holes['two'].tees[currentTee][0]
+        document.getElementById("yardHole4").textContent=objects.holes['three'].tees[currentTee][0]
+        document.getElementById("yardHole5").textContent=objects.holes['four'].tees[currentTee][0]
+        document.getElementById("yardHole2").textContent=objects.holes['five'].tees[currentTee][0]
+        document.getElementById("yardHole6").textContent=objects.holes['six'].tees[currentTee][0]
+        document.getElementById("yardHole7").textContent=objects.holes['seven'].tees[currentTee][0]
+        document.getElementById("yardHole8").textContent=objects.holes['eight'].tees[currentTee][0]
+        document.getElementById("yardHole9").textContent=objects.holes['nine'].tees[currentTee][0]
+        document.getElementById("yardHole10").textContent=objects.holes['ten'].tees[currentTee][0]
+        document.getElementById("yardHole11").textContent=objects.holes['eleven'].tees[currentTee][0]
+        document.getElementById("yardHole12").textContent=objects.holes['twelve'].tees[currentTee][0]
+        document.getElementById("yardHole13").textContent=objects.holes['thirteen'].tees[currentTee][0]
+        document.getElementById("yardHole14").textContent=objects.holes['fourteen'].tees[currentTee][0]
+        document.getElementById("yardHole15").textContent=objects.holes['fifteen'].tees[currentTee][0]
+        document.getElementById("yardHole16").textContent=objects.holes['sixteen'].tees[currentTee][0]
+        document.getElementById("yardHole17").textContent=objects.holes['seventeen'].tees[currentTee][0]
+        document.getElementById("yardHole18").textContent=objects.holes['eighteen'].tees[currentTee][0]
+    }
+
+    function buildUser(objects){
+
+    }
+    function buildHandicap(objects){
+        document.getElementById("handicapHole1").textContent=objects.holes['one'].handicap[currentTee]
+        document.getElementById("handicapHole3").textContent=objects.holes['two'].handicap[currentTee]
+        document.getElementById("handicapHole4").textContent=objects.holes['three'].handicap[currentTee]
+        document.getElementById("handicapHole5").textContent=objects.holes['four'].handicap[currentTee]
+        document.getElementById("handicapHole2").textContent=objects.holes['five'].handicap[currentTee]
+        document.getElementById("handicapHole6").textContent=objects.holes['six'].handicap[currentTee]
+        document.getElementById("handicapHole7").textContent=objects.holes['seven'].handicap[currentTee]
+        document.getElementById("handicapHole8").textContent=objects.holes['eight'].handicap[currentTee]
+        document.getElementById("handicapHole9").textContent=objects.holes['nine'].handicap[currentTee]
+        document.getElementById("handicapHole10").textContent=objects.holes['ten'].handicap[currentTee]
+        document.getElementById("handicapHole11").textContent=objects.holes['eleven'].handicap[currentTee]
+        document.getElementById("handicapHole12").textContent=objects.holes['twelve'].handicap[currentTee]
+        document.getElementById("handicapHole13").textContent=objects.holes['thirteen'].handicap[currentTee]
+        document.getElementById("handicapHole14").textContent=objects.holes['fourteen'].handicap[currentTee]
+        document.getElementById("handicapHole15").textContent=objects.holes['fifteen'].handicap[currentTee]
+        document.getElementById("handicapHole16").textContent=objects.holes['sixteen'].handicap[currentTee]
+        document.getElementById("handicapHole17").textContent=objects.holes['seventeen'].handicap[currentTee]
+        document.getElementById("handicapHole18").textContent=objects.holes['eighteen'].handicap[currentTee]
+
+    }
+</script>
 </html>

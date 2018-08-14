@@ -111,32 +111,23 @@
                                 Select Courses
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="courseDropdown">
-                                <li><a onClick="handleSubmitofCourse('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item" href="scorecard.html">Rocky Ridge</a></li>
-                                <li><a onClick="handleSubmitofCourse('Williston')" value="Williston" class="dropdown-item" href="scorecard.html">Williston</a></li>
+                            <li><a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a></li>
+                            <li><a onClick="storeCookie('Williston')" value="Williston" class="dropdown-item">Williston</a></li>
                             </ul>
                     </div>
-                 <!-- <form method="POST" action="/courses/set">
-                    <select name="Courses">
-                        <option value="Williston">Williston</option>
-                        <option value="Rocky_Ridge">Rocky Ridge</option>
-                    </select>
-                    <br><br>
-                    <button id="submit" onClick="handleSubmitofCourse(event)" value="Submit">Submit</button>
-                </form> -->
-                </div>
-                    <div class="teesdropdown">
+                    <br>
+                    <div class="teedropdown dropdown" id="teeDropDown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Select Tees
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="courseDropdown">
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
+                        <ul class="dropdown-menu" aria-labelledby="teeDropdown">
+                            <div id="teeDropItems">
+                            </div>
                         </ul>
                     </div>
-                </div>
+                </div> <!-- closes start a course modal body -->
                 <div class="modal-footer">
-                    <a href="scorecard.html"><button type="button" class="btn btn-default">Start Round Now</button></a>
+                    <a href="scorecard.html"><button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button></a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -184,6 +175,13 @@
 
     <script>
 
+        function storeCookie(object){
+            currentCourse = object;
+            document.cookie ="currentCourse="+object;
+            handleSubmitofCourse(object);
+            localStorage.setItem('currentCourse', object);
+        }
+
         function handleSubmitofCourse(course) {
             console.log("Current Course is: " + course)
             fetch('/courses/set', {
@@ -191,18 +189,33 @@
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify({"courseName": course})
             }).then(response => response.json())
-              .then(objects => buildThePage(objects))
+                .then(objects => buildTeeDropDown(objects))
         }
 
-        function buildThePage(objects) {
-            console.log("inside buildThePage")
-            console.log(objects);
+        function buildTeeDropDown(objects) {
+            console.log('within buildTeeDropDown');
+            console.log(objects)
+            localStorage.setItem('courseObject',JSON.stringify(objects));
+            $(".teedropdown").show()
+            console.log("inside tee builder")
+            for(let elem in objects.tees){
+                document.getElementById("teeDropItems").innerHTML +="<li><a class='dropdown-item' onClick='setTee(`"+objects.tees[elem]+"`)'+>"+objects.tees[elem]+"</a></li>"
+            }
         }
 
+        function setTee(teeChoice){
+            console.log(teeChoice)
+            currentTee = teeChoice;
+            $("#newRoundButton").prop('disabled',false)
+            localStorage.setItem('currentTee', teeChoice);
+        }
+
+        $("#newRoundButton").prop('disabled',true);
         $("#signin").hide()
         $("#startaround").hide()
         $("#createAccount").hide()
-        $(".teesdropdown").hide()
+        $(".teedropdown").hide()
+
         $(function(){
             $(".course li a").click(function(){
                 $(".course:first-child").text($(this).text());
