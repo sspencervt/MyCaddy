@@ -1,0 +1,38 @@
+html {
+    background-color: aquamarine;
+}
+
+#holescontainer {
+    display: flex;
+    flex-direction: row;
+}
+#yardagecontainer {
+    display: flex;
+    flex-direction: row;
+}
+#scorecontainer {
+    display: flex;
+    flex-direction: row;
+}
+#handicapcontainer {
+    display: flex;
+    flex-direction: row;
+}
+#gircontainer {
+    display: flex;
+    flex-direction: row;
+}
+#puttscontainer {
+    display: flex;
+    flex-direction: row;
+}
+.firstbox {
+    height: 20px;
+    width: 60px;
+    border: 1px solid black;
+}
+.holes {
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+}

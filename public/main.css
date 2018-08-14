@@ -19,6 +19,33 @@
         /* overflow: hidden; */
         height: 100%;
     }
+.checkbox {
+    display: flex;
+    flex-direction: column;
+}
+
+    #logInScreenDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background-color: #1bb06b;
+    }
+
+    #logInMiddleColumnDiv {
+        text-align: center;
+    }
+
+    #wizardLogoLogInScreen {
+        width: 75%;
+        padding: 10px;
+    }
+
+    #myCaddyLogoLogInScreen {
+        width: 100%;
+        padding-bottom: 10px;
+    }
 
 
     #navbarDiv {

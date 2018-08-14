@@ -28,7 +28,26 @@
 </head>
 
 <body class="bg-transparent">
-    <div class="container-fluid" id="navbarDiv">
+    <div id="logInScreenDiv">
+        <div class='col-2'></div>
+        <div class='col-8' id="logInMiddleColumnDiv">
+            <img src="MyCaddyWizardLogo.png" id="wizardLogoLogInScreen">
+            <img src="MyCaddyLoginScreenLogo.png" id="myCaddyLogoLogInScreen">
+            <form method="POST" action="/users/add">
+
+                <div>Username</div>
+                <input id="text username" name="username">
+                <div>Password</div>
+                <input id="text password" name="password">
+                <button id="submit" onClick="submit()" value="Submit">Submit</button>
+                <button id="signInButton" onclick="back()">Back</button>
+                <button id="signInButton">Sign In</button>
+    
+            </form>
+        </div>
+        <div class='col-2'></div>
+    </div>
+    <!-- <div class="container-fluid" id="navbarDiv">
         <div class="row">
             <div class="col-3" id="profilePicDiv">
                 <img src="MyCaddyWizardLogo.png" id="profilePic">
@@ -43,15 +62,11 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- HOME PAGE DIV -->
-    <div id="emptySpace" class="col-12">
-
-    </div>
-
-    <div id="buttonContainer">
+    <!-- <div id="buttonContainer">
         <div id="startARoundDiv">
             <div class="col-3"></div>
             <div class="col-9">
@@ -79,26 +94,28 @@
                         <img src="SettingsButton.png" id="settingsButtonImage" type="button">
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- SIGN IN DIV -->
-
+<!-- 
     <div id="signin">
         <form method="POST" action="/users/add">
+
             <div>Username</div>
             <input id="text username" name="username">
             <div>Password</div>
             <input id="text password" name="password">
-            <button id="submit" value="Submit">Submit</button>
+            <button id="submit" onClick="submit()" value="Submit">Submit</button>
             <button id="signInButton" onclick="back()">Back</button>
             <button id="signInButton">Sign In</button>
+
         </form>
-    </div>
+    </div> -->
 
 
     <!-- START A ROUND DIV MODAL -->
 
-    <div id="startaround" class="modal fade" role="dialog">
+    <!-- <div id="startaround" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,62 +123,43 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="coursedropdown dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Courses
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="courseDropdown">
-                                <li><a onClick="handleSubmitofCourse('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item" href="scorecard.html">Rocky Ridge</a></li>
-                                <li><a onClick="handleSubmitofCourse('Williston')" value="Williston" class="dropdown-item" href="scorecard.html">Williston</a></li>
-                            </ul>
-                    </div>
-                 <!-- <form method="POST" action="/courses/set">
-                    <select name="Courses">
-                        <option value="Williston">Williston</option>
-                        <option value="Rocky_Ridge">Rocky Ridge</option>
-                    </select>
-                    <br><br>
-                    <button id="submit" onClick="handleSubmitofCourse(event)" value="Submit">Submit</button>
-                </form> -->
-                </div>
-                    <div class="teesdropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Tees
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="courseDropdown">
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
-                        </ul>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="courseDropdown" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Course List</button>
+                        <div class="dropdown-menu" aria-labelledby="courseDropdown">
+                            <a class="dropdown-item" href="#">Williston</a>
+                            <a class="dropdown-item" href="#">Rocky Ridge</a>
+                            <a class="dropdown-item" href="#">Arrowhead</a>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="scorecard.html"><button type="button" class="btn btn-default">Start Round Now</button></a>
+                    <button type="button" class="btn btn-default">Start Round Now</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- STATISTICS MODAL -->
 
-    <div id="statistics" class="modal fade" role="dialog">
+    <!-- <div id="statistics" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     Statistics
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body column">
+                <div class="modal-body">
                     <div class="checkbox">
                         <label>
-                            <input id="scoresCheck" type="checkbox" value="">Scores</label>
+                            <input type="checkbox" value="">Scores</label>
                         <label>
-                            <input id="puttsCheck" type="checkbox" value="">Putts Per Green</label>
+                            <input type="checkbox" value="">Putts Per Green</label>
                         <label>
-                            <input id="fairwayCheck" type="checkbox" value="">Fairways Hit</label>
+                            <input type="checkbox" value="">Fairways Hit</label>
                         <label>
-                            <input id="girCheck" type="checkbox" value="">Green in Regulation (GIR)</label>
+                            <input type="checkbox" value="">Green in Regulation (GIR)</label>
                     </div>
                 </div>
             </div>
@@ -171,7 +169,7 @@
             </div>
         </div>
     </div>
-    </div>
+    </div> -->
 
     <!-- BOOTSTRAP SCRIPTS -->
 
@@ -182,38 +180,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+
     <script>
-
-        function handleSubmitofCourse(course) {
-            console.log("Current Course is: " + course)
-            fetch('/courses/set', {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"courseName": course})
-            }).then(response => response.json())
-              .then(objects => buildThePage(objects))
-        }
-
-        function buildThePage(objects) {
-            console.log("inside buildThePage")
-            console.log(objects);
-        }
-
         $("#signin").hide()
         $("#startaround").hide()
-        $("#createAccount").hide()
-        $(".teesdropdown").hide()
-        $(function(){
-            $(".course li a").click(function(){
-                $(".course:first-child").text($(this).text());
-                $(".course:first-child").val($(this).text());
-            });
-        });
-       
+
         function showSignIn() {
             $("#signin").show()
             $("#buttoncontainer").hide()
-            $("#createAccount").show()
         }
         function showStartARound() {
             $("#buttoncontainer").hide()
@@ -223,8 +197,6 @@
             $("#buttoncontainer").show()
             $("#signin").hide()
         }
-
-
     </script>
 </body>
 
