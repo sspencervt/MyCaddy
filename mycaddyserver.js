@@ -9,6 +9,7 @@ const scorecard = db.collection('Scorecard')
 const users = db.collection('Users')
 const app = express()
 const bcrypt = require('bcryptjs')
+const cookieParser = require('cookie-parser')
 
 
 // TO ACCESS DATABASE FROM COMMAND LINE - NEED dbuser and password
@@ -51,21 +52,14 @@ app.post('/users/add/', function (req, res) {
 })
 
 app.post('/courses/set', function(req, res) {
-    console.log("inside courses/set");
-    console.log(req.body);
     let currentCourse = req.body.courseName;
     console.log(currentCourse);
     
     db.Courses.findOne({courseName:currentCourse}, (err,courseObject)=>{
+        console.log('in db courses server side')
         console.log(courseObject);
-        console.log(courseObject.holes.ten.tees)
-        console.log(courseObject.holes.fourteen.par)
-        console.log('in db courses, courseObject is:' + courseObject.holes);
-        
         res.set('Content-Type', 'text/json');
-        res.send(JSON.stringify(courseObject));    
-
-        
+        res.send(JSON.stringify(courseObject));      
     })
 })
 
