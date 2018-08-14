@@ -18,6 +18,16 @@ body {
     height: 100%;
 }
 
+.modal-title {
+    margin-left: 10px;
+}
+
+#signupImage {
+    margin-top: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 150px;
+}
 
 #logInScreenDiv {
     display: flex;

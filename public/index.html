@@ -48,13 +48,46 @@
             </form>
 
             <div class="row" id="signUpAndHelpDiv">
-                <button id="signUpButton" class="col-6 row">Sign Up</button>
+                <button data-target="#signupModal" data-toggle="modal" id="signUpButton" class="col-6 row">Sign Up</button>
                 <button id="signInHelp" class="col-6 row">Login Help</button>
             </div>
         </div>
         <div class='col-2'></div>
     </div>
    
+
+    <!-- SIGN UP MODAL -->
+
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header row">
+                    <h2 class="modal-title">Sign Up</h2>
+                    <img id="signupImage" src="MyCaddyLogo.png">
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Sign up</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                </form>
+            </div>
+        </div> 
+    </div>
 
     <!-- BOOTSTRAP SCRIPTS -->
 

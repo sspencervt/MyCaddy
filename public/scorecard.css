@@ -36,3 +36,64 @@ html {
     width: 20px;
     border: 1px solid black;
 }
+
+.scoreSelector {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.scorebtns {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.scoreBtn {
+    border: 1px solid #1bb06b;
+    border-radius: 5px;
+    background: none;
+}
+
+.scoreBtn:hover {
+    border: 1px solid #1bb06b;
+    border-radius: 5px;
+    background: #1bb06b;
+    color: white;
+}
+.puttSelector {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+}
+.puttBtn {
+    border: 1px solid #1bb06b;
+    border-radius: 5px;
+    background: none;
+}
+
+.puttbtns {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.puttBtn:hover {
+    border: 1px solid #1bb06b;
+    border-radius: 5px;
+    background: #1bb06b;
+    color: white;
+}
+
+#checkText {
+    margin-bottom: 10px;
+}
+ 
+#statCheckbox {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #1bb06b;
+    background: none;
+}
