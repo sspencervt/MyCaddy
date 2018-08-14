@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="distance.js"></script>
-    <script src="course.js" type="text/javascript"></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
@@ -39,7 +37,7 @@
                 <img id="MyCaddyLogo" src="MyCaddyLogo.png"></img>
             </div>
             <div id="logInButtonDiv" class="col-3">
-                <a id="logInButton" href="index.html" onClick="logOut()">
+                <a id="logInButton" onClick="logOut()">
                     <img src="LogoutButton.png" id="logInButtonTemplate">
                 </a>
             </div>
@@ -105,7 +103,6 @@
         
     <!-- SETTINGS SIDE NAVIGATION SCRIPT-->
     <script>
-        localStorage.setItem("logStatus",true)
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -191,8 +188,11 @@
 
     <script>
         function logOut(){
-            localStorage.setItem("logStatus",false)
+            console.log('logging out...')
+            document.cookie = 'loggedIn=false'
+            window.location = '/index.html'
         }
+
         function storeCookie(object){
             currentCourse = object;
             document.cookie ="currentCourse="+object;

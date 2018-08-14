@@ -48,13 +48,45 @@
             </form>
 
             <div class="row" id="signUpAndHelpDiv">
-                <button id="signUpButton" class="col-6 row">Sign Up</button>
+                <button id="signUpButton" data-target="#signupModal" data-toggle="modal" class="col-6 row">Sign Up</button>
                 <button id="signInHelp" class="col-6 row">Login Help</button>
             </div>
         </div>
         <div class='col-2'></div>
     </div>
    
+   <!-- SIGN UP MODAL -->
+
+   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header row">
+                    <h2 class="modal-title">Sign Up</h2>
+                    <img id="signupImage" src="MyCaddyLogo.png">
+                </div>
+                <form method="POST" action="/users/add">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            </div>
+                            <input name="username" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input name="password" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" value="Submit" class="btn btn-primary">Sign up</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
 
     <!-- BOOTSTRAP SCRIPTS -->
 
@@ -66,21 +98,11 @@
         crossorigin="anonymous"></script>
 
 
-    <script>
-        $("#signin").hide()
-        $("#startaround").hide()
-
-        function showSignIn() {
-            $("#signin").show()
-            $("#buttoncontainer").hide()
-        }
-        function showStartARound() {
-            $("#buttoncontainer").hide()
-            $("#startaround").show()
-        }
-        function back() {
-            $("#buttoncontainer").show()
-            $("#signin").hide()
+    <script>  
+        let logInStatusArray=document.cookie.slice(document.cookie.length-14).split('=')
+        console.log(logInStatusArray);
+        if(logInStatusArray[1]=='true'){
+            window.location = '/dashboard.html'
         }
     </script>
 </body>
