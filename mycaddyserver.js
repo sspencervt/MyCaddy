@@ -38,7 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 ////////////
 
 
-app.post('/users/add/', function (req, res) {
+app.post('./users/add/', function (req, res) {
+    console.log('in /users/add/')
     console.log(req.body)
     let newUser = {
         username: req.body.username,
@@ -49,6 +50,25 @@ app.post('/users/add/', function (req, res) {
         res.redirect('/')
     })
     
+})
+
+app.post('/users/verify', function(req, res) {
+    console.log('inside users/verify')
+    console.log(req.body)
+    db.Users.findOne({username:req.body.username}, (err, userObject) => {
+        console.log('in db.users, userObject is:' + userObject)
+        let userPassword = userObject.password
+        console.log(userPassword + ': userPassword')
+
+        if (bcrypt.compareSync('req.body.password', userPassword)){
+            console.log("you have logged in, passwords match")
+            res.cookie("loggedin", "true")
+            res.redirect('/dashboard.html')
+        } else {
+            console.log("not logged in")
+            res.redirect('/')
+        }
+    })
 })
 
 app.post('/courses/set', function(req, res) {
@@ -63,27 +83,7 @@ app.post('/courses/set', function(req, res) {
     })
 })
 
-app.post('/users/verify', function(req, res) {
-console.log(req.body)
-    let userPassword;
-
-    db.Users.findOne({username:req.body.username}, (err, userObject) => {
-        console.log('in db.users, userObject is:' + userObject)
-        let userPassword = userObject.password
-        console.log(userPassword + ': userPassword')
-
-        if (bcrypt.compareSync('req.body.password', userPassword)){
-            console.log("you have logged in, passwords match")
-            res.cookie("loggedin", "true")
-            res.redirect('/')
-        } else {
-            console.log("not logged in")
-            res.redirect('/')
-        }
-    })
-})
-
-app.get('/', (req, res) => res.send('/index.html'))
+app.get('', (req, res) => res.send('./login.html'))
 
 app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
 
