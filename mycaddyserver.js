@@ -37,35 +37,44 @@ app.use(express.static(path.join(__dirname, 'public')))
 // app.use(isLoggedIn)
 ////////////
 
-
-app.post('./users/add/', function (req, res) {
+app.post('/users/add', function (req, res) {
     console.log('in /users/add/')
     console.log(req.body)
     let newUser = {
         username: req.body.username,
-        password: bcrypt.hashSync('req.body.password', 10)
+        password: bcrypt.hashSync(req.body.password, 10)
     }
 
+    console.log(newUser);
     users.insert(newUser, function(result) {
         res.redirect('/')
     })
-    
 })
 
 app.post('/users/verify', function(req, res) {
-    console.log('inside users/verify')
+    console.log('inside /users/verify')
     console.log(req.body)
+    let userPassword;
     db.Users.findOne({username:req.body.username}, (err, userObject) => {
-        console.log('in db.users, userObject is:' + userObject)
-        let userPassword = userObject.password
-        console.log(userPassword + ': userPassword')
-
-        if (bcrypt.compareSync('req.body.password', userPassword)){
-            console.log("you have logged in, passwords match")
-            res.cookie("loggedin", "true")
-            res.redirect('/dashboard.html')
+        if(userObject){
+            console.log('in db.users, userObject is:' + userObject)
+            userPassword = userObject.password
+            console.log(userPassword + ': userPassword')
+            console.log(req.body.password +" : req.body password");
+            let comparison = (bcrypt.compareSync(req.body.password, userPassword))
+            console.log(comparison);
+            if (bcrypt.compareSync(req.body.password, userPassword)){
+                console.log("you have logged in, passwords match")
+                res.cookie("loggedIn",'true');
+                res.redirect('/')
+            } else {
+                console.log("Passwords Don't Match")
+                res.cookie("loggedIn","false")
+                res.redirect('/')
+            }
         } else {
-            console.log("not logged in")
+            console.log('User Not Found')
+            res.cookie("loggedIn","false")
             res.redirect('/')
         }
     })
@@ -83,7 +92,7 @@ app.post('/courses/set', function(req, res) {
     })
 })
 
-app.get('', (req, res) => res.send('./login.html'))
+app.get('/', (req, res) => res.send('./login.html'))
 
 app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
 
