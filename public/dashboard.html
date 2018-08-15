@@ -65,7 +65,7 @@
             </div>
             <div id="myStatsDiv">
                 <div class="col-12 well">
-                    <img src="MyStatsButton.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
+                    <img src="MyStatsButton.png" onClick="getScorecards()" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
                 </div>
             </div>
             <div id="myProfileButtonDiv">
@@ -210,6 +210,26 @@
         crossorigin="anonymous"></script>
 
     <script>
+
+        function getScorecards(){
+            let itemArray = document.cookie.split(/[\s=;]/)
+            let indexOf = itemArray.indexOf('currentUser');
+            let currentUser = itemArray[indexOf+1];
+            console.log("inside get scorecards, currentUser is : " + currentUser)
+            fetch('/scorecards/get', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({"userName": currentUser})
+            }).then(response => response.json())
+                .then(objects => updateStatistics(objects))
+        }
+
+        function updateStatistics(objects){
+            console.log(objects);
+            console.log("We're cooking now!")
+            //THIS IS WHERE I NEED TO START TOMORROW//
+        }
+
         function logOut(){
             document.cookie = 'loggedIn=false'
             window.location = '/index.html'
