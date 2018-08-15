@@ -24,69 +24,53 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-/////////////////////////////////////
-
-//////// install cookie parser. then uncomment and see what breaks
-//////// you will need to go to another part of the site
-//////// because you haven't generated the cookie yet
-// var isLoggedIn = function(req, res, next) {
-//     console.log(req.cookie + 'this mah cookie')
-//     next()
-// }
-
-// app.use(isLoggedIn)
-////////////
-
 app.post('/users/add', function (req, res) {
-    console.log('in /users/add/')
-    console.log(req.body)
+
     let newUser = {
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10)
     }
 
-    console.log(newUser);
     users.insert(newUser, function(result) {
         res.redirect('/')
     })
 })
 
 app.post('/users/verify', function(req, res) {
-    console.log('inside /users/verify')
-    console.log(req.body)
-    let userPassword;
     db.Users.findOne({username:req.body.username}, (err, userObject) => {
         if(userObject){
-            console.log('in db.users, userObject is:' + userObject)
-            userPassword = userObject.password
-            console.log(userPassword + ': userPassword')
-            console.log(req.body.password +" : req.body password");
-            let comparison = (bcrypt.compareSync(req.body.password, userPassword))
-            console.log(comparison);
-            if (bcrypt.compareSync(req.body.password, userPassword)){
-                console.log("you have logged in, passwords match")
+            if (bcrypt.compareSync(req.body.password, userObject.password)){
+                console.log("setting cookie currentUser to : " + userObject.username)
+                res.cookie("currentUser",userObject.username);
                 res.cookie("loggedIn",'true');
                 res.redirect('/')
             } else {
-                console.log("Passwords Don't Match")
-                res.cookie("loggedIn","false")
+                res.cookie("loggedIn","1001")
                 res.redirect('/')
             }
+
         } else {
-            console.log('User Not Found')
-            res.cookie("loggedIn","false")
+            res.cookie("loggedIn","2002")
             res.redirect('/')
         }
     })
 })
 
+app.post('/scorecards/get', function(req,res) {
+    console.log('server side inside scorecards get')
+    console.log(req.body)
+    db.Scorecards.find({'userName':req.body.userName}, (err,scorecards)=>{
+        if(scorecards){
+            console.log(scorecards);
+            res.set('Content-Type', 'text/json');
+            res.send(JSON.stringify(scorecards));  
+        } else console.log('there was no scorecard found with this username')
+    })
+});
+
 app.post('/courses/set', function(req, res) {
     let currentCourse = req.body.courseName;
-    console.log(currentCourse);
-    
     db.Courses.findOne({courseName:currentCourse}, (err,courseObject)=>{
-        console.log('in db courses server side')
-        console.log(courseObject);
         res.set('Content-Type', 'text/json');
         res.send(JSON.stringify(courseObject));      
     })
