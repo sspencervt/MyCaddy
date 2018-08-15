@@ -9,6 +9,35 @@ html {
 
 }
 
+.modal-body hr {
+    margin: 5px;
+}
+
+.statistics {
+    font-size: 15px;
+}
+
+.statistics p {
+    margin: 5px;
+}
+
+.statistics h6{
+    font-size: 20px;
+    margin: 5px;
+}
+
+#userNameError {
+    padding-top: 3px;
+    height: .5em;
+    color: red;
+}
+
+#passwordError {
+    padding-top: 3px;
+    height: .5em;
+    color: red;
+}
+
 .modal-title {
     margin-left: 10px;
 }

@@ -80,7 +80,6 @@
         
     <div id="signin">
         <form method="POST" action="/users/add">
-
             <div>Username</div>
             <input id="text username" name="username">
             <div>Password</div>
@@ -88,7 +87,6 @@
             <button id="submit" onClick="submit()" value="Submit">Submit</button>
             <button id="signInButton" onclick="back()">Back</button>
             <button id="signInButton">Sign In</button>
-
         </form>
     </div>
         
@@ -152,6 +150,125 @@
     <div id="statistics" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
+                <div class="modal-body">
+                    <div class ="statistics" id="scoreStatistics">
+                        <h6>Score Performance</h6>
+                        <hr>
+                        <p id="roundsPlayed">Number of Rounds Played:</p>
+                        <p id="overallParAverage">Overall Average Compared To Par:</p>
+                        <p id="parThreeAverage">Par 3 Scoring Average:</p>
+                        <p id="parFourAverage">Par 4 Scoring Average:</p>
+                        <p id="parFiveAverage">Par 5 Scoring Average:</p>
+                        <br>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class ="statistics" id="GIRStatistics">
+                        <h6>Greens In Regulation</h6>
+                        <hr>
+                        <p id="overallGIR">Overall GIR %:</p>
+                        <p id="parThreeGIR">Par 3 GIR %:</p>
+                        <p id="parFourGIR">Par 4 GIR %:</p>
+                        <p id="parFiveGIR">Par 5 GIR %:</p>
+                        <p id="upAndDown">Up and Down%:</p>
+                        <br>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class ="statistics" id="puttingStatistics">
+                        <h6>Putting</h6>
+                        <hr>
+                        <p id="overallPutts">Overall Average # Of Putts</p>
+                        <br>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class ="statistics" id="fairwayStatistics">
+                        <h6>Fairway Statistics</h6>
+                        <hr>
+                        <p id="overallFairways">Overall % Of Fairways Hit: </p>
+                        <p id="missedFairwayConvert">Missed Fairway Par Convert %:</p>
+                        <p id="hitFairwayConvert">Hit Fairway Par Convert %:</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- BOOTSTRAP SCRIPTS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function logOut(){
+            document.cookie = 'loggedIn=false'
+            window.location = '/index.html'
+        }
+
+        function storeCookie(object){
+            currentCourse = object;
+            document.cookie ="currentCourse="+object;
+            handleSubmitofCourse(object);
+            localStorage.setItem('currentCourse', object);
+        }
+
+        function handleSubmitofCourse(course) {
+            fetch('/courses/set', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({"courseName": course})
+            }).then(response => response.json())
+                .then(objects => buildTeeDropDown(objects))
+        }
+
+        function buildTeeDropDown(objects) {
+            localStorage.setItem('courseObject',JSON.stringify(objects));
+            $(".teedropdown").show()
+            document.getElementById("teeDropItems").innerHTML=''
+            for(let elem in objects.tees){
+                document.getElementById("teeDropItems").innerHTML +="<li><a class='dropdown-item' onClick='setTee(`"+objects.tees[elem]+"`)'+>"+objects.tees[elem]+"</a></li>"
+            }
+        }
+
+        function setTee(teeChoice){
+            currentTee = teeChoice;
+            $("#newRoundButton").prop('disabled',false)
+            localStorage.setItem('currentTee', teeChoice);
+        }
+
+        $("#newRoundButton").prop('disabled',true);
+        $("#signin").hide()
+        $("#startaround").hide()
+        $("#createAccount").hide()
+        $(".teedropdown").hide()
+
+        $(function(){
+            $(".course li a").click(function(){
+                $(".course:first-child").text($(this).text());
+                $(".course:first-child").val($(this).text());
+            });
+        });
+
+    </script>
+</body>
+
+</html>
+
+<!-- DID WE MEAN TO PUT THESE IN SETTINGS VS STATISTICS?
+
+    <div id="statistics" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
                     Statistics
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -175,73 +292,4 @@
             </div>
         </div>
     </div>
-
-
-    <!-- BOOTSTRAP SCRIPTS -->
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-
-    <script>
-        function logOut(){
-            console.log('logging out...')
-            document.cookie = 'loggedIn=false'
-            window.location = '/index.html'
-        }
-
-        function storeCookie(object){
-            currentCourse = object;
-            document.cookie ="currentCourse="+object;
-            handleSubmitofCourse(object);
-            localStorage.setItem('currentCourse', object);
-        }
-
-        function handleSubmitofCourse(course) {
-            console.log("Current Course is: " + course)
-            fetch('/courses/set', {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"courseName": course})
-            }).then(response => response.json())
-                .then(objects => buildTeeDropDown(objects))
-        }
-
-        function buildTeeDropDown(objects) {
-            console.log('within buildTeeDropDown');
-            console.log(objects)
-            localStorage.setItem('courseObject',JSON.stringify(objects));
-            $(".teedropdown").show()
-            console.log("inside tee builder")
-            for(let elem in objects.tees){
-                document.getElementById("teeDropItems").innerHTML +="<li><a class='dropdown-item' onClick='setTee(`"+objects.tees[elem]+"`)'+>"+objects.tees[elem]+"</a></li>"
-            }
-        }
-
-        function setTee(teeChoice){
-            console.log(teeChoice)
-            currentTee = teeChoice;
-            $("#newRoundButton").prop('disabled',false)
-            localStorage.setItem('currentTee', teeChoice);
-        }
-
-        $("#newRoundButton").prop('disabled',true);
-        $("#signin").hide()
-        $("#startaround").hide()
-        $("#createAccount").hide()
-        $(".teedropdown").hide()
-
-        $(function(){
-            $(".course li a").click(function(){
-                $(".course:first-child").text($(this).text());
-                $(".course:first-child").val($(this).text());
-            });
-        });
-
-    </script>
-</body>
-
-</html>
+-->
