@@ -9,6 +9,16 @@ html {
 
 }
 
+#selectCourseText{
+    width: 150px;
+    margin: auto;
+}
+
+#selectTeesText{
+    width: 150px;
+    margin: auto;
+}
+
 .modal-body hr {
     margin: 5px;
 }

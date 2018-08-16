@@ -62,22 +62,22 @@
         <div class="col-9" id="rightColumnButtonContainer">
             <div id="startARoundDiv">
                 <div class="col-12 well">
-                    <img src="StartARoundButton.png" id="startARoundButtonImage" type="button" data-toggle="modal" data-target="#startaround">
+                    <img src="StartARoundButton.png" id="startARoundButtonImage" onClick="setUpModal()" type="button" data-toggle="modal" data-target="#startaround">
                 </div>
             </div>
-            <div id="myStatsDiv">
+            <div id="myStatsDiv" onClick="getStatistics()">
                 <div class="col-12 well" onClick="getStatistics()">
 
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128" id="equalizer">
-                            <g>
-                              <rect class="bar" transform="translate(0,0)" y="15"></rect>
-                              <rect class="bar" transform="translate(25,0)" y="15"></rect>
-                              <rect class="bar" transform="translate(50,0)" y="15"></rect>
-                              <rect class="bar" transform="translate(75,0)" y="15"></rect>
-                            </g>
-                          </svg> -->
+                    <svg onClick="getStatistics()" xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128" id="equalizer">
+                        <g>
+                            <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                            <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                            <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                            <rect class="bar" transform="translate(75,0)" y="15"></rect>
+                        </g>
+                    </svg>
                     
-                    <img src="MyStatsButtonAnimated.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
+                    <img onClick="getStatistics()" src="MyStatsButtonAnimated.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
 
                 </div>
             </div>
@@ -87,20 +87,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- SIGN IN DIV -->
-
-    <div id="signin">
-        <form method="POST" action="/users/add">
-            <div>Username</div>
-            <input id="text username" name="username">
-            <div>Password</div>
-            <input id="text password" name="password">
-            <button id="submit" onClick="submit()" value="Submit">Submit</button>
-            <button id="signInButton" onclick="back()">Back</button>
-            <button id="signInButton">Sign In</button>
-        </form>
     </div>
 
     <!-- SETTINGS SIDE NAVIGATION-->
@@ -169,7 +155,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="coursedropdown dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  id="selectCourseText">
                             Select Courses
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="courseDropdown">
@@ -183,7 +169,7 @@
                     </div>
                     <br>
                     <div class="teedropdown dropdown" id="teeDropDown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  id="selectTeesText">
                             Select Tees
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="teeDropdown">
@@ -274,7 +260,6 @@
         }
 
         function getStatistics(){
-            console.log('in getStatistics');
             let itemArray = document.cookie.split(/[\s=;]/)
             let indexOf = itemArray.indexOf('currentUser');
             let currentUser = itemArray[indexOf+1];
@@ -308,6 +293,13 @@
             document.cookie = "currentCourse=" + object;
             handleSubmitofCourse(object);
             localStorage.setItem('currentCourse', object);
+            if(currentCourse == 'Rocky_Ridge'){
+                $("#selectCourseText").text('Rocky Ridge');
+            }
+            if(currentCourse == 'Williston'){
+                $("#selectCourseText").text("Williston")
+            }
+            $("#selectTeesText").text('Select Tee');
         }
 
         function handleSubmitofCourse(course) {
@@ -328,8 +320,15 @@
             }
         }
 
+        function setUpModal(){
+            $(".teedropdown").hide();
+            $("#selectCourseText").text('Select Course');
+            $("#selectTeesText").text('Select Tees');
+        }
+
         function setTee(teeChoice){
             currentTee = teeChoice;
+            $("#selectTeesText").text(currentTee);
             $("#newRoundButton").prop('disabled', false)
             localStorage.setItem('currentTee', teeChoice);
         }
