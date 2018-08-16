@@ -10,7 +10,7 @@ const users = db.collection('Users')
 const app = express()
 const bcrypt = require('bcryptjs')
 const cookieParser = require('cookie-parser')
-
+const stat = require('./public/statistics')
 
 // TO ACCESS DATABASE FROM COMMAND LINE - NEED dbuser and password
 // mongo ds225608.mlab.com:25608/mycaddy -u <dbuser> -p <dbpassword>
@@ -40,31 +40,57 @@ app.post('/users/verify', function(req, res) {
     db.Users.findOne({username:req.body.username}, (err, userObject) => {
         if(userObject){
             if (bcrypt.compareSync(req.body.password, userObject.password)){
-                console.log("setting cookie currentUser to : " + userObject.username)
                 res.cookie("currentUser",userObject.username);
                 res.cookie("loggedIn",'true');
                 res.redirect('/')
             } else {
-                res.cookie("loggedIn","1001")
+                res.cookie("loggedIn","Incorrect_Password")
                 res.redirect('/')
             }
 
         } else {
-            res.cookie("loggedIn","2002")
+            res.cookie("loggedIn","Username_Error")
             res.redirect('/')
         }
     })
 })
 
-app.post('/scorecards/get', function(req,res) {
-    console.log('server side inside scorecards get')
-    console.log(req.body)
+app.post('/statistics/get', function(req,res) {
     db.Scorecards.find({'userName':req.body.userName}, (err,scorecards)=>{
         if(scorecards){
-            console.log(scorecards);
             res.set('Content-Type', 'text/json');
-            res.send(JSON.stringify(scorecards));  
-        } else console.log('there was no scorecard found with this username')
+            let roundsPlayed = stat.numberOfRoundsPlayed(scorecards)
+            let averageComparedToPar = stat.overallAverageComparedToPar(scorecards)
+            let parThreeScoring = stat.parThreeScoringAverage(scorecards);
+            let parFourScoring = stat.parFourScoringAverage(scorecards);
+            let parFiveScoring = stat.parFiveScoringAverage(scorecards);
+            let averageNumberOfPutts = stat.averageNumberOfPutts(scorecards);
+            let gir = stat.overallGIR(scorecards);
+            let parThreeG = stat.parThreeGIR(scorecards);
+            let parFourG = stat.parFourGIR(scorecards);
+            let parFiveG = stat.parFiveGIR(scorecards);
+            let upDown = stat.upAndDown(scorecards);
+            let fairwaysPercentage = stat.overallFairwaysHit(scorecards);
+            let missedFairwaysPar = stat.missedFairwaysParConvert(scorecards);
+            let hitFairwaysPar = stat.hitFairwaysParConvert(scorecards);
+            let statsObject = {
+                "roundsPlayed" : roundsPlayed,
+                "averageComparedToPar" : averageComparedToPar,
+                "parThreeScoring" :  parThreeScoring,
+                "parFiveScoring" : parFiveScoring,
+                "parFourScoring" : parFourScoring,
+                "averageNumberOfPutts" : averageNumberOfPutts,
+                "gir" : gir,
+                "parThreeG": parThreeG,
+                "parFourG" : parFourG,
+                "parFiveG" : parFiveG,
+                "upDown"  : upDown,
+                "fairwaysPercentage" : fairwaysPercentage,
+                "missedFairwaysPar" : missedFairwaysPar,
+                "hitFairwaysPar" : hitFairwaysPar
+            }
+            res.send(JSON.stringify(statsObject))
+        }  else { console.log('there was no scorecard found with this username') }
     })
 });
 
