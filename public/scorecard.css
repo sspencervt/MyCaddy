@@ -1,36 +1,29 @@
 html {
-    background-color: aquamarine;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
 }
 
-#holescontainer {
-    display: flex;
-    flex-direction: row;
+body {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    overflow: hidden;
+    height: 100%;
 }
-#yardagecontainer {
-    display: flex;
-    flex-direction: row;
+
+
+#scorecard {
+    height: 100%;
+    width: 100%;
 }
-#scorecontainer {
-    display: flex;
-    flex-direction: row;
-}
-#handicapcontainer {
-    display: flex;
-    flex-direction: row;
-}
-#gircontainer {
-    display: flex;
-    flex-direction: row;
-}
-#puttscontainer {
-    display: flex;
-    flex-direction: row;
-}
-.firstbox {
-    height: 20px;
-    width: 60px;
-    border: 1px solid black;
-}
+
 .holes {
     height: 20px;
     width: 20px;
@@ -97,3 +90,4 @@ html {
     border: 1px solid #1bb06b;
     background: none;
 }
+
