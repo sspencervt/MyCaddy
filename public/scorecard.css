@@ -1,5 +1,11 @@
-html {
-    background-color: aquamarine;
+#courseImage {
+    display: flex;
+    height: 90vh;
+    width: 70vw;
+}
+#imgDistanceCont {
+    display: flex;
+    flex-direction: row;
 }
 
 #holescontainer {
@@ -26,6 +32,14 @@ html {
     display: flex;
     flex-direction: row;
 }
+#distanceContainer {
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+
+
 .firstbox {
     height: 20px;
     width: 60px;
@@ -50,10 +64,15 @@ html {
     justify-content: space-around;
 }
 
+
 .scoreBtn {
     border: 1px solid #1bb06b;
     border-radius: 5px;
     background: none;
+}
+
+.scoreBtn:active {
+    color: #1bb06b;
 }
 
 .scoreBtn:hover {

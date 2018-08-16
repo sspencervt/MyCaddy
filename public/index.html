@@ -138,15 +138,15 @@
             $("#userNameError").text('');
         }
 
-        let logInStatusArray=document.cookie.slice(document.cookie.length-14).split('=')
-
-        if(logInStatusArray[1]=='true'){
-            window.location = '/dashboard.html'
-        } else if(logInStatusArray[1]=='1001'){
-            $("#passwordError").text('Incorrect Password')
-        } else if(logInStatusArray[1]=='2002'){
-            $("#userNameError").text('Username Not Found')
-        }
+     let logInStatusArray=document.cookie.split(/[\s=;]/)
+       let indexOf = logInStatusArray.indexOf('loggedIn');
+       if(logInStatusArray[indexOf+1]=='true'){
+           window.location = '/dashboard.html'
+       } else if(logInStatusArray[indexOf+1]=='Incorrect_Password'){
+           $("#passwordError").text('Incorrect Password')
+       } else if(logInStatusArray[indexOf+1]=='Username_Error'){
+           $("#userNameError").text('Username Not Found')
+       }
 
     </script>
 </body>
