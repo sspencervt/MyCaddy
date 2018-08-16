@@ -50,7 +50,11 @@ body {
 #navbarDiv {
     background-color: white; 
     border-bottom: solid lightgrey 1px;
+    width: 100%;
+    height: auto;
 }
+
+
 
 #profilePicDiv {
     text-align: center;  
@@ -307,42 +311,211 @@ body {
 }
 
 
-/* Scorecard */
+#scorecard {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-html {
-    /* background-color: aquamarine; */
+#frontNineHoleNumbers {
+    background-color: #1bb06b;
+    color: white;
+    width: 100%;
 }
-#holescontainer {
+
+#backNineHoleNumbers {
+    background-color: #1bb06b;
+    color: white;
+    width: 100%;
+}
+
+#backNineTable {
+    width: 100%;
+}
+
+#frontNineTable {
+    width: 100%;
+}
+
+#frontNineTableID {
+    width: 100%;
+}
+
+#backNineTableID {
+    width: 100%;
+}
+
+#scorecard div table thead th {
+    padding: 3px;
+    text-align: center;
+}
+
+#scorecard div table tbody tr th {
+    padding: 10px 3px;
+    text-align: center;
+    width: 30%;
+}
+
+#scorecard div table tbody tr td {
+    padding: 3px;
+    text-align: center;
+}
+
+#scorecardButtonDiv {
+    width: 100%;
+    margin: 0;
+}
+
+#returnButtonDiv {
+    width: 100%;
+    padding: 0;
+}
+
+#returnButton {
+    width: 100%;
+}
+
+#endRoundButtonDiv {
+    width: 100%;
+    padding: 0;
+}
+
+#endRoundButton {
+    width: 100%;
+}
+
+
+#sideNavTable {
+    font-size: 20px;
+    color: white;
+    font-family: 'Alegreya Sans SC', sans-serif;
+
+
+}
+
+.switch {
+    margin: 0px;
+}
+
+.equilizer {
+  height: 80%;
+  width: 100px;
+  transform: rotate(180deg);
+}
+
+#equalizer {
+    position: absolute;
+    width: 155%;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    margin-top: 3%;
 }
-#yardagecontainer {
-    display: flex;
-    flex-direction: row;
+
+.bar {
+  fill: white;
+  width: 18px;
+  animation: equalize 4s 0s infinite;
 }
-#scorecontainer {
-    display: flex;
-    flex-direction: row;
+
+.bar:nth-child(1) { 
+  animation-delay: -1.9s;
 }
-#handicapcontainer {
-    display: flex;
-    flex-direction: row;
+
+.bar:nth-child(2) { 
+  animation-delay: -2s;
 }
-#gircontainer {
-    display: flex;
-    flex-direction: row;
+
+.bar:nth-child(3) { 
+  animation-delay: -2.3s;
 }
-#puttscontainer {
-    display: flex;
-    flex-direction: row;
+
+.bar:nth-child(4) { 
+  animation-delay: -2.4s;
 }
-.firstbox {
-    height: 20px;
-    width: 60px;
-    border: 1px solid black;
+
+.bar:nth-child(5) { 
+  animation-delay: -2.1s;
 }
-.holes {
-    height: 20px;
-    width: 20px;
-    border: 1px solid black;
+
+@keyframes equalize {
+  0% {
+    height: 60%;
+  }
+  4% {
+    height: 50%;
+  }
+  8% {
+    height: 40%;
+  }
+  12% {
+    height: 30%;
+  }
+  16% {
+    height: 20%;
+  }
+  20% {
+    height: 30%;
+  }
+  24% {
+    height: 40%;
+  }
+  28% {
+    height: 10%;
+  }
+  32% {
+    height: 40%;
+  }
+  36% {
+    height: 60%;
+  }
+  40% {
+    height: 20%;
+  }
+  44% {
+    height: 40%;
+  }
+  48% {
+    height: 70%;
+  }
+  52% {
+    height: 30%;
+  }
+  56% {
+    height: 10%;
+  }
+  60% {
+    height: 30%;
+  }
+  64% {
+    height: 50%;
+  }
+  68% {
+    height: 60%;
+  }
+  72% {
+    height: 70%;
+  }
+  76% {
+    height: 80%;
+  }
+  80% {
+    height: 70%;
+  }
+  84% {
+    height: 60%;
+  }
+  88% {
+    height: 50%;
+  }
+  92% {
+    height: 60%;
+  }
+  96% {
+    height: 70%;
+  }
+  100% {
+    height: 100%;
+  }
 }

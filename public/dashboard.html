@@ -21,6 +21,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
 
     <!-- CUSTOM CSS -->
 
@@ -45,9 +47,9 @@
             </div>
         </div>
     </div>
-        
+
     <!-- HOME PAGE DIV -->
-        
+
     <div id="buttonContainer" class="row col-12">
         <div class="col-1 well" id="settingsButtonDiv" onclick="openNav()">
             <div id="settingsCogDiv">
@@ -67,7 +69,16 @@
             </div>
             <div id="myStatsDiv">
                 <div class="col-12 well">
-                    <img src="MyStatsButton.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128" id="equalizer">
+                            <g>
+                              <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                              <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                              <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                              <rect class="bar" transform="translate(75,0)" y="15"></rect>
+                            </g>
+                          </svg>
+                    
+                    <img src="MyStatsButtonAnimated.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
                 </div>
             </div>
             <div id="myProfileButtonDiv">
@@ -77,9 +88,9 @@
             </div>
         </div>
     </div>
-        
+
     <!-- SIGN IN DIV -->
-        
+
     <div id="signin">
         <form method="POST" action="/users/add">
 
@@ -93,19 +104,55 @@
 
         </form>
     </div>
-        
+
     <!-- SETTINGS SIDE NAVIGATION-->
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav column">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Scorecard</a>
-        <a href="#">Customization</a>
-        <a href="#">Options</a>
-        <a href="#">Here</a>
+        <table class="table table-borderless" id="sideNavTable">
+            <tbody>
+                <tr>
+                    <th scope="row" class="align-middle">Score</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <th scope="row" class="align-middle">Fairways Hit</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <th scope="row" class="align-middle">Greens in Regulation</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <th scope="row" class="align-middle">Putts</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
-        
+
     <!-- SETTINGS SIDE NAVIGATION SCRIPT-->
     <script>
-        localStorage.setItem("logStatus",true)
+        localStorage.setItem("logStatus", true)
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -113,7 +160,7 @@
             document.getElementById("mySidenav").style.width = "0";
         }
     </script>
-        
+
     <!-- START A ROUND DIV MODAL -->
     <div id="startaround" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -125,11 +172,15 @@
                 <div class="modal-body">
                     <div class="coursedropdown dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Courses
+                            Select Courses
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="courseDropdown">
-                            <li><a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a></li>
-                            <li><a onClick="storeCookie('Williston')" value="Williston" class="dropdown-item">Williston</a></li>
+                            <li>
+                                <a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a>
+                            </li>
+                            <li>
+                                <a onClick="storeCookie('Williston')" value="Williston" class="dropdown-item">Williston</a>
+                            </li>
                         </ul>
                     </div>
                     <br>
@@ -141,17 +192,20 @@
                             <div id="teeDropItems"></div>
                         </ul>
                     </div>
-                </div> <!-- closes start a course modal body -->
+                </div>
+                <!-- closes start a course modal body -->
                 <div class="modal-footer">
-                    <a href="scorecard.html"><button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button></a>
+                    <a href="scorecard.html">
+                        <button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button>
+                    </a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-        
+
     <!-- STATISTICS MODAL -->
-        
+
     <div id="statistics" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -188,14 +242,15 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
     <script>
-        function logOut(){
-            localStorage.setItem("logStatus",false)
+        function logOut() {
+            localStorage.setItem("logStatus", false)
         }
-        function storeCookie(object){
+        function storeCookie(object) {
             currentCourse = object;
-            document.cookie ="currentCourse="+object;
+            document.cookie = "currentCourse=" + object;
             handleSubmitofCourse(object);
             localStorage.setItem('currentCourse', object);
         }
@@ -204,8 +259,8 @@
             console.log("Current Course is: " + course)
             fetch('/courses/set', {
                 method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"courseName": course})
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "courseName": course })
             }).then(response => response.json())
                 .then(objects => buildTeeDropDown(objects))
         }
@@ -213,29 +268,29 @@
         function buildTeeDropDown(objects) {
             console.log('within buildTeeDropDown');
             console.log(objects)
-            localStorage.setItem('courseObject',JSON.stringify(objects));
+            localStorage.setItem('courseObject', JSON.stringify(objects));
             $(".teedropdown").show()
             console.log("inside tee builder")
-            for(let elem in objects.tees){
-                document.getElementById("teeDropItems").innerHTML +="<li><a class='dropdown-item' onClick='setTee(`"+objects.tees[elem]+"`)'+>"+objects.tees[elem]+"</a></li>"
+            for (let elem in objects.tees) {
+                document.getElementById("teeDropItems").innerHTML += "<li><a class='dropdown-item' onClick='setTee(`" + objects.tees[elem] + "`)'+>" + objects.tees[elem] + "</a></li>"
             }
         }
 
-        function setTee(teeChoice){
+        function setTee(teeChoice) {
             console.log(teeChoice)
             currentTee = teeChoice;
-            $("#newRoundButton").prop('disabled',false)
+            $("#newRoundButton").prop('disabled', false)
             localStorage.setItem('currentTee', teeChoice);
         }
 
-        $("#newRoundButton").prop('disabled',true);
+        $("#newRoundButton").prop('disabled', true);
         $("#signin").hide()
         $("#startaround").hide()
         $("#createAccount").hide()
         $(".teedropdown").hide()
 
-        $(function(){
-            $(".course li a").click(function(){
+        $(function () {
+            $(".course li a").click(function () {
                 $(".course:first-child").text($(this).text());
                 $(".course:first-child").val($(this).text());
             });
