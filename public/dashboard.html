@@ -19,8 +19,10 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
-    <!-- CUSTOM CSS -->
+
+    <!-- CUSTOM CSS & JS -->
 
     <link href="main.css" rel="stylesheet">
 
@@ -43,9 +45,9 @@
             </div>
         </div>
     </div>
-        
+
     <!-- HOME PAGE DIV -->
-        
+
     <div id="buttonContainer" class="row col-12">
         <div class="col-1 well" id="settingsButtonDiv" onclick="openNav()">
             <div id="settingsCogDiv">
@@ -65,7 +67,18 @@
             </div>
             <div id="myStatsDiv">
                 <div class="col-12 well">
-                    <img src="MyStatsButton.png" onClick="getScorecards()" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="equilizer" viewBox="0 0 128 128" id="equalizer">
+                            <g>
+                              <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                              <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                              <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                              <rect class="bar" transform="translate(75,0)" y="15"></rect>
+                            </g>
+                          </svg>
+                    
+                    <img src="MyStatsButtonAnimated.png" onClick="getStatistics()" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
+
                 </div>
             </div>
             <div id="myProfileButtonDiv">
@@ -75,9 +88,9 @@
             </div>
         </div>
     </div>
-        
+
     <!-- SIGN IN DIV -->
-        
+
     <div id="signin">
         <form method="POST" action="/users/add">
             <div>Username</div>
@@ -89,18 +102,55 @@
             <button id="signInButton">Sign In</button>
         </form>
     </div>
-        
+
     <!-- SETTINGS SIDE NAVIGATION-->
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav column">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Scorecard</a>
-        <a href="#">Customization</a>
-        <a href="#">Options</a>
-        <a href="#">Here</a>
+        <table class="table table-borderless" id="sideNavTable">
+            <tbody>
+                <tr>
+                    <th scope="row" class="align-middle">Score</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <th scope="row" class="align-middle">Fairways Hit</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <th scope="row" class="align-middle">Greens in Regulation</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <th scope="row" class="align-middle">Putts</th>
+                    <td class="align-middle">
+                        <label class="switch">
+                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                        </label>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
-        
+
     <!-- SETTINGS SIDE NAVIGATION SCRIPT-->
     <script>
+
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -108,7 +158,7 @@
             document.getElementById("mySidenav").style.width = "0";
         }
     </script>
-        
+
     <!-- START A ROUND DIV MODAL -->
     <div id="startaround" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -120,11 +170,15 @@
                 <div class="modal-body">
                     <div class="coursedropdown dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Courses
+                            Select Courses
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="courseDropdown">
-                            <li><a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a></li>
-                            <li><a onClick="storeCookie('Williston')" value="Williston" class="dropdown-item">Williston</a></li>
+                            <li>
+                                <a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a>
+                            </li>
+                            <li>
+                                <a onClick="storeCookie('Williston')" value="Williston" class="dropdown-item">Williston</a>
+                            </li>
                         </ul>
                     </div>
                     <br>
@@ -136,17 +190,20 @@
                             <div id="teeDropItems"></div>
                         </ul>
                     </div>
-                </div> <!-- closes start a course modal body -->
+                </div>
+                <!-- closes start a course modal body -->
                 <div class="modal-footer">
-                    <a href="scorecard.html"><button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button></a>
+                    <a href="scorecard.html">
+                        <button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button>
+                    </a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-        
+
     <!-- STATISTICS MODAL -->
-        
+
     <div id="statistics" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -199,7 +256,6 @@
         </div>
     </div>
 
-
     <!-- BOOTSTRAP SCRIPTS -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -208,36 +264,47 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
     <script>
-
-        function getScorecards(){
-            let itemArray = document.cookie.split(/[\s=;]/)
-            let indexOf = itemArray.indexOf('currentUser');
-            let currentUser = itemArray[indexOf+1];
-            console.log("inside get scorecards, currentUser is : " + currentUser)
-            fetch('/scorecards/get', {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"userName": currentUser})
-            }).then(response => response.json())
-                .then(objects => updateStatistics(objects))
-        }
-
-        function updateStatistics(objects){
-            console.log(objects);
-            console.log("We're cooking now!")
-            //THIS IS WHERE I NEED TO START TOMORROW//
-        }
 
         function logOut(){
             document.cookie = 'loggedIn=false'
             window.location = '/index.html'
         }
 
+        function getStatistics(){
+            let itemArray = document.cookie.split(/[\s=;]/)
+            let indexOf = itemArray.indexOf('currentUser');
+            let currentUser = itemArray[indexOf+1];
+            fetch('/statistics/get', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({"userName": currentUser})
+            }).then(response => response.json())
+                .then(objects => showStatistics(objects))
+        }
+
+        function showStatistics(myStatistics){
+            $('#roundsPlayed').text('Number of Rounds Played: ' + myStatistics.roundsPlayed +' rounds')
+            $('#overallParAverage').text('Average Over Par: ' + myStatistics.averageComparedToPar )
+            $('#parThreeAverage').text('Par 3 Average score: ' + myStatistics.parThreeScoring)
+            $('#parFourAverage').text('Par 4 Average score: ' + myStatistics.parFourScoring)
+            $('#parFiveAverage').text('Par 5 Average scoore: ' + myStatistics.parFiveScoring)
+            $('#upAndDown').text('Up and Down: ' + myStatistics.upDown +"%")
+            $('#overallPutts').text('Average Number of Putts:  ' + myStatistics.averageNumberOfPutts)
+            $('#overallFairways').text('Fairway %: ' + myStatistics.fairwaysPercentage)
+            $('#missedFairwayConvert').text('Scramble %: ' + myStatistics.missedFairwaysPar)
+            $('#hitFairwayConvert').text('Hit Fairway & Par: ' + myStatistics.hitFairwaysPar + '%')
+            $('#overallGIR').text('Greens in Regulation: ' + myStatistics.fairwaysPercentage + '%')
+            $('#parThreeGIR').text('Par three GIR: ' + myStatistics.parThreeG + '%')
+            $('#parFourGIR').text('Par four GIR: ' + myStatistics.parFourG + '%')
+            $('#parFiveGIR').text('Par five GIR: ' + myStatistics.parFiveG + '%')
+        }
+
         function storeCookie(object){
             currentCourse = object;
-            document.cookie ="currentCourse="+object;
+            document.cookie = "currentCourse=" + object;
             handleSubmitofCourse(object);
             localStorage.setItem('currentCourse', object);
         }
@@ -245,8 +312,8 @@
         function handleSubmitofCourse(course) {
             fetch('/courses/set', {
                 method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"courseName": course})
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "courseName": course })
             }).then(response => response.json())
                 .then(objects => buildTeeDropDown(objects))
         }
@@ -262,18 +329,18 @@
 
         function setTee(teeChoice){
             currentTee = teeChoice;
-            $("#newRoundButton").prop('disabled',false)
+            $("#newRoundButton").prop('disabled', false)
             localStorage.setItem('currentTee', teeChoice);
         }
 
-        $("#newRoundButton").prop('disabled',true);
+        $("#newRoundButton").prop('disabled', true);
         $("#signin").hide()
         $("#startaround").hide()
         $("#createAccount").hide()
         $(".teedropdown").hide()
 
-        $(function(){
-            $(".course li a").click(function(){
+        $(function () {
+            $(".course li a").click(function () {
                 $(".course:first-child").text($(this).text());
                 $(".course:first-child").val($(this).text());
             });
@@ -283,33 +350,3 @@
 </body>
 
 </html>
-
-<!-- DID WE MEAN TO PUT THESE IN SETTINGS VS STATISTICS?
-
-    <div id="statistics" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    Statistics
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">Scores</label>
-                        <label>
-                            <input type="checkbox" value="">Putts Per Green</label>
-                        <label>
-                            <input type="checkbox" value="">Fairways Hit</label>
-                        <label>
-                            <input type="checkbox" value="">Green in Regulation (GIR)</label>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default">Submit</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
--->
