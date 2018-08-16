@@ -30,9 +30,16 @@ app.post('/users/add', function (req, res) {
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10)
     }
-
-    users.insert(newUser, function(result) {
-        res.redirect('/')
+    users.findOne({"username" : req.body.username}, (err, existingUser) => {
+        if(!existingUser){
+            users.insert(newUser, function(result) {
+                res.cookie("loggedIn","User_Added")
+                res.redirect('/')
+            })
+        } else { 
+            res.cookie("loggedIn","User_Exists");
+            res.redirect('/');
+        }
     })
 })
 
