@@ -1,12 +1,14 @@
-let currentLocation; 
+createCurrentLocation();
 let currentCourse;
 let currentHole;
-createCurrentLocation();
+let currentLocation;
+
 
 function updateDistances(currentLocation){
-  currentHole = currentHole;
+  currentHole = "one";
   currentCourse = localStorage.getItem('currentCourse');
   [frontPoint, centerPoint, backPoint] = currentGreenPoints(currentCourse, currentHole);
+  console.log('currentlocationis' + currentLocation)
   let distanceToFront = findDistance(currentLocation, frontPoint);
   let distanceToCenter = findDistance(currentLocation, centerPoint);
   let distanceToBack = findDistance(currentLocation, backPoint);
@@ -28,12 +30,12 @@ function updateHole(changeToThisHole){
 
 }
 function currentGreenPoints(currentCourse, currentHole){
-  let frontLat = courses[currentCourse].holes[currentHole].green.front[0];
-  let frontLon = courses[currentCourse].holes[currentHole].green.front[1];
-  let centerLat = courses[currentCourse].holes[currentHole].green.center[0];
-  let centerLon = courses[currentCourse].holes[currentHole].green.center[1];
-  let backLat = courses[currentCourse].holes[currentHole].green.back[0];
-  let backLon = courses[currentCourse].holes[currentHole].green.back[1];
+  let frontLat = courseObject.holes[currentHole].green.front[0];
+  let frontLon = courseObject.holes[currentHole].green.front[1];
+  let centerLat = courseObject.holes[currentHole].green.center[0];
+  let centerLon = courseObject.holes[currentHole].green.center[1];
+  let backLat = courseObject.holes[currentHole].green.back[0];
+  let backLon = courseObject.holes[currentHole].green.back[1];
   let frontPoint = new Point(frontLat, frontLon);
   let centerPoint = new Point(centerLat, centerLon);
   let backPoint = new Point(backLat, backLon);
@@ -63,11 +65,14 @@ function findDistance(pointOne, pointTwo){
   var d = R * c;
   var y = d *1.09361
   
-  return y;
+  return Math.round(y);
 }
 
 function createCurrentLocation(){
+  console.log('creating your location') 
 navigator.geolocation.getCurrentPosition(function(location) {
     currentLocation = new Point(location.coords.latitude, location.coords.longitude);
+    console.log(currentLocation + 'this should be your current location')
+    updateDistances(currentLocation)
   });
 }
