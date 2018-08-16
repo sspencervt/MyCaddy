@@ -1,176 +1,397 @@
+html {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    width: 100%;
+    height: 100%;
 
-    
-    html {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-attachment: fixed;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-
-    }
-
-    body {
-        font-family: 'Alegreya Sans SC', sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 1;
-        /* overflow: hidden; */
-        height: 100%;
-    }
-.checkbox {
-    display: flex;
-    flex-direction: column;
 }
 
-    #logInScreenDiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        background-color: #1bb06b;
-    }
+.modal-body hr {
+    margin: 5px;
+}
 
-    #logInMiddleColumnDiv {
-        text-align: center;
-    }
+.statistics {
+    font-size: 15px;
+}
 
-    #wizardLogoLogInScreen {
-        width: 75%;
-        padding: 10px;
-    }
+.statistics p {
+    margin: 5px;
+}
 
-    #myCaddyLogoLogInScreen {
-        width: 100%;
-        padding-bottom: 10px;
-    }
+.statistics h6{
+    font-size: 20px;
+    margin: 5px;
+}
 
+#userNameError {
+    padding-top: 3px;
+    height: .5em;
+    color: red;
+}
 
-    #navbarDiv {
-        background-color: white; 
-        border-bottom: solid lightgrey 1px;
-    }
+#passwordError {
+    padding-top: 3px;
+    height: .5em;
+    color: red;
+}
 
-    #profilePicDiv {
-        text-align: center;  
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.modal-title {
+    margin-left: 10px;
+}
+#signupImage {
+    margin-top: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 150px;
+}
 
-    #profilePic {
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        border: solid black 1px;;
-    }
+body {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    overflow: hidden;
+    height: 100%;
+}
 
+.modal-title {
+    margin-left: 10px;
+}
 
-    #logInButton {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        border: none;
-        background: white;
-   
-    }
+#signupImage {
+    margin-top: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 150px;
+}
 
-    #logInButtonText {
-        width: 100%;
-        position: absolute;
-        padding: 0;
-    }
+#logInScreenDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #1bb06b;
+}
 
-    #logInButtonTemplate {
-        width: 90%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        float: right;
-    }
-
-    #logInButtonDiv {
-        top: 0px;
-    }
-
-    #MyCaddyLogo {
-        width: 100%;
-    }
-
-    #MyCaddyLogoDiv {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .col-3 {
-        padding: 0;
-        margin: 0;
-    }
-
-    .col-6 {
-        padding: 0;
-        margin: 0;
-    }
+#logInMiddleColumnDiv {
+    text-align: center;
 
 
-    #buttonContainer {
-        height: 90%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+}
 
-    #startARoundDiv {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
 
-    #startARoundButtonImage{
-        width: 100%;
-    }
 
-    #myStatsDiv {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
+#wizardLogoLogInScreen {
+    width: 100%;
+    height: auto;
+}
 
-    #myStatsButtonImage {
-        width: 100%;
-    }
+#myCaddyLogoLogInScreen {
+    width: 100%;
+    height: auto;
+}
 
-    #myProfileButtonDiv {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
 
-    #myProfileButtonImage {
-        width: 100%;
-    }
+#navbarDiv {
+    background-color: white; 
+    border-bottom: solid lightgrey 1px;
+}
 
-    #settingsButtonDiv {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
+#profilePicDiv {
+    text-align: center;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    #settingsButtonImage {
-        width: 100%;
-    }
+#profilePic {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: solid black 1px;;
+}
 
-    .col-3 {
-        padding: 0;
-    }
 
-    .col-6 {
-        padding: 0;
-    }
+#logInButton {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    border: none;
+    background: white;
 
-    .col-9 {
-        padding: 0;
-    }
+}
+
+#logInButtonText {
+    width: 100%;
+    position: absolute;
+    padding: 0;
+}
+
+#logInButtonTemplate {
+    width: 90%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+#logInButtonDiv {
+    top: 0px;
+}
+
+#MyCaddyLogo {
+    width: 100%;
+}
+
+#MyCaddyLogoDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-3 {
+    padding: 0;
+    margin: 0;
+}
+
+.col-6 {
+    padding: 0;
+    margin: 0;
+}
+
+
+#buttonContainer {
+    height: 90%;
+    margin: 0;
+    padding: 0;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around; */
+}
+
+#rightColumnButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#startARoundDiv {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+#startARoundDiv div {
+    padding: 0;
+}
+
+#startARoundButtonImage{
+    width: 100%;
+}
+
+#myStatsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+
+}
+
+#myStatsDiv div {
+    padding: 0;
+}
+
+#myStatsButtonImage {
+    width: 100%;
+}
+
+#myProfileButtonDiv {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+
+}
+
+#myProfileButtonDiv div {
+    padding: 0;
+}
+
+#myProfileButtonImage {
+    width: 100%;
+}
+
+#settingsButtonDiv {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    padding-top: 10px;
+}
+
+#settingsButtonImage {
+    width: 100%;
+}
+
+
+#settingsCogDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+    height: 5%;
+}
+#settingsArrowDiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}
+
+.col-3 {
+    padding: 0;
+}
+
+.col-6 {
+    padding: 0;
+}
+
+.col-9 {
+    padding: 0;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    background-color: #137b4b;
+    overflow-x: hidden;
+    padding-top: 60px; 
+    transition: 0.5s; 
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+#usernameInput {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#passwordInput {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+
+}
+
+#logInButtonLoginPage {
+    width: 100%;
+}
+
+#logInForm {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+
+#signUpButton {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+#signInHelp {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+#signUpAndHelpDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+}
+
+
+/* Scorecard */
+
+html {
+    /* background-color: aquamarine; */
+}
+#holescontainer {
+    display: flex;
+    flex-direction: row;
+}
+#yardagecontainer {
+    display: flex;
+    flex-direction: row;
+}
+#scorecontainer {
+    display: flex;
+    flex-direction: row;
+}
+#handicapcontainer {
+    display: flex;
+    flex-direction: row;
+}
+#gircontainer {
+    display: flex;
+    flex-direction: row;
+}
+#puttscontainer {
+    display: flex;
+    flex-direction: row;
+}
+.firstbox {
+    height: 20px;
+    width: 60px;
+    border: 1px solid black;
+}
+.holes {
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+}

@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="distance.js"></script>
-    <script src="course.js" type="text/javascript"></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
@@ -28,140 +26,99 @@
 </head>
 
 <body class="bg-transparent">
-    <div class="container-fluid" id="navbarDiv">
-        <div class="row">
-            <div class="col-3" id="profilePicDiv">
-                <img src="MyCaddyWizardLogo.png" id="profilePic">
+    <div id="logInScreenDiv">
+        <div class='col-2'></div>
+        <div class='col-8' id="logInMiddleColumnDiv">
+            <div class="col-8 row mx-auto d-block" id="logInLogoDiv1">
+                <img src="MyCaddyWizardLogo.png" id="wizardLogoLogInScreen">
             </div>
-            <div id="MyCaddyLogoDiv" class="col-6">
-                <img id="MyCaddyLogo" src="MyCaddyLogo.png"></img>
+            <br>
+            <div class="col-12" id="logInLogoDiv2">
+                    <img src="MyCaddyLoginPageLogo.png" id="myCaddyLogoLogInScreen">
             </div>
+            <br>
 
-            <div id="logInButtonDiv" class="col-3">
-                <button id="logInButton">
-                    <img src="LoginButton.png" id="logInButtonTemplate" onclick="showSignIn()">
-                </button>
+            <form method="POST" action="/users/verify" class="col-12" id="logInForm">
+                <input onClick="clearErrors()" id="usernameInput" name="username" placeholder="Username">
+                <p id="userNameError"></p>
+                <input onClick="clearErrors()" id="passwordInput" type="password" name="password" placeholder="Password">
+                <p id="passwordError"></p>
+                <button type="submit"><img id="logInButtonLoginPage" src="logInButtonLoginPage.png"></button>
+                <br>
+            </form>
+
+            <div class="row" id="signUpAndHelpDiv">
+                <button data-target="#signupModal" data-toggle="modal" id="signUpButton" class="col-6 row">Sign Up</button>
+                <button id="signInHelp" class="col-6 row">Login Help</button>
             </div>
         </div>
+        <div class='col-2'></div>
     </div>
+   
+   <!-- SIGN UP MODAL -->
 
-
-    <!-- HOME PAGE DIV -->
-    <div id="emptySpace" class="col-12">
-
-    </div>
-
-    <div id="buttonContainer">
-        <div id="startARoundDiv">
-            <div class="col-3"></div>
-            <div class="col-9">
-                    <img src="StartARoundButton.png" id="startARoundButtonImage" type="button" data-toggle="modal" data-target="#startaround">
-            </div>
-        </div>
-
-        <div id="myStatsDiv">
-            <div class="col-3"></div>
-            <div class="col-9">
-                    <img src="MyStatsButton.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
-            </div>
-        </div>
-
-        <div id="myProfileButtonDiv">
-            <div class="col-3"></div>
-            <div class="col-9">
-                    <img src="MyProfileButton.png" id="myProfileButtonImage" type="button">
-            </div>
-        </div>
-
-        <div id="settingsButtonDiv">
-            <div class="col-3"></div>
-            <div class="col-9">
-                        <img src="SettingsButton.png" id="settingsButtonImage" type="button">
-            </div>
-        </div>
-    </div>
-
-    <!-- SIGN IN DIV -->
-
-    <div id="signin">
-        <form method="POST" action="/users/add">
-            <div>Username</div>
-            <input id="text username" name="username">
-            <div>Password</div>
-            <input id="text password" name="password">
-            <button id="submit" value="Submit">Submit</button>
-            <button id="signInButton" onclick="back()">Back</button>
-            <button id="signInButton">Sign In</button>
-        </form>
-    </div>
-
-
-    <!-- START A ROUND DIV MODAL -->
-
-    <div id="startaround" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    Select Course
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-header row">
+                    <h2 class="modal-title">Sign Up</h2>
+                    <img id="signupImage" src="MyCaddyLogo.png">
                 </div>
-                <div class="modal-body">
-                    <div class="coursedropdown dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Courses
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="courseDropdown">
-                            <li><a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a></li>
-                            <li><a onClick="storeCookie('Williston')" value="Williston" class="dropdown-item">Williston</a></li>
-                            </ul>
-                    </div>
-                    <br>
-                    <div class="teedropdown dropdown" id="teeDropDown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Tees
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="teeDropdown">
-                            <div id="teeDropItems">
+                <form method="POST" action="/users/add">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
                             </div>
-                        </ul>
+                            <input name="username" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input name="password" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
                     </div>
-                </div> <!-- closes start a course modal body -->
-                <div class="modal-footer">
-                    <a href="scorecard.html"><button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button></a>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" value="Submit" class="btn btn-primary">Sign up</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
-        </div>
+        </div> 
     </div>
 
-    <!-- STATISTICS MODAL -->
+    <!-- SIGN UP MODAL -->
 
-    <div id="statistics" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    Statistics
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-header row">
+                    <h2 class="modal-title">Sign Up</h2>
+                    <img id="signupImage" src="MyCaddyLogo.png">
                 </div>
-                <div class="modal-body column">
-                    <div class="checkbox">
-                        <label>
-                            <input id="scoresCheck" type="checkbox" value="">Scores</label>
-                        <label>
-                            <input id="puttsCheck" type="checkbox" value="">Putts Per Green</label>
-                        <label>
-                            <input id="fairwayCheck" type="checkbox" value="">Fairways Hit</label>
-                        <label>
-                            <input id="girCheck" type="checkbox" value="">Green in Regulation (GIR)</label>
-                    </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Sign up</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default">Submit</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+        </div> 
     </div>
 
     <!-- BOOTSTRAP SCRIPTS -->
@@ -173,70 +130,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+
     <script>
 
-        function storeCookie(object){
-            currentCourse = object;
-            document.cookie ="currentCourse="+object;
-            handleSubmitofCourse(object);
-            localStorage.setItem('currentCourse', object);
+        function clearErrors(){
+            $("#passwordError").text('');
+            $("#userNameError").text('');
         }
 
-        function handleSubmitofCourse(course) {
-            console.log("Current Course is: " + course)
-            fetch('/courses/set', {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"courseName": course})
-            }).then(response => response.json())
-                .then(objects => buildTeeDropDown(objects))
+        let logInStatusArray=document.cookie.split(/[\s=;]/)
+        let indexOf = logInStatusArray.indexOf('loggedIn');
+        if(logInStatusArray[indexOf+1]=='true'){
+            window.location = '/dashboard.html'
+        } else if(logInStatusArray[indexOf+1]=='Incorrect_Password'){
+            $("#passwordError").text('Incorrect Password')
+        } else if(logInStatusArray[indexOf+1]=='Username_Error'){
+            $("#userNameError").text('Username Not Found')
         }
-
-        function buildTeeDropDown(objects) {
-            console.log('within buildTeeDropDown');
-            console.log(objects)
-            localStorage.setItem('courseObject',JSON.stringify(objects));
-            $(".teedropdown").show()
-            console.log("inside tee builder")
-            for(let elem in objects.tees){
-                document.getElementById("teeDropItems").innerHTML +="<li><a class='dropdown-item' onClick='setTee(`"+objects.tees[elem]+"`)'+>"+objects.tees[elem]+"</a></li>"
-            }
-        }
-
-        function setTee(teeChoice){
-            console.log(teeChoice)
-            currentTee = teeChoice;
-            $("#newRoundButton").prop('disabled',false)
-            localStorage.setItem('currentTee', teeChoice);
-        }
-
-        $("#newRoundButton").prop('disabled',true);
-        $("#signin").hide()
-        $("#startaround").hide()
-        $("#createAccount").hide()
-        $(".teedropdown").hide()
-
-        $(function(){
-            $(".course li a").click(function(){
-                $(".course:first-child").text($(this).text());
-                $(".course:first-child").val($(this).text());
-            });
-        });
-       
-        function showSignIn() {
-            $("#signin").show()
-            $("#buttoncontainer").hide()
-            $("#createAccount").show()
-        }
-        function showStartARound() {
-            $("#buttoncontainer").hide()
-            $("#startaround").show()
-        }
-        function back() {
-            $("#buttoncontainer").show()
-            $("#signin").hide()
-        }
-
 
     </script>
 </body>

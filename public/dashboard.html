@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+    <!-- JQUERY -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <!-- BOOTSTRAP -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!-- CUSTOM CSS & JS -->
+
+    <link href="main.css" rel="stylesheet">
+
+    <title>Dashboard</title>
+</head>
+
+<body class="bg-transparent">
+    <div class="container-fluid" id="navbarDiv">
+        <div class="row">
+            <div class="col-3" id="profilePicDiv">
+                <img src="MyCaddyWizardLogo.png" id="profilePic">
+            </div>
+            <div id="MyCaddyLogoDiv" class="col-6">
+                <img id="MyCaddyLogo" src="MyCaddyLogo.png"></img>
+            </div>
+            <div id="logInButtonDiv" class="col-3">
+                <a id="logInButton" onClick="logOut()">
+                    <img src="LogoutButton.png" id="logInButtonTemplate">
+                </a>
+            </div>
+        </div>
+    </div>
+        
+    <!-- HOME PAGE DIV -->
+        
+    <div id="buttonContainer" class="row col-12">
+        <div class="col-1 well" id="settingsButtonDiv" onclick="openNav()">
+            <div id="settingsCogDiv">
+                <i class="fa fa-cog"></i>
+            </div>
+            <div id="settingsArrowDiv">
+                <i class="fas fa-caret-right"></i>
+            </div>
+            <img src="SettingsButton.png" id="settingsButtonImage" type="button">
+        </div>
+        <div class="col-2"></div>
+        <div class="col-9" id="rightColumnButtonContainer">
+            <div id="startARoundDiv">
+                <div class="col-12 well">
+                    <img src="StartARoundButton.png" id="startARoundButtonImage" type="button" data-toggle="modal" data-target="#startaround">
+                </div>
+            </div>
+            <div id="myStatsDiv">
+                <div class="col-12 well">
+                    <img src="MyStatsButton.png" onClick="getStatistics()" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
+                </div>
+            </div>
+            <div id="myProfileButtonDiv">
+                <div class="col-12 well">
+                    <img src="MyProfileButton.png" id="myProfileButtonImage" type="button">
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- SIGN IN DIV -->
+        
+    <div id="signin">
+        <form method="POST" action="/users/add">
+            <div>Username</div>
+            <input id="text username" name="username">
+            <div>Password</div>
+            <input id="text password" name="password">
+            <button id="submit" onClick="submit()" value="Submit">Submit</button>
+            <button id="signInButton" onclick="back()">Back</button>
+            <button id="signInButton">Sign In</button>
+        </form>
+    </div>
+        
+    <!-- SETTINGS SIDE NAVIGATION-->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Scorecard</a>
+        <a href="#">Customization</a>
+        <a href="#">Options</a>
+        <a href="#">Here</a>
+    </div>
+        
+    <!-- SETTINGS SIDE NAVIGATION SCRIPT-->
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+        
+    <!-- START A ROUND DIV MODAL -->
+    <div id="startaround" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Select Course
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="coursedropdown dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select Courses
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="courseDropdown">
+                            <li><a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a></li>
+                            <li><a onClick="storeCookie('Williston')" value="Williston" class="dropdown-item">Williston</a></li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="teedropdown dropdown" id="teeDropDown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Tees
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="teeDropdown">
+                            <div id="teeDropItems"></div>
+                        </ul>
+                    </div>
+                </div> <!-- closes start a course modal body -->
+                <div class="modal-footer">
+                    <a href="scorecard.html"><button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button></a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- STATISTICS MODAL -->
+        
+    <div id="statistics" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class ="statistics" id="scoreStatistics">
+                        <h6>Score Performance</h6>
+                        <hr>
+                        <p id="roundsPlayed">Number of Rounds Played:</p>
+                        <p id="overallParAverage">Overall Average Compared To Par:</p>
+                        <p id="parThreeAverage">Par 3 Scoring Average:</p>
+                        <p id="parFourAverage">Par 4 Scoring Average:</p>
+                        <p id="parFiveAverage">Par 5 Scoring Average:</p>
+                        <br>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class ="statistics" id="GIRStatistics">
+                        <h6>Greens In Regulation</h6>
+                        <hr>
+                        <p id="overallGIR">Overall GIR %:</p>
+                        <p id="parThreeGIR">Par 3 GIR %:</p>
+                        <p id="parFourGIR">Par 4 GIR %:</p>
+                        <p id="parFiveGIR">Par 5 GIR %:</p>
+                        <p id="upAndDown">Up and Down%:</p>
+                        <br>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class ="statistics" id="puttingStatistics">
+                        <h6>Putting</h6>
+                        <hr>
+                        <p id="overallPutts">Overall Average # Of Putts</p>
+                        <br>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class ="statistics" id="fairwayStatistics">
+                        <h6>Fairway Statistics</h6>
+                        <hr>
+                        <p id="overallFairways">Overall % Of Fairways Hit: </p>
+                        <p id="missedFairwayConvert">Missed Fairway Par Convert %:</p>
+                        <p id="hitFairwayConvert">Hit Fairway Par Convert %:</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOTSTRAP SCRIPTS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        function logOut(){
+            document.cookie = 'loggedIn=false'
+            window.location = '/index.html'
+        }
+
+        function getStatistics(){
+            let itemArray = document.cookie.split(/[\s=;]/)
+            let indexOf = itemArray.indexOf('currentUser');
+            let currentUser = itemArray[indexOf+1];
+            fetch('/statistics/get', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({"userName": currentUser})
+            }).then(response => response.json())
+                .then(objects => showStatistics(objects))
+        }
+
+        function showStatistics(myStatistics){
+            $('#roundsPlayed').text('Number of Rounds Played: ' + myStatistics.roundsPlayed +' rounds')
+            $('#overallParAverage').text('Average Over Par: ' + myStatistics.averageComparedToPar )
+            $('#parThreeAverage').text('Par 3 Average score: ' + myStatistics.parThreeScoring)
+            $('#parFourAverage').text('Par 4 Average score: ' + myStatistics.parFourScoring)
+            $('#parFiveAverage').text('Par 5 Average scoore: ' + myStatistics.parFiveScoring)
+            $('#upAndDown').text('Up and Down: ' + myStatistics.upDown +"%")
+            $('#overallPutts').text('Average Number of Putts:  ' + myStatistics.averageNumberOfPutts)
+            $('#overallFairways').text('Fairway %: ' + myStatistics.fairwaysPercentage)
+            $('#missedFairwayConvert').text('Scramble %: ' + myStatistics.missedFairwaysPar)
+            $('#hitFairwayConvert').text('Hit Fairway & Par: ' + myStatistics.hitFairwaysPar + '%')
+            $('#overallGIR').text('Greens in Regulation: ' + myStatistics.fairwaysPercentage + '%')
+            $('#parThreeGIR').text('Par three GIR: ' + myStatistics.parThreeG + '%')
+            $('#parFourGIR').text('Par four GIR: ' + myStatistics.parFourG + '%')
+            $('#parFiveGIR').text('Par five GIR: ' + myStatistics.parFiveG + '%')
+        }
+
+        function storeCookie(object){
+            currentCourse = object;
+            document.cookie ="currentCourse="+object;
+            handleSubmitofCourse(object);
+            localStorage.setItem('currentCourse', object);
+        }
+
+        function handleSubmitofCourse(course) {
+            fetch('/courses/set', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({"courseName": course})
+            }).then(response => response.json())
+                .then(objects => buildTeeDropDown(objects))
+        }
+
+        function buildTeeDropDown(objects) {
+            localStorage.setItem('courseObject',JSON.stringify(objects));
+            $(".teedropdown").show()
+            document.getElementById("teeDropItems").innerHTML=''
+            for(let elem in objects.tees){
+                document.getElementById("teeDropItems").innerHTML +="<li><a class='dropdown-item' onClick='setTee(`"+objects.tees[elem]+"`)'+>"+objects.tees[elem]+"</a></li>"
+            }
+        }
+
+        function setTee(teeChoice){
+            currentTee = teeChoice;
+            $("#newRoundButton").prop('disabled',false)
+            localStorage.setItem('currentTee', teeChoice);
+        }
+
+        $("#newRoundButton").prop('disabled',true);
+        $("#signin").hide()
+        $("#startaround").hide()
+        $("#createAccount").hide()
+        $(".teedropdown").hide()
+
+        $(function(){
+            $(".course li a").click(function(){
+                $(".course:first-child").text($(this).text());
+                $(".course:first-child").val($(this).text());
+            });
+        });
+
+    </script>
+</body>
+
+</html>
+
+<!-- DID WE MEAN TO PUT THESE IN SETTINGS VS STATISTICS?
+
+    <div id="statistics" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Statistics
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">Scores</label>
+                        <label>
+                            <input type="checkbox" value="">Putts Per Green</label>
+                        <label>
+                            <input type="checkbox" value="">Fairways Hit</label>
+                        <label>
+                            <input type="checkbox" value="">Green in Regulation (GIR)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+-->

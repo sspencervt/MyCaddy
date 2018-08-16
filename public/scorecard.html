@@ -195,6 +195,58 @@
             <p>Distance to back of the green:</p>
             <pre id="distanceToBack"></pre>
         </div>
+
+        <button class="btn btn-secondary" data-target="#statsModal" data-toggle="modal">Input Scores</button>
+
+<div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Input Scores</h2>
+            </div>
+            <div class="modal-body">
+                <div class="scoreSelector">
+                <h4>Score</h4>
+                    <div class="scorebtns">
+                    <button type="button" class="scoreBtn">1</button>
+                    <button type="button" class="scoreBtn">2</button>
+                    <button type="button" class="scoreBtn">3</button>
+                    <button type="button" class="scoreBtn">4</button>
+                    <button type="button" class="scoreBtn">5</button>
+                    <button type="button" class="scoreBtn">6</button>
+                    <button type="button" class="scoreBtn">7</button>
+                    <button type="button" class="scoreBtn">8</button>
+                    </div>
+                </div>
+                <div class="puttSelector">
+                    <h4>Putts</h4>
+                    <div class="puttbtns">
+                    <button type="button" class="puttBtn">1</button>
+                    <button type="button" class="puttBtn">2</button>
+                    <button type="button" class="puttBtn">3</button>
+                    <button type="button" class="puttBtn">4</button>
+                    </div>
+                </div>
+                
+                <h4>Fairway</h4>
+                <div id="fairCheckContainer">
+                <input id="statCheckbox" type="checkbox" value="yes"><span> YES</span>
+                <input id="statCheckbox" type="checkbox" value="no"><span> NO</span>
+                </div>
+                
+                <h4>Green in regulation</h4>
+                <div id="girCheckContainer">
+                <input id="statCheckbox" type="checkbox" value="yes"><span id="checkText"> YES</span>
+                <input id="statCheckbox" type="checkbox" value="no"><span id="checkText"> NO</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success">Next Hole</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script>
     let course = localStorage.getItem('currentCourse');
