@@ -4,8 +4,8 @@ let currentHole;
 createCurrentLocation();
 
 function updateDistances(currentLocation){
-  currentHole = document.getElementById('holeDisp').textContent;
-  currentCourse = document.getElementById('courseDisp').textContent;
+  currentHole = currentHole;
+  currentCourse = localStorage.getItem('currentCourse');
   [frontPoint, centerPoint, backPoint] = currentGreenPoints(currentCourse, currentHole);
   let distanceToFront = findDistance(currentLocation, frontPoint);
   let distanceToCenter = findDistance(currentLocation, centerPoint);

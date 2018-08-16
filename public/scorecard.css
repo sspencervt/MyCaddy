@@ -1,3 +1,14 @@
+
+#courseImage {
+    display: flex;
+    height: 90vh;
+    width: 70vw;
+}
+#imgDistanceCont {
+    display: flex;
+    flex-direction: row;
+}
+
 html {
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,7 +17,6 @@ html {
     margin: 0;
     width: 100%;
     height: 100%;
-
 }
 
 body {
@@ -18,6 +28,17 @@ body {
     height: 100%;
 }
 
+#distanceContainer {
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.firstbox {
+    height: 20px;
+    width: 60px;
+    border: 1px solid black;
+}
 
 #scorecard {
     height: 100%;
@@ -43,10 +64,15 @@ body {
     justify-content: space-around;
 }
 
+
 .scoreBtn {
     border: 1px solid #1bb06b;
     border-radius: 5px;
     background: none;
+}
+
+.scoreBtn:active {
+    color: #1bb06b;
 }
 
 .scoreBtn:hover {
