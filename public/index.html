@@ -39,22 +39,87 @@
             <br>
 
             <form method="POST" action="/users/verify" class="col-12" id="logInForm">
-                <input id="usernameInput" name="username" placeholder="Username">
-                <br>
-                <input id="passwordInput" type="password" name="password" placeholder="Password">
-                <br>
+                <input onClick="clearErrors()" id="usernameInput" name="username" placeholder="Username">
+                <p id="userNameError"></p>
+                <input onClick="clearErrors()" id="passwordInput" type="password" name="password" placeholder="Password">
+                <p id="passwordError"></p>
                 <button type="submit"><img id="logInButtonLoginPage" src="logInButtonLoginPage.png"></button>
                 <br>
             </form>
 
             <div class="row" id="signUpAndHelpDiv">
-                <button id="signUpButton" class="col-6 row">Sign Up</button>
+                <button data-target="#signupModal" data-toggle="modal" id="signUpButton" class="col-6 row">Sign Up</button>
                 <button id="signInHelp" class="col-6 row">Login Help</button>
             </div>
         </div>
         <div class='col-2'></div>
     </div>
    
+   <!-- SIGN UP MODAL -->
+
+   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header row">
+                    <h2 class="modal-title">Sign Up</h2>
+                    <img id="signupImage" src="MyCaddyLogo.png">
+                </div>
+                <form method="POST" action="/users/add">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            </div>
+                            <input name="username" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input name="password" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" value="Submit" class="btn btn-primary">Sign up</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+
+    <!-- SIGN UP MODAL -->
+
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header row">
+                    <h2 class="modal-title">Sign Up</h2>
+                    <img id="signupImage" src="MyCaddyLogo.png">
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Sign up</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                </form>
+            </div>
+        </div> 
+    </div>
 
     <!-- BOOTSTRAP SCRIPTS -->
 
@@ -67,21 +132,22 @@
 
 
     <script>
-        $("#signin").hide()
-        $("#startaround").hide()
 
-        function showSignIn() {
-            $("#signin").show()
-            $("#buttoncontainer").hide()
+        function clearErrors(){
+            $("#passwordError").text('');
+            $("#userNameError").text('');
         }
-        function showStartARound() {
-            $("#buttoncontainer").hide()
-            $("#startaround").show()
+
+        let logInStatusArray=document.cookie.split(/[\s=;]/)
+        let indexOf = logInStatusArray.indexOf('loggedIn');
+        if(logInStatusArray[indexOf+1]=='true'){
+            window.location = '/dashboard.html'
+        } else if(logInStatusArray[indexOf+1]=='Incorrect_Password'){
+            $("#passwordError").text('Incorrect Password')
+        } else if(logInStatusArray[indexOf+1]=='Username_Error'){
+            $("#userNameError").text('Username Not Found')
         }
-        function back() {
-            $("#buttoncontainer").show()
-            $("#signin").hide()
-        }
+
     </script>
 </body>
 

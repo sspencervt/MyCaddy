@@ -10,7 +10,7 @@ const users = db.collection('Users')
 const app = express()
 const bcrypt = require('bcryptjs')
 const cookieParser = require('cookie-parser')
-
+const stat = require('./public/statistics')
 
 // TO ACCESS DATABASE FROM COMMAND LINE - NEED dbuser and password
 // mongo ds225608.mlab.com:25608/mycaddy -u <dbuser> -p <dbpassword>
@@ -24,66 +24,85 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-/////////////////////////////////////
+app.post('/users/add', function (req, res) {
 
-//////// install cookie parser. then uncomment and see what breaks
-//////// you will need to go to another part of the site
-//////// because you haven't generated the cookie yet
-// var isLoggedIn = function(req, res, next) {
-//     console.log(req.cookie + 'this mah cookie')
-//     next()
-// }
-
-// app.use(isLoggedIn)
-////////////
-
-
-app.post('./users/add/', function (req, res) {
-    console.log('in /users/add/')
-    console.log(req.body)
     let newUser = {
         username: req.body.username,
-        password: bcrypt.hashSync('req.body.password', 10)
+        password: bcrypt.hashSync(req.body.password, 10)
     }
 
     users.insert(newUser, function(result) {
         res.redirect('/')
     })
-    
 })
 
 app.post('/users/verify', function(req, res) {
-    console.log('inside users/verify')
-    console.log(req.body)
     db.Users.findOne({username:req.body.username}, (err, userObject) => {
-        console.log('in db.users, userObject is:' + userObject)
-        let userPassword = userObject.password
-        console.log(userPassword + ': userPassword')
+        if(userObject){
+            if (bcrypt.compareSync(req.body.password, userObject.password)){
+                res.cookie("currentUser",userObject.username);
+                res.cookie("loggedIn",'true');
+                res.redirect('/')
+            } else {
+                res.cookie("loggedIn","Incorrect_Password")
+                res.redirect('/')
+            }
 
-        if (bcrypt.compareSync('req.body.password', userPassword)){
-            console.log("you have logged in, passwords match")
-            res.cookie("loggedin", "true")
-            res.redirect('/dashboard.html')
         } else {
-            console.log("not logged in")
+            res.cookie("loggedIn","Username_Error")
             res.redirect('/')
         }
     })
 })
 
+app.post('/statistics/get', function(req,res) {
+    db.Scorecards.find({'userName':req.body.userName}, (err,scorecards)=>{
+        if(scorecards){
+            res.set('Content-Type', 'text/json');
+            let roundsPlayed = stat.numberOfRoundsPlayed(scorecards)
+            let averageComparedToPar = stat.overallAverageComparedToPar(scorecards)
+            let parThreeScoring = stat.parThreeScoringAverage(scorecards);
+            let parFourScoring = stat.parFourScoringAverage(scorecards);
+            let parFiveScoring = stat.parFiveScoringAverage(scorecards);
+            let averageNumberOfPutts = stat.averageNumberOfPutts(scorecards);
+            let gir = stat.overallGIR(scorecards);
+            let parThreeG = stat.parThreeGIR(scorecards);
+            let parFourG = stat.parFourGIR(scorecards);
+            let parFiveG = stat.parFiveGIR(scorecards);
+            let upDown = stat.upAndDown(scorecards);
+            let fairwaysPercentage = stat.overallFairwaysHit(scorecards);
+            let missedFairwaysPar = stat.missedFairwaysParConvert(scorecards);
+            let hitFairwaysPar = stat.hitFairwaysParConvert(scorecards);
+            let statsObject = {
+                "roundsPlayed" : roundsPlayed,
+                "averageComparedToPar" : averageComparedToPar,
+                "parThreeScoring" :  parThreeScoring,
+                "parFiveScoring" : parFiveScoring,
+                "parFourScoring" : parFourScoring,
+                "averageNumberOfPutts" : averageNumberOfPutts,
+                "gir" : gir,
+                "parThreeG": parThreeG,
+                "parFourG" : parFourG,
+                "parFiveG" : parFiveG,
+                "upDown"  : upDown,
+                "fairwaysPercentage" : fairwaysPercentage,
+                "missedFairwaysPar" : missedFairwaysPar,
+                "hitFairwaysPar" : hitFairwaysPar
+            }
+            res.send(JSON.stringify(statsObject))
+        }  else { console.log('there was no scorecard found with this username') }
+    })
+});
+
 app.post('/courses/set', function(req, res) {
     let currentCourse = req.body.courseName;
-    console.log(currentCourse);
-    
     db.Courses.findOne({courseName:currentCourse}, (err,courseObject)=>{
-        console.log('in db courses server side')
-        console.log(courseObject);
         res.set('Content-Type', 'text/json');
         res.send(JSON.stringify(courseObject));      
     })
 })
 
-app.get('', (req, res) => res.send('./login.html'))
+app.get('/', (req, res) => res.send('./login.html'))
 
 app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
 
