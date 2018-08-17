@@ -23,21 +23,23 @@
     <link href="main.css" rel="stylesheet">
 
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"
+    />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>
-    window.addEventListener("load", function(){
-        window.cookieconsent.initialise({
-        "palette": {
-            "popup": {
-            "background": "#216942",
-            "text": "#b2d192"
-            },
-            "button": {
-            "background": "#afed71"
-            }
-        }
-    })});
+        window.addEventListener("load", function () {
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#216942",
+                        "text": "#b2d192"
+                    },
+                    "button": {
+                        "background": "#afed71"
+                    }
+                }
+            })
+        });
     </script>
 </head>
 
@@ -50,7 +52,7 @@
             </div>
             <br>
             <div class="col-12" id="logInLogoDiv2">
-                    <img src="MyCaddyLoginPageLogo.png" id="myCaddyLogoLogInScreen">
+                <img src="MyCaddyLoginPageLogo.png" id="myCaddyLogoLogInScreen">
             </div>
             <br>
 
@@ -59,7 +61,9 @@
                 <p id="userNameError"></p>
                 <input onClick="clearErrors()" id="passwordInput" type="password" name="password" placeholder="Password">
                 <p id="passwordError"></p>
-                <button type="submit"><img id="logInButtonLoginPage" src="logInButtonLoginPage.png"></button>
+                <button type="submit" id="logInButtonLoginPage">
+                    <img id="logInButtonLoginPageImage" src="logInButtonLoginPage.png">
+                </button>
                 <br>
             </form>
 
@@ -70,10 +74,10 @@
         </div>
         <div class='col-2'></div>
     </div>
-   
-   <!-- SIGN UP MODAL -->
 
-   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- SIGN UP MODAL -->
+
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header row">
@@ -96,12 +100,19 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" value="Submit" class="btn btn-primary">Sign up</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn col-4" data-dismiss="modal" id="CloseModalButton">
+                            <img src="CloseModalButton.png" id="CloseModalButtonImage">
+                        </button>
+                        <div class="col-4"></div>
+                        <button type="submit" value="Submit" class="btn col-4" id="SignUpModalButton">
+                            <img src="SignUpModalButton.png" id="SignUpModalButtonImage">
+                        </button>
+
+
                     </div>
                 </form>
             </div>
-        </div> 
+        </div>
     </div>
 
     <!-- BOOTSTRAP SCRIPTS -->
@@ -116,18 +127,18 @@
 
     <script>
 
-        function clearErrors(){
+        function clearErrors() {
             $("#passwordError").text('');
             $("#userNameError").text('');
         }
 
-        let logInStatusArray=document.cookie.split(/[\s=;]/)
+        let logInStatusArray = document.cookie.split(/[\s=;]/)
         let indexOf = logInStatusArray.indexOf('loggedIn');
-        if(logInStatusArray[indexOf+1]=='true'){
+        if (logInStatusArray[indexOf + 1] == 'true') {
             window.location = '/dashboard.html'
-        } else if(logInStatusArray[indexOf+1]=='Incorrect_Password'){
+        } else if (logInStatusArray[indexOf + 1] == 'Incorrect_Password') {
             $("#passwordError").text('Incorrect Password')
-        } else if(logInStatusArray[indexOf+1]=='Username_Error'){
+        } else if (logInStatusArray[indexOf + 1] == 'Username_Error') {
             $("#userNameError").text('Username Not Found')
         }
 

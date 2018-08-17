@@ -10,16 +10,75 @@ html {
 }
 
 #selectCourseText{
-    width: 150px;
-    margin: auto;
+    width: 100%;
+    height: auto;
+    color: white;
+    background-color: #1bb06b;
+}
+
+#selectCourseDropdownData {
+    width: 100%;
+    height: auto;
+    color: #1bb06b;
+    background-color: white;
+}
+
+#startRoundModalSelectCourseDiv {
+    width: 100%;
+    margin: 5px;
 }
 
 #selectTeesText{
-    width: 150px;
-    margin: auto;
+    width: 100%;
+    height: auto;
+    color: white;
+    background-color: #1bb06b;
 }
 
-.modal-body hr {
+#teeDropItems {
+    width: 100%;
+    color: #1bb06b;
+    background-color: white;    
+}
+
+#teeDropDown {
+    width: 100%;
+    margin: 5px;
+    height: auto;
+}
+
+#StartARoundButtonA {
+    padding: 0;
+    margin: 0;
+}
+
+#startARoundModalButtonImage {
+    width: 100%;
+    opacity: 1;
+}
+
+
+#closeStartARoundModalButton {
+    padding: 0;
+    margin: 0;
+}
+
+#closeStartARoundModalButtonImage {
+    width: 100%;
+}
+
+#newRoundButton {
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+}
+
+#statisticsModal {
+    padding: 5px;
+
+}
+
+#statisticsModal hr {
     margin: 5px;
 }
 
@@ -27,13 +86,58 @@ html {
     font-size: 15px;
 }
 
-.statistics p {
-    margin: 5px;
+#statistics {
+    height: 100%;
 }
 
-.statistics h6{
-    font-size: 20px;
-    margin: 5px;
+#scoreStatistics {
+    margin-bottom: 8px;
+}
+
+#statisticsModal table tr th {
+    padding: 9px;
+}
+
+#statisticsModal table tr td {
+    padding: 9px;
+}
+
+#statisticsModal table tr th {
+    width: 100%;
+}
+
+#statisticsModalFooter {
+    padding: 0px;
+}
+
+#statisticsModalDialog {
+    margin: 0;
+}
+
+#statisticsModalContent {
+    border: none;
+    border-radius: 0;
+}
+
+#closeStatisticsModalButtonImage {
+    width: 100%;
+}
+
+#closeStatisticsModalButton {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border: none;
+    height: auto;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.tableHeader {
+    color: white;
+    background-color: #1bb06b;
 }
 
 #userNameError {
@@ -336,7 +440,12 @@ body {
 }
 
 #logInButtonLoginPage {
+    padding: 0;
+}
+
+#logInButtonLoginPageImage {
     width: 100%;
+    padding: 0;
 }
 
 #logInForm {
@@ -367,6 +476,31 @@ body {
     flex-direction: row;
     width: 100%;
     margin: 0;
+}
+
+#SignUpModalButton {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#SignUpModalButtonImage {
+    width: 100%;
+}
+
+#CloseModalButton {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#CloseModalButtonImage {
+    width: 100%;
+}
+
+#inputGroup-sizing-default {
+    color: white;
+    background-color: #1bb06b;
 }
 
 
@@ -454,127 +588,3 @@ body {
 
 }
 
-.switch {
-    margin: 0px;
-}
-
-.equilizer {
-  height: 80%;
-  width: 100px;
-  transform: rotate(180deg);
-}
-
-#equalizer {
-    position: absolute;
-    width: 155%;
-    display: flex;
-    justify-content: center;
-    margin-top: 3%;
-}
-
-.bar {
-  fill: white;
-  width: 18px;
-  animation: equalize 4s 0s infinite;
-}
-
-.bar:nth-child(1) { 
-  animation-delay: -1.9s;
-}
-
-.bar:nth-child(2) { 
-  animation-delay: -2s;
-}
-
-.bar:nth-child(3) { 
-  animation-delay: -2.3s;
-}
-
-.bar:nth-child(4) { 
-  animation-delay: -2.4s;
-}
-
-.bar:nth-child(5) { 
-  animation-delay: -2.1s;
-}
-
-@keyframes equalize {
-  0% {
-    height: 60%;
-  }
-  4% {
-    height: 50%;
-  }
-  8% {
-    height: 40%;
-  }
-  12% {
-    height: 30%;
-  }
-  16% {
-    height: 20%;
-  }
-  20% {
-    height: 30%;
-  }
-  24% {
-    height: 40%;
-  }
-  28% {
-    height: 10%;
-  }
-  32% {
-    height: 40%;
-  }
-  36% {
-    height: 60%;
-  }
-  40% {
-    height: 20%;
-  }
-  44% {
-    height: 40%;
-  }
-  48% {
-    height: 70%;
-  }
-  52% {
-    height: 30%;
-  }
-  56% {
-    height: 10%;
-  }
-  60% {
-    height: 30%;
-  }
-  64% {
-    height: 50%;
-  }
-  68% {
-    height: 60%;
-  }
-  72% {
-    height: 70%;
-  }
-  76% {
-    height: 80%;
-  }
-  80% {
-    height: 70%;
-  }
-  84% {
-    height: 60%;
-  }
-  88% {
-    height: 50%;
-  }
-  92% {
-    height: 60%;
-  }
-  96% {
-    height: 70%;
-  }
-  100% {
-    height: 100%;
-  }
-}
