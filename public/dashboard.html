@@ -68,8 +68,6 @@
             <div id="myStatsDiv" onClick="getStatistics()">
                 <div class="col-12 well" onClick="getStatistics()">
 
-                    
-                    
                     <img onClick="getStatistics()" src="MyStatsButton.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
 
                 </div>
@@ -143,15 +141,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    Select Course
+                    Start A Round
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <div class="coursedropdown dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  id="selectCourseText">
+                <div class="modal-body col-12 row">
+                    <div class="coursedropdown dropdown col-6" id="startRoundModalSelectCourseDiv">
+                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="selectCourseText">
                             Select Courses
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="courseDropdown">
+                        <ul class="dropdown-menu col-12" id="selectCourseDropdownData" aria-labelledby="courseDropdown">
                             <li>
                                 <a onClick="storeCookie('Rocky_Ridge')" value="Rocky_Ridge" class="dropdown-item">Rocky Ridge</a>
                             </li>
@@ -160,9 +158,8 @@
                             </li>
                         </ul>
                     </div>
-                    <br>
-                    <div class="teedropdown dropdown" id="teeDropDown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  id="selectTeesText">
+                    <div class="teedropdown dropdown col-5" id="teeDropDown">
+                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="selectTeesText">
                             Select Tees
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="teeDropdown">
@@ -172,10 +169,15 @@
                 </div>
                 <!-- closes start a course modal body -->
                 <div class="modal-footer">
-                    <a href="scorecard.html">
-                        <button type="button" id="newRoundButton" class="btn btn-default">Start Round Now</button>
+                    <a href="scorecard.html" class="col-4" id="StartARoundButtonA">
+                        <button type="button" id="newRoundButton" class="btn">
+                            <img src="StartARoundModalButton.png" id="startARoundModalButtonImage">
+                        </button>
                     </a>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="col-4"></div>
+                    <button type="button" class="btn col-4" data-dismiss="modal" id="closeStartARoundModalButton">
+                        <img src="CloseModalButton.png" id="closeStartARoundModalButtonImage">
+                    </button>
                 </div>
             </div>
         </div>
@@ -184,55 +186,95 @@
     <!-- STATISTICS MODAL -->
 
     <div id="statistics" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class ="statistics" id="scoreStatistics">
-                        <h6>Score Performance</h6>
-                        <hr>
-                        <p id="roundsPlayed">Number of Rounds Played:</p>
-                        <p id="overallParAverage">Overall Average Compared To Par:</p>
-                        <p id="parThreeAverage">Par 3 Scoring Average:</p>
-                        <p id="parFourAverage">Par 4 Scoring Average:</p>
-                        <p id="parFiveAverage">Par 5 Scoring Average:</p>
-                        <br>
-                        <br>
+        <div class="modal-dialog" id="statisticsModalDialog">
+            <div class="modal-content" id="statisticsModalContent">
+                <div class="modal-body" id="statisticsModal">
+                    <table class="table table-bordered statistics" id="scoreStatistics" rules='groups'>
+                            <tr scope='col' class='tableHeader' colspan=2>
+                                    <th colspan=2>Score Performance</th></tr>
+                        <tr scope="col">
+                            <th>Number of Rounds Played:</th>
+                            <td id="roundsPlayed"></td>
+                        </tr>
+                        <tr scope="col">
+                            <th>Overall Average Compared To Par:</th>
+                            <td id="overallParAverage"></td>
+                        </tr>
+                        <tr scope="col">
+                            <th>Par 3 Scoring Average:</th>
+                            <td id="parThreeAverage"></td>
+                        </tr>
+                        <tr scope="col">
+                            <th>Par 4 Scoring Average:</th>
+                            <td id="parFourAverage"></td>
+                        </tr>
+                        <tr scope="col">
+                            <th>Par 5 Scoring Average:</th>
+                            <td id="parFiveAverage"></td>
+                        </tr>
+                    </table>
+
+                    <div class="statistics" id="GIRStatistics">
+                        <table class="table table-bordered statistics" id="scoreStatistics">
+                                <tr scope='col' class='tableHeader' colspan=2>
+                                        <th colspan=2>Greens in Regulation</th></tr>
+                            <tr scope="col">
+                                <th>Overall GIR</th>
+                                <td id="overallGIR"></td>
+                            </tr>
+                            <tr scope="col">
+                                <th>Par 3 GIR %</th>
+                                <td id="parThreeGIR"></td>
+                            </tr>
+                            <tr scope="col">
+                                <th>Par 4 GIR %:</th>
+                                <td id="parFourGIR"></td>
+                            </tr>
+                            <tr scope="col">
+                                <th>Par 5 GIR %</th>
+                                <td id="parFiveGIR"></td>
+                            </tr>
+                            <tr scope="col">
+                                <th>Up and Down %</th>
+                                <td id="upAndDown"></td>
+                            </tr>
+                        </table>
                     </div>
-                    <hr>
-                    <div class ="statistics" id="GIRStatistics">
-                        <h6>Greens In Regulation</h6>
-                        <hr>
-                        <p id="overallGIR">Overall GIR %:</p>
-                        <p id="parThreeGIR">Par 3 GIR %:</p>
-                        <p id="parFourGIR">Par 4 GIR %:</p>
-                        <p id="parFiveGIR">Par 5 GIR %:</p>
-                        <p id="upAndDown">Up and Down%:</p>
-                        <br>
-                        <br>
+                    <div class="statistics" id="puttingStatistics">
+                        <table class="table table-bordered statistics" id="scoreStatistics">
+                                <tr scope='col' class='tableHeader' colspan=2>
+                                        <th colspan=2>Putting</th></tr>
+                            <tr scope="col">
+                                <th>Overall Average # of Putts</th>
+                                <td id="overallPutts"></td>
+                            </tr>
+                        </table>
                     </div>
-                    <hr>
-                    <div class ="statistics" id="puttingStatistics">
-                        <h6>Putting</h6>
-                        <hr>
-                        <p id="overallPutts">Overall Average # Of Putts</p>
-                        <br>
-                        <br>
-                    </div>
-                    <hr>
-                    <div class ="statistics" id="fairwayStatistics">
-                        <h6>Fairway Statistics</h6>
-                        <hr>
-                        <p id="overallFairways">Overall % Of Fairways Hit: </p>
-                        <p id="missedFairwayConvert">Missed Fairway Par Convert %:</p>
-                        <p id="hitFairwayConvert">Hit Fairway Par Convert %:</p>
-                        <br>
+                    <div class="statistics" id="fairwayStatistics">
+                        <table class="table table-bordered statistics" id="scoreStatistics">
+                            <tr scope='col' class='tableHeader' colspan=2>
+                                <th colspan=2>Fairway Statistics</th></tr>
+                            <tr scope="col">
+                                <th>Overall % of Fairways Hit</th>
+                                <td id="overallFairways"></td>
+                            </tr>
+                            <tr scope="col">
+                                <th>Missed Fairway Par Convert %</th>
+                                <td id="missedFairwayConvert"></td>
+                            </tr>
+                            <tr scope="col">
+                                <th>Hit Fairway Par Convert %;</th>
+                                <td id="hitFairwayConvert"></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
         </div>
+        <div class="modal-footer" id="statisticsModalFooter">
+            <button type="button" class="btn col-12" data-dismiss="modal" id="closeStatisticsModalButton"><img src='closeStatisticsModalButton.png' id='closeStatisticsModalButtonImage'</button>
+        </div>
+    </div>
     </div>
 
     <!-- BOOTSTRAP SCRIPTS -->
@@ -247,49 +289,49 @@
 
     <script>
 
-        function logOut(){
+        function logOut() {
             document.cookie = 'loggedIn=false'
             window.location = '/index.html'
         }
 
-        function getStatistics(){
+        function getStatistics() {
             let itemArray = document.cookie.split(/[\s=;]/)
             let indexOf = itemArray.indexOf('currentUser');
-            let currentUser = itemArray[indexOf+1];
+            let currentUser = itemArray[indexOf + 1];
             fetch('/statistics/get', {
                 method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"userName": currentUser})
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "userName": currentUser })
             }).then(response => response.json())
                 .then(objects => showStatistics(objects))
         }
 
-        function showStatistics(myStatistics){
-            $('#roundsPlayed').text('Number of Rounds Played: ' + myStatistics.roundsPlayed +' rounds')
-            $('#overallParAverage').text('Average Over Par: ' + myStatistics.averageComparedToPar )
-            $('#parThreeAverage').text('Par 3 Average score: ' + myStatistics.parThreeScoring)
-            $('#parFourAverage').text('Par 4 Average score: ' + myStatistics.parFourScoring)
-            $('#parFiveAverage').text('Par 5 Average scoore: ' + myStatistics.parFiveScoring)
-            $('#upAndDown').text('Up and Down: ' + myStatistics.upDown +"%")
-            $('#overallPutts').text('Average Number of Putts:  ' + myStatistics.averageNumberOfPutts)
-            $('#overallFairways').text('Fairway %: ' + myStatistics.fairwaysPercentage)
-            $('#missedFairwayConvert').text('Scramble %: ' + myStatistics.missedFairwaysPar)
-            $('#hitFairwayConvert').text('Hit Fairway Par: ' + myStatistics.hitFairwaysPar + '%')
-            $('#overallGIR').text('Greens in Regulation: ' + myStatistics.fairwaysPercentage + '%')
-            $('#parThreeGIR').text('Par three GIR: ' + myStatistics.parThreeG + '%')
-            $('#parFourGIR').text('Par four GIR: ' + myStatistics.parFourG + '%')
-            $('#parFiveGIR').text('Par five GIR: ' + myStatistics.parFiveG + '%')
+        function showStatistics(myStatistics) {
+            $('#roundsPlayed').text(myStatistics.roundsPlayed)
+            $('#overallParAverage').text(myStatistics.averageComparedToPar)
+            $('#parThreeAverage').text(myStatistics.parThreeScoring)
+            $('#parFourAverage').text(myStatistics.parFourScoring)
+            $('#parFiveAverage').text(myStatistics.parFiveScoring)
+            $('#upAndDown').text(myStatistics.upDown + "%")
+            $('#overallPutts').text(myStatistics.averageNumberOfPutts)
+            $('#overallFairways').text(myStatistics.fairwaysPercentage + "%")
+            $('#missedFairwayConvert').text(myStatistics.missedFairwaysPar + '%')
+            $('#hitFairwayConvert').text(myStatistics.hitFairwaysPar + '%')
+            $('#overallGIR').text(myStatistics.fairwaysPercentage + '%')
+            $('#parThreeGIR').text(myStatistics.parThreeG + '%')
+            $('#parFourGIR').text(myStatistics.parFourG + '%')
+            $('#parFiveGIR').text(myStatistics.parFiveG + '%')
         }
 
-        function storeCookie(object){
+        function storeCookie(object) {
             currentCourse = object;
             document.cookie = "currentCourse=" + object;
             handleSubmitofCourse(object);
             localStorage.setItem('currentCourse', object);
-            if(currentCourse == 'Rocky_Ridge'){
+            if (currentCourse == 'Rocky_Ridge') {
                 $("#selectCourseText").text('Rocky Ridge');
             }
-            if(currentCourse == 'Williston'){
+            if (currentCourse == 'Williston') {
                 $("#selectCourseText").text("Williston")
             }
             $("#selectTeesText").text('Select Tee');
@@ -305,21 +347,21 @@
         }
 
         function buildTeeDropDown(objects) {
-            localStorage.setItem('courseObject',JSON.stringify(objects));
+            localStorage.setItem('courseObject', JSON.stringify(objects));
             $(".teedropdown").show()
-            document.getElementById("teeDropItems").innerHTML=''
-            for(let elem in objects.tees){
-                document.getElementById("teeDropItems").innerHTML +="<li><a class='dropdown-item' onClick='setTee(`"+objects.tees[elem]+"`)'+>"+objects.tees[elem]+"</a></li>"
+            document.getElementById("teeDropItems").innerHTML = ''
+            for (let elem in objects.tees) {
+                document.getElementById("teeDropItems").innerHTML += "<li><a class='dropdown-item' onClick='setTee(`" + objects.tees[elem] + "`)'+>" + objects.tees[elem] + "</a></li>"
             }
         }
 
-        function setUpModal(){
+        function setUpModal() {
             $(".teedropdown").hide();
             $("#selectCourseText").text('Select Course');
             $("#selectTeesText").text('Select Tees');
         }
 
-        function setTee(teeChoice){
+        function setTee(teeChoice) {
             currentTee = teeChoice;
             $("#selectTeesText").text(currentTee);
             $("#newRoundButton").prop('disabled', false)

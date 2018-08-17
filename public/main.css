@@ -10,16 +10,75 @@ html {
 }
 
 #selectCourseText{
-    width: 150px;
-    margin: auto;
+    width: 100%;
+    height: auto;
+    color: white;
+    background-color: #1bb06b;
+}
+
+#selectCourseDropdownData {
+    width: 100%;
+    height: auto;
+    color: #1bb06b;
+    background-color: white;
+}
+
+#startRoundModalSelectCourseDiv {
+    width: 100%;
+    margin: 5px;
 }
 
 #selectTeesText{
-    width: 150px;
-    margin: auto;
+    width: 100%;
+    height: auto;
+    color: white;
+    background-color: #1bb06b;
 }
 
-.modal-body hr {
+#teeDropItems {
+    width: 100%;
+    color: #1bb06b;
+    background-color: white;    
+}
+
+#teeDropDown {
+    width: 100%;
+    margin: 5px;
+    height: auto;
+}
+
+#StartARoundButtonA {
+    padding: 0;
+    margin: 0;
+}
+
+#startARoundModalButtonImage {
+    width: 100%;
+    opacity: 1;
+}
+
+
+#closeStartARoundModalButton {
+    padding: 0;
+    margin: 0;
+}
+
+#closeStartARoundModalButtonImage {
+    width: 100%;
+}
+
+#newRoundButton {
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+}
+
+#statisticsModal {
+    padding: 5px;
+
+}
+
+#statisticsModal hr {
     margin: 5px;
 }
 
@@ -27,13 +86,58 @@ html {
     font-size: 15px;
 }
 
-.statistics p {
-    margin: 5px;
+#statistics {
+    height: 100%;
 }
 
-.statistics h6{
-    font-size: 20px;
-    margin: 5px;
+#scoreStatistics {
+    margin-bottom: 8px;
+}
+
+#statisticsModal table tr th {
+    padding: 9px;
+}
+
+#statisticsModal table tr td {
+    padding: 9px;
+}
+
+#statisticsModal table tr th {
+    width: 100%;
+}
+
+#statisticsModalFooter {
+    padding: 0px;
+}
+
+#statisticsModalDialog {
+    margin: 0;
+}
+
+#statisticsModalContent {
+    border: none;
+    border-radius: 0;
+}
+
+#closeStatisticsModalButtonImage {
+    width: 100%;
+}
+
+#closeStatisticsModalButton {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border: none;
+    height: auto;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.tableHeader {
+    color: white;
+    background-color: #1bb06b;
 }
 
 #userNameError {
@@ -336,7 +440,12 @@ body {
 }
 
 #logInButtonLoginPage {
+    padding: 0;
+}
+
+#logInButtonLoginPageImage {
     width: 100%;
+    padding: 0;
 }
 
 #logInForm {
@@ -367,6 +476,31 @@ body {
     flex-direction: row;
     width: 100%;
     margin: 0;
+}
+
+#SignUpModalButton {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#SignUpModalButtonImage {
+    width: 100%;
+}
+
+#CloseModalButton {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#CloseModalButtonImage {
+    width: 100%;
+}
+
+#inputGroup-sizing-default {
+    color: white;
+    background-color: #1bb06b;
 }
 
 
