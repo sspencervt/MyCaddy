@@ -139,7 +139,11 @@ html {
     color: white;
     background-color: #1bb06b;
 }
-
+.scoreLogo {
+    height: 15px;
+    width: 15px;
+    margin: auto;
+}
 #userNameError {
     padding-top: 3px;
     height: .5em;
