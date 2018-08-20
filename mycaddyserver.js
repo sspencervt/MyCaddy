@@ -119,10 +119,12 @@ app.post('/scorecard/set', function(req,res){
     
 })
     
-
+const PORT = process.env.PORT
 
 app.get('/', (req, res) => res.send('./login.html'))
 
 app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
 
-app.listen(3000, () => console.log('listening on port 3000'))
+app.listen(PORT)
+
+// app.listen(3000 || PORT, () => console.log('listening on port 3000'))
