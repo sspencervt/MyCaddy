@@ -109,6 +109,18 @@ app.post('/courses/set', function(req, res) {
     })
 })
 
+app.post('/scorecard/set', function(req,res){
+    console.log('this is req.body')
+    console.log(JSON.stringify(req.body));
+    db.collection('Scorecards').insertOne(req.body), function(err, result) {
+        res.redirect('/')
+        console.log('item inserted')
+    }
+    
+})
+    
+
+
 app.get('/', (req, res) => res.send('./login.html'))
 
 app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
