@@ -37,7 +37,7 @@
                 <img src="MyCaddyWizardLogo.png" id="profilePic">
             </div>
             <div id="MyCaddyLogoDiv" class="col-6">
-                <img id="MyCaddyLogo" src="MyCaddyLogo.png"></img>
+                <img id="MyCaddyLogo" src="MyCaddyLogo.png">
             </div>
             <div id="logInButtonDiv" class="col-3">
                 <a id="logInButton" href="index.html" onClick="logOut()">
@@ -178,19 +178,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <tr id="backNinePar">
-                                <th scope="row">Par</th>
-                                <td id="parHole10"></td>
-                                <td id="parHole11"></td>
-                                <td id="parHole12"></td>
-                                <td id="parHole13"></td>
-                                <td id="parHole14"></td>
-                                <td id="parHole15"></td>
-                                <td id="parHole16"></td>
-                                <td id="parHole17"></td>
-                                <td id="parHole18"></td>
-                                <td id="parHoleTotalBackNine"></td>
-                            </tr>
+                    <tr id="backNinePar">
+                        <th scope="row">Par</th>
+                        <td id="parHole10"></td>
+                        <td id="parHole11"></td>
+                        <td id="parHole12"></td>
+                        <td id="parHole13"></td>
+                        <td id="parHole14"></td>
+                        <td id="parHole15"></td>
+                        <td id="parHole16"></td>
+                        <td id="parHole17"></td>
+                        <td id="parHole18"></td>
+                        <td id="parHoleTotalBackNine"></td>
+                    </tr>
                     <tr id="backNineYardage">
                         <th scope="row">Yardage</th>
                         <td id="yardHole10"></td>
@@ -278,7 +278,7 @@
             </div>
             <div class="col-2"></div>
             <div class="col-5" id="endRoundButtonDiv">
-                <img src="EndRoundButton.png" id="endRoundButton">
+                <img src="EndRoundButton.png" id="endRoundButton" onClick="handleSubmitofScorecard()">
             </div>
         </div>
     </div>
@@ -297,6 +297,7 @@
 </body>
 
 <script>
+    let parTotal = 0;
     let course = localStorage.getItem('currentCourse');
     let currentTee = localStorage.getItem('currentTee');
     let courseObject = JSON.parse(localStorage.getItem('courseObject'));
@@ -311,12 +312,32 @@
         buildYards(objects)
         buildUser(objects)
         buildHandicap(objects)
+        buildPar(objects)
+    }
+
+    function buildPar(objects) {
+        document.getElementById("parHoleTotalFrontNine").textContent = parTotal
+        document.getElementById("parHole1").textContent = objects.holes['one'].par
+        document.getElementById("parHole2").textContent = objects.holes['two'].par
+        document.getElementById("parHole3").textContent = objects.holes['three'].par
+        document.getElementById("parHole4").textContent = objects.holes['four'].par
+        document.getElementById("parHole5").textContent = objects.holes['five'].par
+        document.getElementById("parHole6").textContent = objects.holes['six'].par
+        document.getElementById("parHole7").textContent = objects.holes['seven'].par
+        document.getElementById("parHole8").textContent = objects.holes['eight'].par
+        document.getElementById("parHole9").textContent = objects.holes['nine'].par
+        document.getElementById("parHole10").textContent = objects.holes['ten'].par
+        document.getElementById("parHole11").textContent = objects.holes['eleven'].par
+        document.getElementById("parHole12").textContent = objects.holes['twelve'].par
+        document.getElementById("parHole13").textContent = objects.holes['thirteen'].par
+        document.getElementById("parHole14").textContent = objects.holes['fourteen'].par
+        document.getElementById("parHole15").textContent = objects.holes['fifteen'].par
+        document.getElementById("parHole16").textContent = objects.holes['sixteen'].par
+        document.getElementById("parHole17").textContent = objects.holes['seventeen'].par
+        document.getElementById("parHole18").textContent = objects.holes['eighteen'].par
     }
 
     function buildYards(objects) {
-        console.log(objects + 'within build yerds')
-        console.log('objects below is within buildYards');
-        console.log(objects);
         document.getElementById("yardHole1").textContent = objects.holes['one'].tees[currentTee][0]
         document.getElementById("yardHole2").textContent = objects.holes['two'].tees[currentTee][0]
         document.getElementById("yardHole3").textContent = objects.holes['three'].tees[currentTee][0]
@@ -361,4 +382,269 @@
         document.getElementById("handicapHole18").textContent = objects.holes['eighteen'].handicap[currentTee]
 
     }
+
+    function handleSubmitofScorecard() {
+        console.log('inside handle submit of scorecard')
+        let scorecard = JSON.parse(localStorage.getItem('scorecard'))
+        console.log(scorecard)
+        fetch('/scorecard/set', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(scorecard)
+        })
+    }
+    
 </script>
+
+<!-- <div class="container-fluid" id="navbarDiv">
+        <div class="row">
+            <div class="col-3" id="profilePicDiv">
+                <img src="MyCaddyWizardLogo.png" id="profilePic">
+            </div>
+            <div id="MyCaddyLogoDiv" class="col-6">
+                <img id="MyCaddyLogo" src="MyCaddyLogo.png">
+            </div>
+            
+            <div id="logInButtonDiv" class="col-3">
+                    <a id="logInButton" href="index.html" onClick="logOut()">
+                        <img src="LogoutButton.png" id="logInButtonTemplate">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+    <div id="scorecard">
+        <div class="table-responsive" id="backNineTable">
+            <table class="table table-bordered" id="frontNineTableID">
+                <thead>
+                    <tr id="frontNineHoleNumbers">
+                        <th scope="col" class="holeLabel">Hole</th>
+                        <th scope="col" id="numberHole1">1</th>
+                        <th scope="col" id="numberHole2">2</th>
+                        <th scope="col" id="numberHole3">3</th>
+                        <th scope="col" id="numberHole4">4</th>
+                        <th scope="col" id="numberHole5">5</th>
+                        <th scope="col" id="numberHole6">6</th>
+                        <th scope="col" id="numberHole7">7</th>
+                        <th scope="col" id="numberHole8">8</th>
+                        <th scope="col" id="numberHole9">9</th>
+                        <th scope="col" id="TotalsFrontNine">In</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="frontNinePar">
+                        <th scope="row">Par</th>
+                        <td id="parHole1"></td>
+                        <td id="parHole2"></td>
+                        <td id="parHole3"></td>
+                        <td id="parHole4"></td>
+                        <td id="parHole5"></td>
+                        <td id="parHole6"></td>
+                        <td id="parHole7"></td>
+                        <td id="parHole8"></td>
+                        <td id="parHole9"></td>
+                        <td id="parHoleTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineYardage">
+                        <th scope="row">Yardage</th>
+                        <td id="yardHole1"></td>
+                        <td id="yardHole2"></td>
+                        <td id="yardHole3"></td>
+                        <td id="yardHole4"></td>
+                        <td id="yardHole5"></td>
+                        <td id="yardHole6"></td>
+                        <td id="yardHole7"></td>
+                        <td id="yardHole8"></td>
+                        <td id="yardHole9"></td>
+                        <td id="yardHoleTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineHandicap">
+                        <th scope="row">Handicap</th>
+                        <td id="handicapHole1"></td>
+                        <td id="handicapHole2"></td>
+                        <td id="handicapHole3"></td>
+                        <td id="handicapHole4"></td>
+                        <td id="handicapHole5"></td>
+                        <td id="handicapHole6"></td>
+                        <td id="handicapHole7"></td>
+                        <td id="handicapHole8"></td>
+                        <td id="handicapHole9"></td>
+                        <td id="handicapTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineScore">
+                        <th scope="row">Score</th>
+                        <td id="scoreHole1"></td>
+                        <td id="scoreHole2"></td>
+                        <td id="scoreHole3"></td>
+                        <td id="scoreHole4"></td>
+                        <td id="scoreHole5"></td>
+                        <td id="scoreHole6"></td>
+                        <td id="scoreHole7"></td>
+                        <td id="scoreHole8"></td>
+                        <td id="scoreHole9"></td>
+                        <td id="scoreHoleTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNinePutts">
+                            <th scope="row">Putts</th>
+                            <td id="puttsHole1"></td>
+                            <td id="puttsHole2"></td>
+                            <td id="puttsHole3"></td>
+                            <td id="puttsHole4"></td>
+                            <td id="puttsHole5"></td>
+                            <td id="puttsHole6"></td>
+                            <td id="puttsHole7"></td>
+                            <td id="puttsHole8"></td>
+                            <td id="puttsHole9"></td>
+                            <td id="puttsTotalFrontNine"></td>
+                        </tr>
+                    <tr id="frontNineFairwaysHit">
+                        <th scope="row">Fairway</th>
+                        <td id="fairwayHole1"></td>
+                        <td id="fairwayHole2"></td>
+                        <td id="fairwayHole3"></td>
+                        <td id="fairwayHole4"></td>
+                        <td id="fairwayHole5"></td>
+                        <td id="fairwayHole6"></td>
+                        <td id="fairwayHole7"></td>
+                        <td id="fairwayHole8"></td>
+                        <td id="fairwayHole9"></td>
+                        <td id="fairwayTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineGIR">
+                        <th scope="row">GIR</th>
+                        <td id="girHole1"></td>
+                        <td id="girHole2"></td>
+                        <td id="girHole3"></td>
+                        <td id="girHole4"></td>
+                        <td id="girHole5"></td>
+                        <td id="girHole6"></td>
+                        <td id="girHole7"></td>
+                        <td id="girHole8"></td>
+                        <td id="girHole9"></td>
+                        <td id="girTotalFrontNine"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive" id="backNineTable">
+            <table class="table table-bordered" id="backNineTableID">
+                <thead>
+                    <tr id="backNineHoleNumbers">
+                        <th scope="col" class="holeLabel">Hole</th>
+                        <th scope="col" id="numberHole10">10</th>
+                        <th scope="col" id="numberHole11">11</th>
+                        <th scope="col" id="numberHole12">12</th>
+                        <th scope="col" id="numberHole13">13</th>
+                        <th scope="col" id="numberHole14">14</th>
+                        <th scope="col" id="numberHole15">15</th>
+                        <th scope="col" id="numberHole16">16</th>
+                        <th scope="col" id="numberHole17">17</th>
+                        <th scope="col" id="numberHole18">18</th>
+                        <th scope="col" id="totalsBackNine">Out</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="backNinePar">
+                        <th scope="row">Par</th>
+                        <td id="parHole10"></td>
+                        <td id="parHole11"></td>
+                        <td id="parHole12"></td>
+                        <td id="parHole13"></td>
+                        <td id="parHole14"></td>
+                        <td id="parHole15"></td>
+                        <td id="parHole16"></td>
+                        <td id="parHole17"></td>
+                        <td id="parHole18"></td>
+                        <td id="parHoleTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineYardage">
+                        <th scope="row">Yardage</th>
+                        <td id="yardHole10"></td>
+                        <td id="yardHole11"></td>
+                        <td id="yardHole12"></td>
+                        <td id="yardHole13"></td>
+                        <td id="yardHole14"></td>
+                        <td id="yardHole15"></td>
+                        <td id="yardHole16"></td>
+                        <td id="yardHole17"></td>
+                        <td id="yardHole18"></td>
+                        <td id="yardageTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineHandicap">
+                        <th scope="row">Handicap</th>
+                        <td id="handicapHole10"></td>
+                        <td id="handicapHole11"></td>
+                        <td id="handicapHole12"></td>
+                        <td id="handicapHole13"></td>
+                        <td id="handicapHole14"></td>
+                        <td id="handicapHole15"></td>
+                        <td id="handicapHole16"></td>
+                        <td id="handicapHole17"></td>
+                        <td id="handicapHole18"></td>
+                        <td id="handicapTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineScore">
+                        <th scope="row">Score</th>
+                        <td id="scoreHole10"></td>
+                        <td id="scoreHole11"></td>
+                        <td id="scoreHole12"></td>
+                        <td id="scoreHole13"></td>
+                        <td id="scoreHole14"></td>
+                        <td id="scoreHole15"></td>
+                        <td id="scoreHole16"></td>
+                        <td id="scoreHole17"></td>
+                        <td id="scoreHole18"></td>
+                        <td id="scoreTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineFairwaysHit">
+                        <th scope="row">Fairway</th>
+                        <td id="fairwayHole10"></td>
+                        <td id="fairwayHole11"></td>
+                        <td id="fairwayHole12"></td>
+                        <td id="fairwayHole13"></td>
+                        <td id="fairwayHole14"></td>
+                        <td id="fairwayHole15"></td>
+                        <td id="fairwayHole16"></td>
+                        <td id="fairwayHole17"></td>
+                        <td id="fairwayHole18"></td>
+                        <td id="fairwayTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineGIR">
+                        <th scope="row">GIR</th>
+                        <td id="girHole10"></td>
+                        <td id="girHole11"></td>
+                        <td id="girHole12"></td>
+                        <td id="girHole13"></td>
+                        <td id="girHole14"></td>
+                        <td id="girHole15"></td>
+                        <td id="girHole16"></td>
+                        <td id="girHole17"></td>
+                        <td id="girHole18"></td>
+                        <td id="girTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNinePutts">
+                        <th scope="row">Putts</th>
+                        <td id="puttsHole10"></td>
+                        <td id="puttsHole11"></td>
+                        <td id="puttsHole12"></td>
+                        <td id="puttsHole13"></td>
+                        <td id="puttsHole14"></td>
+                        <td id="puttsHole15"></td>
+                        <td id="puttsHole16"></td>
+                        <td id="puttsHole17"></td>
+                        <td id="puttsHole18"></td>
+                        <td id="puttsTotalBackNine"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="scorecardButtonDiv" class="row">
+            <div class="col-5" id="returnButtonDiv">
+                <a href="scorecard.html"><img src="ReturnButton.png" id="returnButton"></a>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" id="endRoundButtonDiv">
+                <img src="EndRoundButton.png" id="endRoundButton" onClick="handleSubmitofScorecard()">
+            </div>
+        </div>
+    </div> -->
