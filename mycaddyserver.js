@@ -33,7 +33,8 @@ app.post('/users/add', function (req, res) {
     users.findOne({"username" : req.body.username}, (err, existingUser) => {
         if(!existingUser){
             users.insert(newUser, function(result) {
-                res.cookie("loggedIn","User_Added")
+                res.cookie("loggedIn","true")
+                res.cookie("currentUser", req.body.username)
                 res.redirect('/')
             })
         } else { 
