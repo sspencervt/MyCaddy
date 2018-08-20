@@ -4,7 +4,8 @@
   "description": "",
   "main": "mycaddyserver.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "mycaddyserver.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sspencervt/MyCaddy/issues"
+  },
+  "engines": {
+    "npm": "5.6.0",
+    "node": "v8.11.2"
   },
   "homepage": "https://github.com/sspencervt/MyCaddy#readme",
   "dependencies": {

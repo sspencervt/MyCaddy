@@ -5,7 +5,7 @@ const expressValidator = require('express-validator')
 const mongojs = require('mongojs')
 const db = mongojs('mongodb://testing:testing1@ds225608.mlab.com:25608/mycaddy')
 const courses = db.collection('Courses')
-const scorecard = db.collection('Scorecard')
+const scorecards = db.collection('Scorecards')
 const users = db.collection('Users')
 const app = express()
 const bcrypt = require('bcryptjs')
@@ -110,13 +110,9 @@ app.post('/courses/set', function(req, res) {
 })
 
 app.post('/scorecard/set', function(req,res){
-    console.log('this is req.body')
-    console.log(JSON.stringify(req.body));
-    db.collection('Scorecards').insertOne(req.body), function(err, result) {
+    scorecards.insert(req.body, (err, result) => {
         res.redirect('/')
-        console.log('item inserted')
-    }
-    
+    })
 })
     
 const PORT = process.env.PORT
@@ -125,6 +121,4 @@ app.get('/', (req, res) => res.send('./login.html'))
 
 app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
 
-app.listen(PORT)
-
-// app.listen(3000 || PORT, () => console.log('listening on port 3000'))
+app.listen(3000, () => console.log('listening on port 3000'))
