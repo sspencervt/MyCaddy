@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // SET STATIC PATH
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 app.post('/users/add', function (req, res) {
 
