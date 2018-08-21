@@ -111,10 +111,7 @@ app.post('/courses/set', function(req, res) {
 })
 
 app.post('/scorecard/set', function(req,res){
-    scorecards.insert(req.body, (err, result) => {
-        res.redirect('/')
-    })
-    res.redirect('/');
+    scorecards.insert(req.body)
 })
     
 app.listen(process.env.PORT || 3000, () => console.log('listening on port 3000'))

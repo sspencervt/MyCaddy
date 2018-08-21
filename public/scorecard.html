@@ -654,7 +654,6 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
         document.getElementById("handicapHole16").textContent = objects.holes['sixteen'].handicap[currentTee]
         document.getElementById("handicapHole17").textContent = objects.holes['seventeen'].handicap[currentTee]
         document.getElementById("handicapHole18").textContent = objects.holes['eighteen'].handicap[currentTee]
-
     }
 
     function handleSubmitofScorecard() {
@@ -666,6 +665,7 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(scorecard)
         })
+        window.location = '/dashboard.html'
     }
 
     </script>
