@@ -90,17 +90,17 @@
 
                 <h4>Fairway</h4>
                 <div id="fairCheckContainer">
-                    <input id="fairYes"  type="radio" name="fairway" value="checkedLogo.png">
+                    <input id="fairYes"  type="radio" name="fairway" value=true>
                     <span> YES</span>
-                    <input id="fairNo" type="radio" name="fairway" value="x.png">
+                    <input id="fairNo" type="radio" name="fairway" value=false>
                     <span> NO</span>
                 </div>
 
                 <h4>Green in regulation</h4>
                 <div id="girCheckContainer">
-                    <input id="girYes" type="radio" name="gir" value="checkedLogo.png">
+                    <input id="girYes" type="radio" name="gir" value=true>
                     <span id="checkText"> YES</span>
-                    <input id="girNo" type="radio" name="gir" value="x.png">
+                    <input id="girNo" type="radio" name="gir" value=false>
                     <span id="checkText"> NO</span>
                 </div>
             </div>
@@ -543,51 +543,51 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
         document.getElementById('puttsHole17').textContent = scorecard.scores.seventeen[3]
         document.getElementById('puttsHole18').textContent = scorecard.scores.eighteen[3]
         //fair
-        document.getElementById('fairwayHole1').innerHTML = '<img class="scoreLogo" src=' + scorecard.scores.one[4] + '>'
-        document.getElementById('fairwayHole2').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.two[4] + '>'
-        document.getElementById('fairwayHole3').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.three[4] + '>'
-        document.getElementById('fairwayHole4').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.four[4] + '>'
-        document.getElementById('fairwayHole5').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.five[4] + '>'
-        document.getElementById('fairwayHole6').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.six[4] + '>'
-        document.getElementById('fairwayHole7').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.seven[4] + '>'
-        document.getElementById('fairwayHole8').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.eight[4] + '>'
-        document.getElementById('fairwayHole9').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.nine[4] + '>'
-        document.getElementById('fairwayHole10').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.ten[4] + '>'
-        document.getElementById('fairwayHole11').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.eleven[4] + '>'
-        document.getElementById('fairwayHole12').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.twelve[4] + '>'
-        document.getElementById('fairwayHole13').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.thirteen[4] + '>'
-        document.getElementById('fairwayHole14').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.fourteen[4] + '>'
-        document.getElementById('fairwayHole15').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.fifteen[4] + '>'
-        document.getElementById('fairwayHole16').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.sixteen[4] + '>'
-        document.getElementById('fairwayHole17').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.seventeen[4] + '>'
-        document.getElementById('fairwayHole18').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.eighteen[4] + '>'
+        document.getElementById('fairwayHole1').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.one[4] +'.png">'
+        document.getElementById('fairwayHole2').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.two[4] + '.png">'
+        document.getElementById('fairwayHole3').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.three[4] + '.png">'
+        document.getElementById('fairwayHole4').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.four[4] + '.png">'
+        document.getElementById('fairwayHole5').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.five[4] + '.png">'
+        document.getElementById('fairwayHole6').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.six[4] + '.png">'
+        document.getElementById('fairwayHole7').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seven[4] + '.png">'
+        document.getElementById('fairwayHole8').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eight[4] + '.png">'
+        document.getElementById('fairwayHole9').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.nine[4] + '.png">'
+        document.getElementById('fairwayHole10').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.ten[4] + '.png">'
+        document.getElementById('fairwayHole11').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eleven[4] + '.png">'
+        document.getElementById('fairwayHole12').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.twelve[4] + '.png">'
+        document.getElementById('fairwayHole13').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.thirteen[4] + '.png">'
+        document.getElementById('fairwayHole14').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fourteen[4] + '.png">'
+        document.getElementById('fairwayHole15').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fifteen[4] + '.png">'
+        document.getElementById('fairwayHole16').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.sixteen[4] + '.png">'
+        document.getElementById('fairwayHole17').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seventeen[4] + '.png">'
+        document.getElementById('fairwayHole18').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eighteen[4] + '.png">'
         //gir
-        document.getElementById('girHole1').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.one[5] + '>'
-        document.getElementById('girHole2').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.two[5] + '>'
-        document.getElementById('girHole3').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.three[5] + '>'
-        document.getElementById('girHole4').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.four[5] + '>'
-        document.getElementById('girHole5').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.five[5] + '>'
-        document.getElementById('girHole6').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.six[5] + '>'
-        document.getElementById('girHole7').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.seven[5] + '>'
-        document.getElementById('girHole8').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.eight[5] + '>'
-        document.getElementById('girHole9').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.nine[5] + '>'
-        document.getElementById('girHole10').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.ten[5] + '>'
-        document.getElementById('girHole11').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.eleven[5] + '>'
-        document.getElementById('girHole12').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.twelve[5] + '>'
-        document.getElementById('girHole13').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.thirteen[5] + '>'
-        document.getElementById('girHole14').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.fourteen[5] + '>'
-        document.getElementById('girHole15').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.fifteen[5] + '>'
-        document.getElementById('girHole16').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.sixteen[5] + '>'
-        document.getElementById('girHole17').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.seventeen[5] + '>'
-        document.getElementById('girHole18').innerHTML ='<img class="scoreLogo" src=' + scorecard.scores.eighteen[5] + '>'
+        document.getElementById('girHole1').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.one[5] + '.png">'
+        document.getElementById('girHole2').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.two[5] + '.png">'
+        document.getElementById('girHole3').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.three[5] + '.png">'
+        document.getElementById('girHole4').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.four[5] + '.png">'
+        document.getElementById('girHole5').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.five[5] + '.png">'
+        document.getElementById('girHole6').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.six[5] + '.png">'
+        document.getElementById('girHole7').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seven[5] + '.png">'
+        document.getElementById('girHole8').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eight[5] + '.png">'
+        document.getElementById('girHole9').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.nine[5] + '.png">'
+        document.getElementById('girHole10').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.ten[5] + '.png">'
+        document.getElementById('girHole11').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eleven[5] + '.png">'
+        document.getElementById('girHole12').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.twelve[5] + '.png">'
+        document.getElementById('girHole13').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.thirteen[5] + '.png">'
+        document.getElementById('girHole14').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fourteen[5] + '.png">'
+        document.getElementById('girHole15').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fifteen[5] + '.png">'
+        document.getElementById('girHole16').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.sixteen[5] + '.png">'
+        document.getElementById('girHole17').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seventeen[5] + '.png">'
+        document.getElementById('girHole18').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eighteen[5] + '.png">'
 
+        localStorage.setItem('scorecard',JSON.stringify(scorecard));
     }
 
     function buildThePage(objects) {
         console.log(objects);
         console.log("inside build page")
         buildYards(objects)
-        buildUser(objects)
         buildHandicap(objects)
         buildPar(objects)
     }
@@ -635,9 +635,6 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
         document.getElementById("yardHole18").textContent = objects.holes['eighteen'].tees[currentTee][0]
     }
 
-    function buildUser(objects) {
-
-    }
     function buildHandicap(objects) {
         document.getElementById("handicapHole1").textContent = objects.holes['one'].handicap[currentTee]
         document.getElementById("handicapHole2").textContent = objects.holes['two'].handicap[currentTee]

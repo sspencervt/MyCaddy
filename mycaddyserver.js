@@ -114,12 +114,7 @@ app.post('/scorecard/set', function(req,res){
     scorecards.insert(req.body, (err, result) => {
         res.redirect('/')
     })
+    res.redirect('/');
 })
     
-const PORT = process.env.PORT
-
-app.get('/', (req, res) => res.send('./login.html'))
-
-app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
-
 app.listen(3000, () => console.log('listening on port 3000'))
