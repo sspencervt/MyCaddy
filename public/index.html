@@ -62,7 +62,7 @@
                 <input onClick="clearErrors()" id="passwordInput" type="password" name="password" placeholder="Password">
                 <p id="passwordError"></p>
                 <button type="submit" id="logInButtonLoginPage">
-                    <img id="logInButtonLoginPageImage" src="logInButtonLoginPage.png">
+                    <img id="logInButtonLoginPageImage" src="LoginButtonLoginPage.png">
                 </button>
                 <br>
             </form>
@@ -90,13 +90,15 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
                             </div>
-                            <input name="username" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            <input name="username" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+                            pattern=".{6,}" required title="Username requires a minimum of 6 characters.">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
                             </div>
-                            <input name="password" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            <input type="passwordInput" class="form-control" name="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain an uppercase letter and a number">
+                            
                         </div>
                     </div>
                     <div class="modal-footer">

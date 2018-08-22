@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="scorecard.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    <script src="course.js" type="text/javascript"></script>
     <script src="distance.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
@@ -21,10 +19,19 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <link href="main.css" rel="stylesheet">
+
     <title>Document</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
+       crossorigin='anonymous'>
 </head>
 
 <body>
+<div id="playingPage">
+    <div id="imgDistanceCont">
 
     <div id="holeImage">
         <div class="col-12" id="courseImageDiv">
@@ -55,7 +62,7 @@
                     </tr>
                     <tr>
                         <th scope='col' class="align-middle">
-                            <a href="scorecardScratch.html">
+                            <a onClick="showScorecard()">
                                 <div>
                                     <img src="scorecardButton.png" id="scorecardButtonImage"> </div>
                             </a>
@@ -92,7 +99,7 @@
 
         </div>
     </div>
-    </div>
+</div>
 
 
     <!-- STATS MODAL -->
@@ -223,15 +230,30 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
 
+                <h4>Fairway</h4>
+                <div id="fairCheckContainer">
+                    <input id="fairYes"  type="radio" name="fairway" value=true>
+                    <span> YES</span>
+                    <input id="fairNo" type="radio" name="fairway" value=false>
+                    <span> NO</span>
+                </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-success">Next Hole</button>
-                    </div>
+                <h4>Green in regulation</h4>
+                <div id="girCheckContainer">
+                    <input id="girYes" type="radio" name="gir" value=true>
+                    <span id="checkText"> YES</span>
+                    <input id="girNo" type="radio" name="gir" value=false>
+                    <span id="checkText"> NO</span>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" onClick="setStats()" class="btn">Next Hole</button>
+            </div>
         </div>
+
 
 </body>
 
@@ -271,31 +293,520 @@
     crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+=======
+    </div>
+</div>
+
+
+<div id="refinedScorecard">
+        <div class="container-fluid" id="navbarDiv">
+                <div class="row">
+                    <div class="col-3" id="profilePicDiv">
+                        <img src="MyCaddyWizardLogo.png" id="profilePic">
+                    </div>
+                    <div id="MyCaddyLogoDiv" class="col-6">
+                        <img id="MyCaddyLogo" src="MyCaddyLogo.png">
+                    </div>
+                    <div id="logInButtonDiv" class="col-3">
+                        <a id="logInButton" href="index.html" onClick="logOut()">
+                            <img src="LogoutButton.png" id="logInButtonTemplate">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="scorecard">
+                <div class="table-responsive" id="backNineTable">
+                    <table class="table table-bordered" id="frontNineTableID">
+                        <thead>
+                            <tr id="frontNineHoleNumbers">
+                                <th scope="col" class="holeLabel">Hole</th>
+                                <th scope="col" id="numberHole1">1</th>
+                                <th scope="col" id="numberHole2">2</th>
+                                <th scope="col" id="numberHole3">3</th>
+                                <th scope="col" id="numberHole4">4</th>
+                                <th scope="col" id="numberHole5">5</th>
+                                <th scope="col" id="numberHole6">6</th>
+                                <th scope="col" id="numberHole7">7</th>
+                                <th scope="col" id="numberHole8">8</th>
+                                <th scope="col" id="numberHole9">9</th>
+                                <th scope="col" id="TotalsFrontNine">In</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="frontNinePar">
+                                <th scope="row">Par</th>
+                                <td id="parHole1"></td>
+                                <td id="parHole2"></td>
+                                <td id="parHole3"></td>
+                                <td id="parHole4"></td>
+                                <td id="parHole5"></td>
+                                <td id="parHole6"></td>
+                                <td id="parHole7"></td>
+                                <td id="parHole8"></td>
+                                <td id="parHole9"></td>
+                                <td id="parHoleTotalFrontNine"></td>
+                            </tr>
+                            <tr id="frontNineYardage">
+                                <th scope="row">Yardage</th>
+                                <td id="yardHole1"></td>
+                                <td id="yardHole2"></td>
+                                <td id="yardHole3"></td>
+                                <td id="yardHole4"></td>
+                                <td id="yardHole5"></td>
+                                <td id="yardHole6"></td>
+                                <td id="yardHole7"></td>
+                                <td id="yardHole8"></td>
+                                <td id="yardHole9"></td>
+                                <td id="yardHoleTotalFrontNine"></td>
+                            </tr>
+                            <tr id="frontNineHandicap">
+                                <th scope="row">Handicap</th>
+                                <td id="handicapHole1"></td>
+                                <td id="handicapHole2"></td>
+                                <td id="handicapHole3"></td>
+                                <td id="handicapHole4"></td>
+                                <td id="handicapHole5"></td>
+                                <td id="handicapHole6"></td>
+                                <td id="handicapHole7"></td>
+                                <td id="handicapHole8"></td>
+                                <td id="handicapHole9"></td>
+                                <td id="handicapTotalFrontNine"></td>
+                            </tr>
+                            <tr id="frontNineScore">
+                                <th scope="row">Score</th>
+                                <td id="scoreHole1"></td>
+                                <td id="scoreHole2"></td>
+                                <td id="scoreHole3"></td>
+                                <td id="scoreHole4"></td>
+                                <td id="scoreHole5"></td>
+                                <td id="scoreHole6"></td>
+                                <td id="scoreHole7"></td>
+                                <td id="scoreHole8"></td>
+                                <td id="scoreHole9"></td>
+                                <td id="scoreHoleTotalFrontNine"></td>
+                            </tr>
+                            <tr id="frontNinePutts">
+                                    <th scope="row">Putts</th>
+                                    <td id="puttsHole1"></td>
+                                    <td id="puttsHole2"></td>
+                                    <td id="puttsHole3"></td>
+                                    <td id="puttsHole4"></td>
+                                    <td id="puttsHole5"></td>
+                                    <td id="puttsHole6"></td>
+                                    <td id="puttsHole7"></td>
+                                    <td id="puttsHole8"></td>
+                                    <td id="puttsHole9"></td>
+                                    <td id="puttsTotalFrontNine"></td>
+                                </tr>
+                            <tr id="frontNineFairwaysHit">
+                                <th scope="row">Fairway</th>
+                                <td id="fairwayHole1"></td>
+                                <td id="fairwayHole2"></td>
+                                <td id="fairwayHole3"></td>
+                                <td id="fairwayHole4"></td>
+                                <td id="fairwayHole5"></td>
+                                <td id="fairwayHole6"></td>
+                                <td id="fairwayHole7"></td>
+                                <td id="fairwayHole8"></td>
+                                <td id="fairwayHole9"></td>
+                                <td id="fairwayTotalFrontNine"></td>
+                            </tr>
+                            <tr id="frontNineGIR">
+                                <th scope="row">GIR</th>
+                                <td id="girHole1"></td>
+                                <td id="girHole2"></td>
+                                <td id="girHole3"></td>
+                                <td id="girHole4"></td>
+                                <td id="girHole5"></td>
+                                <td id="girHole6"></td>
+                                <td id="girHole7"></td>
+                                <td id="girHole8"></td>
+                                <td id="girHole9"></td>
+                                <td id="girTotalFrontNine"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive" id="backNineTable">
+                    <table class="table table-bordered" id="backNineTableID">
+                        <thead>
+                            <tr id="backNineHoleNumbers">
+                                <th scope="col" class="holeLabel">Hole</th>
+                                <th scope="col" id="numberHole10">10</th>
+                                <th scope="col" id="numberHole11">11</th>
+                                <th scope="col" id="numberHole12">12</th>
+                                <th scope="col" id="numberHole13">13</th>
+                                <th scope="col" id="numberHole14">14</th>
+                                <th scope="col" id="numberHole15">15</th>
+                                <th scope="col" id="numberHole16">16</th>
+                                <th scope="col" id="numberHole17">17</th>
+                                <th scope="col" id="numberHole18">18</th>
+                                <th scope="col" id="totalsBackNine">Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="backNinePar">
+                                <th scope="row">Par</th>
+                                <td id="parHole10"></td>
+                                <td id="parHole11"></td>
+                                <td id="parHole12"></td>
+                                <td id="parHole13"></td>
+                                <td id="parHole14"></td>
+                                <td id="parHole15"></td>
+                                <td id="parHole16"></td>
+                                <td id="parHole17"></td>
+                                <td id="parHole18"></td>
+                                <td id="parHoleTotalBackNine"></td>
+                            </tr>
+                            <tr id="backNineYardage">
+                                <th scope="row">Yardage</th>
+                                <td id="yardHole10"></td>
+                                <td id="yardHole11"></td>
+                                <td id="yardHole12"></td>
+                                <td id="yardHole13"></td>
+                                <td id="yardHole14"></td>
+                                <td id="yardHole15"></td>
+                                <td id="yardHole16"></td>
+                                <td id="yardHole17"></td>
+                                <td id="yardHole18"></td>
+                                <td id="yardageTotalBackNine"></td>
+                            </tr>
+                            <tr id="backNineHandicap">
+                                <th scope="row">Handicap</th>
+                                <td id="handicapHole10"></td>
+                                <td id="handicapHole11"></td>
+                                <td id="handicapHole12"></td>
+                                <td id="handicapHole13"></td>
+                                <td id="handicapHole14"></td>
+                                <td id="handicapHole15"></td>
+                                <td id="handicapHole16"></td>
+                                <td id="handicapHole17"></td>
+                                <td id="handicapHole18"></td>
+                                <td id="handicapTotalBackNine"></td>
+                            </tr>
+                            <tr id="backNineScore">
+                                <th scope="row">Score</th>
+                                <td id="scoreHole10"></td>
+                                <td id="scoreHole11"></td>
+                                <td id="scoreHole12"></td>
+                                <td id="scoreHole13"></td>
+                                <td id="scoreHole14"></td>
+                                <td id="scoreHole15"></td>
+                                <td id="scoreHole16"></td>
+                                <td id="scoreHole17"></td>
+                                <td id="scoreHole18"></td>
+                                <td id="scoreTotalBackNine"></td>
+                            </tr>
+                            <tr id="backNineFairwaysHit">
+                                <th scope="row">Fairway</th>
+                                <td id="fairwayHole10"></td>
+                                <td id="fairwayHole11"></td>
+                                <td id="fairwayHole12"></td>
+                                <td id="fairwayHole13"></td>
+                                <td id="fairwayHole14"></td>
+                                <td id="fairwayHole15"></td>
+                                <td id="fairwayHole16"></td>
+                                <td id="fairwayHole17"></td>
+                                <td id="fairwayHole18"></td>
+                                <td id="fairwayTotalBackNine"></td>
+                            </tr>
+                            <tr id="backNineGIR">
+                                <th scope="row">GIR</th>
+                                <td id="girHole10"></td>
+                                <td id="girHole11"></td>
+                                <td id="girHole12"></td>
+                                <td id="girHole13"></td>
+                                <td id="girHole14"></td>
+                                <td id="girHole15"></td>
+                                <td id="girHole16"></td>
+                                <td id="girHole17"></td>
+                                <td id="girHole18"></td>
+                                <td id="girTotalBackNine"></td>
+                            </tr>
+                            <tr id="backNinePutts">
+                                <th scope="row">Putts</th>
+                                <td id="puttsHole10"></td>
+                                <td id="puttsHole11"></td>
+                                <td id="puttsHole12"></td>
+                                <td id="puttsHole13"></td>
+                                <td id="puttsHole14"></td>
+                                <td id="puttsHole15"></td>
+                                <td id="puttsHole16"></td>
+                                <td id="puttsHole17"></td>
+                                <td id="puttsHole18"></td>
+                                <td id="puttsTotalBackNine"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="scorecardButtonDiv" class="row">
+                    <div class="col-5" id="returnButtonDiv">
+                        <a onClick="hideScorecard()"><img src="ReturnButton.png" id="returnButton"></a>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-5" id="endRoundButtonDiv">
+                        <img src="EndRoundButton.png" id="endRoundButton" onClick="handleSubmitofScorecard()">
+                    </div>
+                </div>
+            </div>
+</div>
+    
+        
+
+
+</body>
+
+<!-- BOOTSTRAP SCRIPTS -->
+
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'
+   crossorigin='anonymous'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49'
+   crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy'
+   crossorigin='anonymous'></script>
+
 
 <script>
     let course = localStorage.getItem('currentCourse');
     let currentTee = localStorage.getItem('currentTee');
     let courseObject = JSON.parse(localStorage.getItem('courseObject'));
-    currentHole = 1;
+    let currentCourse = courseObject.courseName
+    let currentLocation;
 
+    let itemArray = document.cookie.split(/[\s=;]/)
+    let indexOf = itemArray.indexOf('currentUser');
+    let currentUser = itemArray[indexOf+1];
+
+    let golfCourseArray = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen']
+    let index = 0;
+    let currentHole = golfCourseArray[index]
+    document.getElementById('courseImage').setAttribute('src',courseObject.holes[currentHole].img)
+
+hideScorecard()
+
+function hideScorecard() {
+$('#refinedScorecard').hide()
+$('#playingPage').show()
+}
+
+function showScorecard() {
+    $('#playingPage').hide()
+    $('#refinedScorecard').show()
     buildThePage(courseObject);
+}
+
+
+let scorecard = {
+    "course": currentCourse,
+    "userName": currentUser,
+    "datePlayed": new Date(),
+    "scores": {
+        "one":["one",courseObject.holes["one"].par],
+        "two":["two",courseObject.holes["two"].par],
+        "three":["three",courseObject.holes["three"].par],
+        "four":["four",courseObject.holes["four"].par],
+        "five":["five",courseObject.holes["five"].par],
+        "six":["six",courseObject.holes["six"].par],
+        "seven":["seven",courseObject.holes["seven"].par],
+        "eight":["eight",courseObject.holes["eight"].par],
+        "nine":["nine",courseObject.holes["nine"].par],
+        "ten":["ten",courseObject.holes["ten"].par],
+        "eleven":["eleven",courseObject.holes["eleven"].par],
+        "twelve":["twelve",courseObject.holes["twelve"].par],
+        "thirteen":["thirteen",courseObject.holes["thirteen"].par],
+        "fourteen":["fourteen",courseObject.holes["fourteen"].par],
+        "fifteen":["fifteen",courseObject.holes["fifteen"].par],
+        "sixteen":["sixteen",courseObject.holes["sixteen"].par],
+        "seventeen":["seventeen",courseObject.holes["seventeen"].par],
+        "eighteen":["eighteen",courseObject.holes["eighteen"].par]
+    }
+}
+
+localStorage.setItem('scorecard',JSON.stringify(scorecard));
+
+
+    function setStats() {
+
+        if (document.getElementById('score1').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score1').value))
+        }
+        if (document.getElementById('score2').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score2').value))
+        }
+        if (document.getElementById('score3').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score3').value))
+        }
+        if (document.getElementById('score4').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score4').value))
+        }
+        if (document.getElementById('score5').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score5').value))
+        }
+        if (document.getElementById('score6').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score6').value))
+        }
+        if (document.getElementById('score7').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score7').value))
+        }
+        if (document.getElementById('score8').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('score8').value))
+        }
+        if (document.getElementById('puttBtn1').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn1').value))
+        }
+        if (document.getElementById('puttBtn2').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn2').value))
+        }
+        if (document.getElementById('puttBtn3').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn3').value))
+        }
+        if (document.getElementById('puttBtn4').checked) {
+            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn4').value))
+        }
+        if (document.getElementById('fairYes').checked) {
+            scorecard.scores[currentHole].push(document.getElementById('fairYes').value)
+        }
+        if (document.getElementById('fairNo').checked) {
+            scorecard.scores[currentHole].push(document.getElementById('fairNo').value)
+        }
+        if (document.getElementById('girYes').checked) {
+            scorecard.scores[currentHole].push(document.getElementById('girYes').value)
+            
+        }
+        if (document.getElementById('girNo').checked) {
+            scorecard.scores[currentHole].push(document.getElementById('girNo').value)
+        }
+
+        updateHole()
+
+    }
+
+    function updateHole() {
+        index++
+        currentHole = golfCourseArray[index]
+        document.getElementById('courseImage').setAttribute('src',courseObject.holes[currentHole].img)
+        $('#statsModal').modal('hide')
+        updateScorecard()
+    }
+
+    function updateScorecard() {
+        //score
+        document.getElementById('scoreHole1').textContent = scorecard.scores.one[2]
+        document.getElementById('scoreHole2').textContent = scorecard.scores.two[2]
+        document.getElementById('scoreHole3').textContent = scorecard.scores.three[2]
+        document.getElementById('scoreHole4').textContent = scorecard.scores.four[2]
+        document.getElementById('scoreHole5').textContent = scorecard.scores.five[2]
+        document.getElementById('scoreHole6').textContent = scorecard.scores.six[2]
+        document.getElementById('scoreHole7').textContent = scorecard.scores.seven[2]
+        document.getElementById('scoreHole8').textContent = scorecard.scores.eight[2]
+        document.getElementById('scoreHole9').textContent = scorecard.scores.nine[2]
+        document.getElementById('scoreHole10').textContent = scorecard.scores.ten[2]
+        document.getElementById('scoreHole11').textContent = scorecard.scores.eleven[2]
+        document.getElementById('scoreHole12').textContent = scorecard.scores.twelve[2]
+        document.getElementById('scoreHole13').textContent = scorecard.scores.thirteen[2]
+        document.getElementById('scoreHole14').textContent = scorecard.scores.fourteen[2]
+        document.getElementById('scoreHole15').textContent = scorecard.scores.fifteen[2]
+        document.getElementById('scoreHole16').textContent = scorecard.scores.sixteen[2]
+        document.getElementById('scoreHole17').textContent = scorecard.scores.seventeen[2]
+        document.getElementById('scoreHole18').textContent = scorecard.scores.eighteen[2]
+        //putts
+        document.getElementById('puttsHole1').textContent = scorecard.scores.one[3]
+        document.getElementById('puttsHole2').textContent = scorecard.scores.two[3]
+        document.getElementById('puttsHole3').textContent = scorecard.scores.three[3]
+        document.getElementById('puttsHole4').textContent = scorecard.scores.four[3]
+        document.getElementById('puttsHole5').textContent = scorecard.scores.five[3]
+        document.getElementById('puttsHole6').textContent = scorecard.scores.six[3]
+        document.getElementById('puttsHole7').textContent = scorecard.scores.seven[3]
+        document.getElementById('puttsHole8').textContent = scorecard.scores.eight[3]
+        document.getElementById('puttsHole9').textContent = scorecard.scores.nine[3]
+        document.getElementById('puttsHole10').textContent = scorecard.scores.ten[3]
+        document.getElementById('puttsHole11').textContent = scorecard.scores.eleven[3]
+        document.getElementById('puttsHole12').textContent = scorecard.scores.twelve[3]
+        document.getElementById('puttsHole13').textContent = scorecard.scores.thirteen[3]
+        document.getElementById('puttsHole14').textContent = scorecard.scores.fourteen[3]
+        document.getElementById('puttsHole15').textContent = scorecard.scores.fifteen[3]
+        document.getElementById('puttsHole16').textContent = scorecard.scores.sixteen[3]
+        document.getElementById('puttsHole17').textContent = scorecard.scores.seventeen[3]
+        document.getElementById('puttsHole18').textContent = scorecard.scores.eighteen[3]
+        //fair
+        document.getElementById('fairwayHole1').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.one[4] +'.png">'
+        document.getElementById('fairwayHole2').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.two[4] + '.png">'
+        document.getElementById('fairwayHole3').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.three[4] + '.png">'
+        document.getElementById('fairwayHole4').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.four[4] + '.png">'
+        document.getElementById('fairwayHole5').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.five[4] + '.png">'
+        document.getElementById('fairwayHole6').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.six[4] + '.png">'
+        document.getElementById('fairwayHole7').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seven[4] + '.png">'
+        document.getElementById('fairwayHole8').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eight[4] + '.png">'
+        document.getElementById('fairwayHole9').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.nine[4] + '.png">'
+        document.getElementById('fairwayHole10').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.ten[4] + '.png">'
+        document.getElementById('fairwayHole11').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eleven[4] + '.png">'
+        document.getElementById('fairwayHole12').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.twelve[4] + '.png">'
+        document.getElementById('fairwayHole13').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.thirteen[4] + '.png">'
+        document.getElementById('fairwayHole14').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fourteen[4] + '.png">'
+        document.getElementById('fairwayHole15').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fifteen[4] + '.png">'
+        document.getElementById('fairwayHole16').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.sixteen[4] + '.png">'
+        document.getElementById('fairwayHole17').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seventeen[4] + '.png">'
+        document.getElementById('fairwayHole18').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eighteen[4] + '.png">'
+        //gir
+        document.getElementById('girHole1').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.one[5] + '.png">'
+        document.getElementById('girHole2').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.two[5] + '.png">'
+        document.getElementById('girHole3').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.three[5] + '.png">'
+        document.getElementById('girHole4').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.four[5] + '.png">'
+        document.getElementById('girHole5').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.five[5] + '.png">'
+        document.getElementById('girHole6').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.six[5] + '.png">'
+        document.getElementById('girHole7').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seven[5] + '.png">'
+        document.getElementById('girHole8').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eight[5] + '.png">'
+        document.getElementById('girHole9').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.nine[5] + '.png">'
+        document.getElementById('girHole10').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.ten[5] + '.png">'
+        document.getElementById('girHole11').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eleven[5] + '.png">'
+        document.getElementById('girHole12').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.twelve[5] + '.png">'
+        document.getElementById('girHole13').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.thirteen[5] + '.png">'
+        document.getElementById('girHole14').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fourteen[5] + '.png">'
+        document.getElementById('girHole15').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fifteen[5] + '.png">'
+        document.getElementById('girHole16').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.sixteen[5] + '.png">'
+        document.getElementById('girHole17').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seventeen[5] + '.png">'
+        document.getElementById('girHole18').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eighteen[5] + '.png">'
+
+        localStorage.setItem('scorecard',JSON.stringify(scorecard));
+    }
 
     function buildThePage(objects) {
         console.log(objects);
         console.log("inside build page")
         buildYards(objects)
-        buildUser(objects)
         buildHandicap(objects)
+        buildPar(objects)
+    }
+
+    function buildPar(objects) {
+        console.log('inside build pars' + ' current object is: ' + objects);
+        document.getElementById("parHole1").textContent = objects.holes['one'].par
+        document.getElementById("parHole2").textContent = objects.holes['two'].par
+        document.getElementById("parHole3").textContent = objects.holes['three'].par
+        document.getElementById("parHole4").textContent = objects.holes['four'].par
+        document.getElementById("parHole5").textContent = objects.holes['five'].par
+        document.getElementById("parHole6").textContent = objects.holes['six'].par
+        document.getElementById("parHole7").textContent = objects.holes['seven'].par
+        document.getElementById("parHole8").textContent = objects.holes['eight'].par
+        document.getElementById("parHole9").textContent = objects.holes['nine'].par
+        document.getElementById("parHole10").textContent = objects.holes['ten'].par
+        document.getElementById("parHole11").textContent = objects.holes['eleven'].par
+        document.getElementById("parHole12").textContent = objects.holes['twelve'].par
+        document.getElementById("parHole13").textContent = objects.holes['thirteen'].par
+        document.getElementById("parHole14").textContent = objects.holes['fourteen'].par
+        document.getElementById("parHole15").textContent = objects.holes['fifteen'].par
+        document.getElementById("parHole16").textContent = objects.holes['sixteen'].par
+        document.getElementById("parHole17").textContent = objects.holes['seventeen'].par
+        document.getElementById("parHole18").textContent = objects.holes['eighteen'].par
     }
 
     function buildYards(objects) {
-        console.log('objects below is within buildYards');
-        console.log(objects);
         document.getElementById("yardHole1").textContent = objects.holes['one'].tees[currentTee][0]
-        document.getElementById("yardHole3").textContent = objects.holes['two'].tees[currentTee][0]
-        document.getElementById("yardHole4").textContent = objects.holes['three'].tees[currentTee][0]
-        document.getElementById("yardHole5").textContent = objects.holes['four'].tees[currentTee][0]
-        document.getElementById("yardHole2").textContent = objects.holes['five'].tees[currentTee][0]
+        document.getElementById("yardHole2").textContent = objects.holes['two'].tees[currentTee][0]
+        document.getElementById("yardHole3").textContent = objects.holes['three'].tees[currentTee][0]
+        document.getElementById("yardHole4").textContent = objects.holes['four'].tees[currentTee][0]
+        document.getElementById("yardHole5").textContent = objects.holes['five'].tees[currentTee][0]
         document.getElementById("yardHole6").textContent = objects.holes['six'].tees[currentTee][0]
         document.getElementById("yardHole7").textContent = objects.holes['seven'].tees[currentTee][0]
         document.getElementById("yardHole8").textContent = objects.holes['eight'].tees[currentTee][0]
@@ -311,15 +822,12 @@
         document.getElementById("yardHole18").textContent = objects.holes['eighteen'].tees[currentTee][0]
     }
 
-    function buildUser(objects) {
-
-    }
     function buildHandicap(objects) {
         document.getElementById("handicapHole1").textContent = objects.holes['one'].handicap[currentTee]
-        document.getElementById("handicapHole3").textContent = objects.holes['two'].handicap[currentTee]
-        document.getElementById("handicapHole4").textContent = objects.holes['three'].handicap[currentTee]
-        document.getElementById("handicapHole5").textContent = objects.holes['four'].handicap[currentTee]
-        document.getElementById("handicapHole2").textContent = objects.holes['five'].handicap[currentTee]
+        document.getElementById("handicapHole2").textContent = objects.holes['two'].handicap[currentTee]
+        document.getElementById("handicapHole3").textContent = objects.holes['three'].handicap[currentTee]
+        document.getElementById("handicapHole4").textContent = objects.holes['four'].handicap[currentTee]
+        document.getElementById("handicapHole5").textContent = objects.holes['five'].handicap[currentTee]
         document.getElementById("handicapHole6").textContent = objects.holes['six'].handicap[currentTee]
         document.getElementById("handicapHole7").textContent = objects.holes['seven'].handicap[currentTee]
         document.getElementById("handicapHole8").textContent = objects.holes['eight'].handicap[currentTee]
@@ -333,8 +841,21 @@
         document.getElementById("handicapHole16").textContent = objects.holes['sixteen'].handicap[currentTee]
         document.getElementById("handicapHole17").textContent = objects.holes['seventeen'].handicap[currentTee]
         document.getElementById("handicapHole18").textContent = objects.holes['eighteen'].handicap[currentTee]
-
     }
-</script>
 
-</html>
+    function handleSubmitofScorecard() {
+        console.log('inside handle submit of scorecard')
+        let scorecard = JSON.parse(localStorage.getItem('scorecard'))
+        console.log(scorecard)
+        fetch('/scorecard/set', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(scorecard)
+        })
+        window.location = '/dashboard.html'
+    }
+
+    </script>
+        
+        
+    </html>

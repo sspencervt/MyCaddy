@@ -1,11 +1,4 @@
-createCurrentLocation();
-let currentCourse;
-let currentHole;
-let currentLocation;
-
-
 function updateDistances(currentLocation){
-  currentHole = "one";
   currentCourse = localStorage.getItem('currentCourse');
   [frontPoint, centerPoint, backPoint] = currentGreenPoints(currentCourse, currentHole);
   console.log('currentlocationis' + currentLocation)
@@ -17,31 +10,21 @@ function updateDistances(currentLocation){
   document.getElementById('distanceToBack').textContent = distanceToBack + ' yards';
 }
 
-function updateCourse(changeCourse){
-  currentCourse = changeCourse;
-  console.log("Changed currentCourse to :" + currentCourse)
-  document.getElementById('courseDisp').textContent = currentCourse;
-}
-
-function updateHole(changeToThisHole){
-  currentHole = changeToThisHole;
-  console.log("Changed currentHole to :" + currentHole)
-  document.getElementById('holeDisp').textContent = currentHole;
-
-}
-function currentGreenPoints(currentCourse, currentHole){
-  let frontLat = courseObject.holes[currentHole].green.front[0];
-  let frontLon = courseObject.holes[currentHole].green.front[1];
-  let centerLat = courseObject.holes[currentHole].green.center[0];
-  let centerLon = courseObject.holes[currentHole].green.center[1];
-  let backLat = courseObject.holes[currentHole].green.back[0];
-  let backLon = courseObject.holes[currentHole].green.back[1];
+function currentGreenPoints(currentCourse, thisHole){
+  console.log(currentCourse)
+  console.log(thisHole)
+  let courseObject = JSON.parse(localStorage.getItem("courseObject"));
+  let frontLat = courseObject.holes[thisHole].green.front[0];
+  let frontLon = courseObject.holes[thisHole].green.front[1];
+  let centerLat = courseObject.holes[thisHole].green.center[0];
+  let centerLon = courseObject.holes[thisHole].green.center[1];
+  let backLat = courseObject.holes[thisHole].green.back[0];
+  let backLon = courseObject.holes[thisHole].green.back[1];
   let frontPoint = new Point(frontLat, frontLon);
   let centerPoint = new Point(centerLat, centerLon);
   let backPoint = new Point(backLat, backLon);
   return [frontPoint, centerPoint, backPoint];
 }
-
 
 class Point {
   constructor(latitude, longitude){
@@ -49,8 +32,6 @@ class Point {
     this.longitude = longitude;
   }
 }
-
-// let distance = findDistance(pointOne, pointTwo);
 
 function findDistance(pointOne, pointTwo){
   var R = 6378137; // metres - was 6371e3
@@ -70,7 +51,7 @@ function findDistance(pointOne, pointTwo){
 
 function createCurrentLocation(){
   console.log('creating your location') 
-navigator.geolocation.getCurrentPosition(function(location) {
+  navigator.geolocation.getCurrentPosition(function(location) {
     currentLocation = new Point(location.coords.latitude, location.coords.longitude);
     console.log(currentLocation + 'this should be your current location')
     updateDistances(currentLocation)

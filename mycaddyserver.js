@@ -5,7 +5,7 @@ const expressValidator = require('express-validator')
 const mongojs = require('mongojs')
 const db = mongojs('mongodb://testing:testing1@ds225608.mlab.com:25608/mycaddy')
 const courses = db.collection('Courses')
-const scorecard = db.collection('Scorecard')
+const scorecards = db.collection('Scorecards')
 const users = db.collection('Users')
 const app = express()
 const bcrypt = require('bcryptjs')
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // SET STATIC PATH
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 app.post('/users/add', function (req, res) {
 
@@ -33,7 +33,8 @@ app.post('/users/add', function (req, res) {
     users.findOne({"username" : req.body.username}, (err, existingUser) => {
         if(!existingUser){
             users.insert(newUser, function(result) {
-                res.cookie("loggedIn","User_Added")
+                res.cookie("loggedIn","true")
+                res.cookie("currentUser", req.body.username)
                 res.redirect('/')
             })
         } else { 
@@ -109,8 +110,8 @@ app.post('/courses/set', function(req, res) {
     })
 })
 
-app.get('/', (req, res) => res.send('./login.html'))
-
-app.get('/scorecardPage', (req, res) => res.render('/scorecard.html'))
-
-app.listen(3000, () => console.log('listening on port 3000'))
+app.post('/scorecard/set', function(req,res){
+    scorecards.insert(req.body)
+})
+    
+app.listen(process.env.PORT || 3000, () => console.log('listening on port 3000'))
