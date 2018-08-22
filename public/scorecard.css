@@ -1,14 +1,4 @@
 
-#courseImage {
-    display: flex;
-    height: 90vh;
-    width: 70vw;
-}
-#imgDistanceCont {
-    display: flex;
-    flex-direction: row;
-}
-
 html {
     background-size: cover;
     background-repeat: no-repeat;
@@ -28,92 +18,448 @@ body {
     height: 100%;
 }
 
+#courseImageDiv {
+    width: 100%;
+    height: auto;
+    padding: 0 0 5px 0;
+}
+
+#courseImage {
+    display: flex;
+    width: 100%;
+    height: 75vh;
+    background-color: black;
+
+}
+#holeImage {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#holeNumber {
+
+    position: absolute;
+    display: flex;
+}
+
+#holeNumberForMap {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #137b4b;
+    color: white;
+}
+
+#viewHoleControls {
+    padding: 0;
+    margin: 0;
+    height: 24vh;
+    background-color: black;
+
+}
+
 #distanceContainer {
     text-align: center;
-    margin-right: 10px;
-    margin-top: 20px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
-.firstbox {
-    height: 20px;
-    width: 60px;
-    border: 1px solid black;
+#distanceContainer table {
+    margin: 0;
+    border: none;
+    border-spacing: 0;
 }
 
-#scorecard {
+#distanceContainer table thead tr th {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: #137b4b;
+}
+
+#distanceContainer table thead tr td {
+    border: none;
+    background-color: #1bb06b;
+    color: white;
+}
+
+#distanceContainer table tr {
+    height: 8vh;
+}
+
+#inputScoresAndScoreboardButtons {
+    text-align: bottom;
+    display: flex;
+    align-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#inputScoresAndScoreboardButtons table {
+    margin: 0;
+    border: none;
+    border-spacing: 0;
+}
+
+#inputScoresAndScoreboardButtons table thead tr th {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#inputScoresAndScoreboardButtons table tr {
+    height: 12vh;
+}
+
+
+#backYardageImage {
+    width: 100%;
+}
+
+#middleYardageImage {
+    width: 100%;
+}
+
+#frontYardageImage {
+    width: 100%;
+}
+
+#inputScoresImage {
+    width: 100%;
+}
+
+#scorecardButtonImage {
+    width: 100%;
+}
+
+#refreshButtonDiv {
+    position: absolute;
+    right: 0;
+    top: 69%;
+    padding: 0;
+    margin: 0;
+}
+
+#refreshButton {
+    width: 100%;
+}
+
+
+/*SCORE INPUT MODAL*/
+
+.modal-header {
+    padding: 5px;
+}
+
+#scoreSelector {
+    margin: 0;
     height: 100%;
+}
+
+#inputScoresDiv {
+    padding: 0;
+    margin: 0;
+    height: auto;
+}
+
+#inputScoresTabs {
+    margin: 0;
+    width: 100%;
+    height: 45vh;
+}
+
+#inputScoresTabs label {
+    position: absolute;
     width: 100%;
 }
 
-.holes {
-    height: 20px;
-    width: 20px;
-    border: 1px solid black;
+#inputScoresTabs label > input {
+    visibility: hidden;
+    position: absolute;
 }
 
-.scoreSelector {
-    display: flex;
-    flex-direction: column;
+#inputScoreTabs label > img {
+    opacity: 0;
+}
+
+#inputScoresTabs input {
+    margin: 0;
     width: 100%;
-    justify-content: space-around;
 }
 
-.scorebtns {
-    display: flex;
+
+#scoreInputCircle {
     width: 100%;
-    justify-content: space-around;
+    position: absolute;
 }
 
-
-.scoreBtn {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: none;
+#score1 {
+    position: absolute;
+    -webkit-clip-path: circle(15.4% at 14% 35%);
+clip-path: circle(15.4% at 14% 35%);
 }
 
-.scoreBtn:active {
-    color: #1bb06b;
+#score2 {
+    position: absolute;
+
+    -webkit-clip-path: circle(15.4% at 35% 14%);
+clip-path: circle(15.4% at 35% 14%);
 }
 
-.scoreBtn:hover {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: #1bb06b;
-    color: white;
+#score3 {
+    position: absolute;
+
+    -webkit-clip-path: circle(15.4% at 65% 14%);
+clip-path: circle(15.4% at 65% 14%);
 }
-.puttSelector {
-    display: flex;
-    flex-direction: column;
+
+#score4 {
+    position: absolute;
+
+    -webkit-clip-path: circle(15.4% at 86% 35%);
+clip-path: circle(15.4% at 86% 35%);
+}
+
+#score5 {
+    position: absolute;
+
+    -webkit-clip-path: circle(15.4% at 86% 65%);
+clip-path: circle(15.4% at 86% 65%);
+}
+
+#score6 {
+    position: absolute;
+
+    -webkit-clip-path: circle(15.4% at 65% 86%);
+clip-path: circle(15.4% at 65% 86%);
+}
+
+#score7 {
+    position: absolute;
+
+    -webkit-clip-path: circle(15.4% at 35% 86%);
+clip-path: circle(15.4% at 35% 86%);
+}
+
+#score8 {
+    position: absolute;
+
+    -webkit-clip-path: circle(15.4% at 14% 65%);
+clip-path: circle(15.4% at 14% 65%);
+}
+
+#score1White {
+    position: absolute;
     width: 100%;
-    justify-content: space-around;
-}
-.puttBtn {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: none;
+
+    -webkit-clip-path: circle(15.4% at 14% 35%);
+clip-path: circle(15.4% at 14% 35%);
 }
 
-.puttbtns {
-    display: flex;
+#score2White {
+    position: absolute;
     width: 100%;
-    justify-content: space-around;
+    -webkit-clip-path: circle(15.4% at 35% 14%);
+clip-path: circle(15.4% at 35% 14%);
 }
 
-.puttBtn:hover {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: #1bb06b;
-    color: white;
+#score3White {
+    position: absolute;
+    width: 100%;
+
+    -webkit-clip-path: circle(15.4% at 65% 14%);
+clip-path: circle(15.4% at 65% 14%);
 }
 
-#checkText {
-    margin-bottom: 10px;
-}
- 
-#statCheckbox {
-    height: 30px;
-    width: 30px;
-    border: 1px solid #1bb06b;
-    background: none;
+#score4White {
+    position: absolute;
+    width: 100%;
+
+    -webkit-clip-path: circle(15.4% at 86% 35%);
+clip-path: circle(15.4% at 86% 35%);
 }
 
+#score5White {
+    position: absolute;
+    width: 100%;
+
+    -webkit-clip-path: circle(15.4% at 86% 65%);
+clip-path: circle(15.4% at 86% 65%);
+}
+
+#score6White {
+    position: absolute;
+    width: 100%;
+
+    -webkit-clip-path: circle(15.4% at 65% 86%);
+clip-path: circle(15.4% at 65% 86%);
+}
+
+#score7White {
+    position: absolute;
+    width: 100%;
+
+    -webkit-clip-path: circle(15.4% at 35% 86%);
+clip-path: circle(15.4% at 35% 86%);
+}
+
+#score8White {
+    position: absolute;
+    width: 100%;
+
+    -webkit-clip-path: circle(15.4% at 14% 65%);
+clip-path: circle(15.4% at 14% 65%);
+}
+
+
+
+
+/*PUTTS INPUT*/
+
+#puttsInputRow {
+    width: 100%;
+    position: absolute;
+}
+
+#inputPuttTabs {
+    margin: 0;
+    width: 100%; 
+    height: 10vh;
+}
+
+#inputPuttTabs label {
+    position: absolute;
+    width: 100%;
+}
+
+#inputPuttTabs label > input {
+    visibility: hidden;
+    position: absolute;
+}
+
+#puttsBtn1 {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(12.9% at 9% 49%);
+clip-path: circle(12.9% at 9% 49%);
+}
+
+#puttsBtn2 {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(12.9% at 30% 50%);
+clip-path: circle(12.9% at 30% 50%);
+}
+
+#puttsBtn3 {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(12.9% at 50% 50%);
+clip-path: circle(12.9% at 50% 50%);
+}
+
+#puttsBtn4 {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(12.9% at 70% 50%);
+clip-path: circle(12.9% at 70% 50%);
+}
+
+#puttsBtn5 {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(12.9% at 91% 50%);
+clip-path: circle(12.9% at 91% 50%);
+}
+
+
+/*FAIRWAY INPUT*/
+#yesOrNoButtons {
+    width: 100%;
+    position: absolute;
+}
+
+#fairCheckContainer {
+    margin: 0;
+    width: 100%; 
+    height: 10vh;
+}
+
+#fairCheckContainer label {
+    position: absolute;
+    width: 100%;
+}
+
+#fairCheckContainer label > input {
+    visibility: hidden;
+    position: absolute;
+}
+
+#fairYes {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(27.9% at 21% 50%);
+    clip-path: circle(27.9% at 21% 50%);
+}
+
+#fairNo {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(27.9% at 79% 50%);
+    clip-path: circle(27.9% at 79% 50%);
+}
+
+
+/*GIR INPUT*/
+#yesOrNoButtons {
+    width: 100%;
+    position: absolute;
+}
+
+#girCheckContainer {
+    margin: 0;
+    width: 100%; 
+    height: 10vh;
+}
+
+#girCheckContainer label {
+    position: absolute;
+    width: 100%;
+}
+
+#girCheckContainer label > input {
+    visibility: hidden;
+    position: absolute;
+}
+
+#girYes {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(27.9% at 21% 50%);
+    clip-path: circle(27.9% at 21% 50%);
+}
+
+#girNo {
+    position: absolute;
+    width: 100%;
+    -webkit-clip-path: circle(27.9% at 79% 50%);
+    clip-path: circle(27.9% at 79% 50%);
+}
+
+.col-6 {
+    width: 100%;
+}
+
+h4 {
+    text-align: center;
+}
+
+#fairwayAndGIRDiv {
+    margin: 0
+}

@@ -68,7 +68,6 @@ html {
 }
 
 #newRoundButton {
-    opacity: 1;
     padding: 0;
     margin: 0;
 }
@@ -84,6 +83,7 @@ html {
 
 .statistics {
     font-size: 15px;
+    width: 100%;
 }
 
 #statistics {
@@ -112,11 +112,13 @@ html {
 
 #statisticsModalDialog {
     margin: 0;
+    width: 100%;
 }
 
 #statisticsModalContent {
     border: none;
     border-radius: 0;
+    width: 100%;
 }
 
 #closeStatisticsModalButtonImage {
@@ -588,3 +590,15 @@ body {
 
 }
 
+
+#imgDistanceCont {
+    width: 100%;
+}
+
+#courseImage {
+    width: 100%;
+}
+
+#statsModal {
+    width: 100%;
+}
