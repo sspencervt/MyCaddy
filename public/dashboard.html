@@ -77,13 +77,14 @@
             </div>
             <div id="myProfileButtonDiv">
                 <div class="col-12 well">
-                    <img src="MyProfileButton.png" id="myProfileButtonImage" type="button">
+                    <img src="MyProfileButton.png" id="myProfileButtonImage" type="button" data-toggle="modal" data-target="#profileModal">
                 </div>
             </div>
         </div>
     </div>
 
     <!-- SETTINGS SIDE NAVIGATION-->
+
     <div id="mySidenav" class="sidenav column">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <table class="table table-borderless" id="sideNavTable">
@@ -127,6 +128,21 @@
             </tbody>
         </table>
     </div>
+
+
+<!-- Modal -->
+<div id="profileModal" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+
+   <!-- Modal content-->
+
+     <div class="modal-body">
+       <img id="profilepage" src="profilePage.png">
+     </div>
+   </div>
+
+ </div>
+</div>
 
     <!-- SETTINGS SIDE NAVIGATION SCRIPT-->
     <script>

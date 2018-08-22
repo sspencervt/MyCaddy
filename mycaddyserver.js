@@ -25,10 +25,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/public')))
 
 app.post('/users/add', function (req, res) {
-
+    console.log(req.body);
     let newUser = {
         username: req.body.username,
-        password: bcrypt.hashSync(req.body.password, 10)
+        password: bcrypt.hashSync(req.body.pw, 10)
     }
     users.findOne({"username" : req.body.username}, (err, existingUser) => {
         if(!existingUser){

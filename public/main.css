@@ -8,7 +8,13 @@ html {
     height: 100%;
 
 }
-
+#profilepage {
+    height: 70vh;
+    width: 90vw;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
 #selectCourseText{
     width: 100%;
     height: auto;

@@ -23,6 +23,7 @@
         crossorigin="anonymous">
 
     <link href="main.css" rel="stylesheet">
+    <link href="scorecard.css" rel="stylesheet">
 
     <title>Document</title>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
@@ -80,19 +81,19 @@
                         <th scope='col' class="align-middle">
                             <img src="backYardage.png" id="backYardageImage">
                         </th>
-                        <td id="distanceToBack" class="align-middle">300</td>
+                        <td id="distanceToBack" class="align-middle">-?-</td>
                     </tr>
                     <tr>
                         <th scope='col' class="align-middle">
                             <img src="middleYardage.png" id="middleYardageImage">
                         </th>
-                        <td id="distanceToCenter" class="align-middle">300</td>
+                        <td id="distanceToCenter" class="align-middle">-?-</td>
                     </tr>
                     <tr>
                         <th scope='col' class="align-middle">
                             <img src="frontYardage.png" id="frontYardageImage">
                         </th>
-                        <td id="distanceToFront" class="align-middle">300</td>
+                        <td id="distanceToFront" class="align-middle">-?-</td>
                     </tr>
                 </thead>
             </table>
@@ -107,9 +108,6 @@
     <div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog col-12" role="document">
             <div class="modal-content">
-                <div class="modal-header" style="padding: 5px 10px">
-                    <h2>Input Scores</h2>
-                </div>
                 <div class="modal-body" style="padding: 5px 10px">
                     <div class="scoreSelector" id="scoreSelector">
                         <h4>Score</h4>
@@ -118,43 +116,35 @@
                                 <img src="scoreInputCircle.png" id="scoreInputCircle">
 
                                 <label>
-                                    <input name="score" value=1>
-                                    <img src="scoreInputCircleWhite.png" id="score1White" class="scoreWhite" onClick=clickScore(this.id) value=1>
+                                    <img src="scoreInputCircleWhite.png" id="score1White" class="scoreWhite" onClick="setScoreValue(1); clickScore(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="score" value=2>
-                                    <img src="scoreInputCircleWhite.png" id="score2White" class="scoreWhite" onClick=clickScore(this.id) value=2>
+                                    <img src="scoreInputCircleWhite.png" id="score2White" class="scoreWhite" onClick="setScoreValue(2); clickScore(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="score" value=3>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score3White" onClick=clickScore(this.id) value=3>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score3White" onClick="setScoreValue(3); clickScore(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="score" value=4>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score4White" onClick=clickScore(this.id) value=4>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score4White" onClick="setScoreValue(4); clickScore(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="score" value=5>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score5White" onClick=clickScore(this.id) value=5>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score5White" onClick="setScoreValue(5); clickScore(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="score" value=6>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score6White" onClick=clickScore(this.id) value=6>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score6White" onClick="setScoreValue(6); clickScore(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="score" value=7>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score7White" onClick=clickScore(this.id) value=7>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score7White" onClick="setScoreValue(7); clickScore(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="score" value=8>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score8White" onClick=clickScore(this.id) value=8>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score8White" onClick="setScoreValue(8); clickScore(this.id)">
                                 </label>
 
                             </div>
@@ -168,28 +158,23 @@
                                 <img src="puttsInputRow.png" id="puttsInputRow">
 
                                 <label>
-                                    <input name="putts" value=1>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn1" class="puttsWhite" onClick=clickPutt(this.id) value=1>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn1" class="puttsWhite" onClick="setPuttValue(1); clickPutt(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="putts" value=2>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn2" class="puttsWhite" onClick=clickPutt(this.id) value=2>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn2" class="puttsWhite" onClick="setPuttValue(2); clickPutt(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="putts" value=3>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn3" class="puttsWhite" onClick=clickPutt(this.id) value=3>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn3" class="puttsWhite" onClick="setPuttValue(3); clickPutt(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="putts" value=4>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn4" class="puttsWhite" onClick=clickPutt(this.id) value=4>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn4" class="puttsWhite" onClick="setPuttValue(4); clickPutt(this.id)">
                                 </label>
 
                                 <label>
-                                    <input name="putts" value=5>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn5" class="puttsWhite" onClick=clickPutt(this.id) value=5>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn5" class="puttsWhite" onClick="setPuttValue(5); clickPutt(this.id)">
                                 </label>
 
                             </div>
@@ -202,12 +187,10 @@
                                 <div id="fairCheckContainer" class="align-middle">
                                     <img src="yesOrNoButtons.png" id="yesOrNoButtons">
                                     <label>
-                                        <input name="fairway" value=true>
-                                        <img src="yesOrNoButtonsWhite.png" id="fairYes" class="fairway" onClick=fairwayHit(this.id) value=true>
+                                        <img src="yesOrNoButtonsWhite.png" id="fairYes" class="fairway" onClick="setFairwayValue('true'); fairwayHit(this.id)">
                                     </label>
                                     <label>
-                                        <input name="fairway" value=false>
-                                        <img src="yesOrNoButtonsWhite.png" id="fairNo" class="fairway" onClick=fairwayHit(this.id) value=true>
+                                        <img src="yesOrNoButtonsWhite.png" id="fairNo" class="fairway" onClick="setFairwayValue('false'); fairwayHit(this.id)">
                                     </label>
                                 </div>
                             </div>
@@ -219,38 +202,19 @@
                                 <div id="girCheckContainer">
                                     <img src="yesOrNoButtons.png" id="yesOrNoButtons">
                                     <label>
-                                        <input name="gir" value=true>
-                                        <img src="yesOrNoButtonsWhite.png" id="girYes" class="greens" onClick=girHit(this.id) value=true>
+                                        <img src="yesOrNoButtonsWhite.png" id="girYes" class="greens" onClick="setGirValue('true'); girHit(this.id)">
                                     </label>
                                     <label>
-                                        <input name="gir" value=false>
-                                        <img src="yesOrNoButtonsWhite.png" id="girNo" class="greens" onClick=girHit(this.id) value=false>
+                                        <img src="yesOrNoButtonsWhite.png" id="girNo" class="greens" onClick="setGirValue('false'); girHit(this.id)">
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                <h4>Fairway</h4>
-                <div id="fairCheckContainer">
-                    <input id="fairYes"  type="radio" name="fairway" value=true>
-                    <span> YES</span>
-                    <input id="fairNo" type="radio" name="fairway" value=false>
-                    <span> NO</span>
+                <div class="modal-footer">
+                    <img src="nextHoleButton.png" type="button" data-dismiss="modal" onClick="setStats()" class="btn">
                 </div>
-
-                <h4>Green in regulation</h4>
-                <div id="girCheckContainer">
-                    <input id="girYes" type="radio" name="gir" value=true>
-                    <span id="checkText"> YES</span>
-                    <input id="girNo" type="radio" name="gir" value=false>
-                    <span id="checkText"> NO</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" onClick="setStats()" class="btn">Next Hole</button>
             </div>
         </div>
 
@@ -258,42 +222,7 @@
 </body>
 
 
-<!-- SCORE INPUT SCRIPT -->
 
-<script> 
-
-    function clickScore(id) {
-        $('.scoreWhite').css('opacity', '1')
-        document.getElementById(id).style.opacity = "0"
-    }
-
-    function clickPutt(id) {
-        $('.puttsWhite').css('opacity', '1')
-        document.getElementById(id).style.opacity = "0"
-    }
-
-    function fairwayHit(id) {
-        $('.fairway').css('opacity', '1')
-        document.getElementById(id).style.opacity = "0"
-    }
-
-    function girHit(id) {
-        $('.greens').css('opacity', '1')
-        document.getElementById(id).style.opacity = "0"
-    }
-
-</script>
-
-
-<!-- BOOTSTRAP SCRIPTS -->
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-=======
     </div>
 </div>
 
@@ -550,12 +479,34 @@
                     </div>
                 </div>
             </div>
-</div>
-    
-        
-
-
+        </div>
 </body>
+
+<script> 
+
+    function clickScore(id) {
+        $('.scoreWhite').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+    }
+
+    function clickPutt(id) {
+        $('.puttsWhite').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+    }
+
+    function fairwayHit(id) {
+        $('.fairway').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+
+    }
+
+    function girHit(id) {
+        $('.greens').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+    }
+
+</script>
+
 
 <!-- BOOTSTRAP SCRIPTS -->
 
@@ -626,68 +577,30 @@ let scorecard = {
 localStorage.setItem('scorecard',JSON.stringify(scorecard));
 
 
+    function setScoreValue(value) {
+        localStorage.setItem("score", value)
+    }
+    function setPuttValue(value) {
+        localStorage.setItem("putts", value)
+    }
+    function setFairwayValue(value) {
+        localStorage.setItem("fairway", Boolean('true'==value))
+    }
+    function setGirValue(value) {
+        localStorage.setItem("gir", Boolean('true'==value))
+    }
+    
     function setStats() {
-
-        if (document.getElementById('score1').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score1').value))
-        }
-        if (document.getElementById('score2').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score2').value))
-        }
-        if (document.getElementById('score3').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score3').value))
-        }
-        if (document.getElementById('score4').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score4').value))
-        }
-        if (document.getElementById('score5').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score5').value))
-        }
-        if (document.getElementById('score6').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score6').value))
-        }
-        if (document.getElementById('score7').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score7').value))
-        }
-        if (document.getElementById('score8').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('score8').value))
-        }
-        if (document.getElementById('puttBtn1').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn1').value))
-        }
-        if (document.getElementById('puttBtn2').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn2').value))
-        }
-        if (document.getElementById('puttBtn3').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn3').value))
-        }
-        if (document.getElementById('puttBtn4').checked) {
-            scorecard.scores[currentHole].push(Number(document.getElementById('puttBtn4').value))
-        }
-        if (document.getElementById('fairYes').checked) {
-            scorecard.scores[currentHole].push(document.getElementById('fairYes').value)
-        }
-        if (document.getElementById('fairNo').checked) {
-            scorecard.scores[currentHole].push(document.getElementById('fairNo').value)
-        }
-        if (document.getElementById('girYes').checked) {
-            scorecard.scores[currentHole].push(document.getElementById('girYes').value)
-            
-        }
-        if (document.getElementById('girNo').checked) {
-            scorecard.scores[currentHole].push(document.getElementById('girNo').value)
-        }
-
+        scorecard.scores[currentHole].push(Number(localStorage.getItem('score')), Number(localStorage.getItem('putts')), Boolean('true'==localStorage.getItem('fairway')), Boolean('true'==localStorage.getItem('gir')))
         updateHole()
-
     }
 
     function updateHole() {
+        updateScorecard()
         index++
         currentHole = golfCourseArray[index]
         document.getElementById('courseImage').setAttribute('src',courseObject.holes[currentHole].img)
-        $('#statsModal').modal('hide')
-        updateScorecard()
+        
     }
 
     function updateScorecard() {
@@ -858,4 +771,4 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
     </script>
         
         
-    </html>
+</html>
