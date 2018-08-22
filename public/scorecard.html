@@ -6,10 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="distance.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
+    <!-- <script>var obj = JSON.parse(response);
+    console.log(obj)</script> -->
+
+    <!-- BOOTSTRAP -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <script src="distance.js"></script>
+
     <link href="main.css" rel="stylesheet">
+
     <title>Document</title>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
        crossorigin='anonymous'>
@@ -19,74 +33,205 @@
 <div id="playingPage">
     <div id="imgDistanceCont">
 
-        <img id="courseImage" src="">
-
-        <div id="distanceContainer">
-        
-                
-            <p>Back</p>
-            <p id="distanceToBack"></p>
-        
-            <p>Center</p>
-            <p id="distanceToCenter"></p>
-        
-            <p>Front</p>
-            <p id="distanceToFront"></p>
-
-            <button class="btn btn-primary" onClick="createCurrentLocation()">Refresh Distances</button>
-    
+    <div id="holeImage">
+        <div class="col-12" id="courseImageDiv">
+            <img id="courseImage" src="WCCHole5.png">
         </div>
+        <div id="holeNumber">
+            <div id="holeNumberForMap">10</div>
+        </div>
+
+        <div onClick="createCurrentLocation()" id="refreshButtonDiv" class="col-3">
+            <img src="refreshButton.png" id="refreshButton">
+        </div>
+
 
     </div>
 
-    
-    <button class="btn btn-secondary" data-target="#statsModal" data-toggle="modal">Input Scores</button>
-    <button class="btn btn-primary" onClick="showScorecard()">Scorecard</button>
+    <div class="col-12 row" id="viewHoleControls">
+
+        <div class="col-5" id="inputScoresAndScoreboardButtons">
+            <table class="table table-responsive table-borderless .align-bottom">
+                <thead>
+                    <tr>
+                        <th scope='col' class="align-middle">
+                            <div data-target="#statsModal" data-toggle="modal">
+                                <img src="inputScores.png" id="inputScoresImage">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope='col' class="align-middle">
+                            <a onClick="showScorecard()">
+                                <div>
+                                    <img src="scorecardButton.png" id="scorecardButtonImage"> </div>
+                            </a>
+                        </th>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5" id="distanceContainer">
+            <table class="table table-responsive table-borderless">
+                <thead>
+                    <tr>
+                        <th scope='col' class="align-middle">
+                            <img src="backYardage.png" id="backYardageImage">
+                        </th>
+                        <td id="distanceToBack" class="align-middle">300</td>
+                    </tr>
+                    <tr>
+                        <th scope='col' class="align-middle">
+                            <img src="middleYardage.png" id="middleYardageImage">
+                        </th>
+                        <td id="distanceToCenter" class="align-middle">300</td>
+                    </tr>
+                    <tr>
+                        <th scope='col' class="align-middle">
+                            <img src="frontYardage.png" id="frontYardageImage">
+                        </th>
+                        <td id="distanceToFront" class="align-middle">300</td>
+                    </tr>
+                </thead>
+            </table>
+
+        </div>
+    </div>
 </div>
 
-<!-- STATS MODAL -->
 
-<div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Input Scores</h2>
-            </div>
-            <div class="modal-body">
-                <div class="scoreSelector">
-                    <h4>Score</h4>
-                    <div class="scorebtns">
-                        <input name="score" type="radio" id="score1" value=1>
-                        <span>1</span>
-                        <input name="score" type="radio" id="score2" value=2>
-                        <span>2</span>
-                        <input name="score" type="radio" id="score3" value=3>
-                        <span>3</span>
-                        <input name="score" type="radio" id="score4" value=4>
-                        <span>4</span>
-                        <input name="score" type="radio" id="score5" value=5>
-                        <span>5</span>
-                        <input name="score" type="radio" id="score6" value=6>
-                        <span>6</span>
-                        <input name="score" type="radio" id="score7" value=7>
-                        <span>7</span>
-                        <input name="score" type="radio" id="score8" value=8>
-                        <span>8</span>
+    <!-- STATS MODAL -->
+
+    <div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog col-12" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="padding: 5px 10px">
+                    <h2>Input Scores</h2>
+                </div>
+                <div class="modal-body" style="padding: 5px 10px">
+                    <div class="scoreSelector" id="scoreSelector">
+                        <h4>Score</h4>
+                        <div class="container row col-12" id="inputScoresDiv">
+                            <div id="inputScoresTabs" class="radio-group">
+                                <img src="scoreInputCircle.png" id="scoreInputCircle">
+
+                                <label>
+                                    <input name="score" value=1>
+                                    <img src="scoreInputCircleWhite.png" id="score1White" class="scoreWhite" onClick=clickScore(this.id) value=1>
+                                </label>
+
+                                <label>
+                                    <input name="score" value=2>
+                                    <img src="scoreInputCircleWhite.png" id="score2White" class="scoreWhite" onClick=clickScore(this.id) value=2>
+                                </label>
+
+                                <label>
+                                    <input name="score" value=3>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score3White" onClick=clickScore(this.id) value=3>
+                                </label>
+
+                                <label>
+                                    <input name="score" value=4>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score4White" onClick=clickScore(this.id) value=4>
+                                </label>
+
+                                <label>
+                                    <input name="score" value=5>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score5White" onClick=clickScore(this.id) value=5>
+                                </label>
+
+                                <label>
+                                    <input name="score" value=6>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score6White" onClick=clickScore(this.id) value=6>
+                                </label>
+
+                                <label>
+                                    <input name="score" value=7>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score7White" onClick=clickScore(this.id) value=7>
+                                </label>
+
+                                <label>
+                                    <input name="score" value=8>
+                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score8White" onClick=clickScore(this.id) value=8>
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="puttSelector">
+                        <h4>Putts</h4>
+                        <div class="container row col-12" id="inputPuttsDiv">
+                            <div id="inputPuttTabs">
+                                <img src="puttsInputRow.png" id="puttsInputRow">
+
+                                <label>
+                                    <input name="putts" value=1>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn1" class="puttsWhite" onClick=clickPutt(this.id) value=1>
+                                </label>
+
+                                <label>
+                                    <input name="putts" value=2>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn2" class="puttsWhite" onClick=clickPutt(this.id) value=2>
+                                </label>
+
+                                <label>
+                                    <input name="putts" value=3>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn3" class="puttsWhite" onClick=clickPutt(this.id) value=3>
+                                </label>
+
+                                <label>
+                                    <input name="putts" value=4>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn4" class="puttsWhite" onClick=clickPutt(this.id) value=4>
+                                </label>
+
+                                <label>
+                                    <input name="putts" value=5>
+                                    <img src="puttsInputRowWhite.png" id="puttsBtn5" class="puttsWhite" onClick=clickPutt(this.id) value=5>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fairwayAndGIRDiv" class="row col-12" style="width: 100%">
+                        <div class="col-5">
+                            <h4>Fairway</h4>
+                            <div class="row">
+                                <div id="fairCheckContainer" class="align-middle">
+                                    <img src="yesOrNoButtons.png" id="yesOrNoButtons">
+                                    <label>
+                                        <input name="fairway" value=true>
+                                        <img src="yesOrNoButtonsWhite.png" id="fairYes" class="fairway" onClick=fairwayHit(this.id) value=true>
+                                    </label>
+                                    <label>
+                                        <input name="fairway" value=false>
+                                        <img src="yesOrNoButtonsWhite.png" id="fairNo" class="fairway" onClick=fairwayHit(this.id) value=true>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-5">
+                            <h4>GIR</h4>
+                            <div class="row">
+                                <div id="girCheckContainer">
+                                    <img src="yesOrNoButtons.png" id="yesOrNoButtons">
+                                    <label>
+                                        <input name="gir" value=true>
+                                        <img src="yesOrNoButtonsWhite.png" id="girYes" class="greens" onClick=girHit(this.id) value=true>
+                                    </label>
+                                    <label>
+                                        <input name="gir" value=false>
+                                        <img src="yesOrNoButtonsWhite.png" id="girNo" class="greens" onClick=girHit(this.id) value=false>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="puttSelector">
-                    <h4>Putts</h4>
-                    <div class="puttbtns">
-                        <input  type="radio" name="putt" id="puttBtn1" value=1>
-                        <span>1</span>
-                        <input  type="radio" name="putt" id="puttBtn2" value=2>
-                        <span>2</span>
-                        <input  type="radio" name="putt" id="puttBtn3" value=3>
-                        <span>3</span>
-                        <input  type="radio" name="putt" id="puttBtn4" value=4>
-                        <span>4</span>
-                    </div>
-                </div>
+
 
                 <h4>Fairway</h4>
                 <div id="fairCheckContainer">
@@ -108,6 +253,47 @@
                 <button type="button" onClick="setStats()" class="btn">Next Hole</button>
             </div>
         </div>
+
+
+</body>
+
+
+<!-- SCORE INPUT SCRIPT -->
+
+<script> 
+
+    function clickScore(id) {
+        $('.scoreWhite').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+    }
+
+    function clickPutt(id) {
+        $('.puttsWhite').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+    }
+
+    function fairwayHit(id) {
+        $('.fairway').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+    }
+
+    function girHit(id) {
+        $('.greens').css('opacity', '1')
+        document.getElementById(id).style.opacity = "0"
+    }
+
+</script>
+
+
+<!-- BOOTSTRAP SCRIPTS -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+=======
     </div>
 </div>
 
@@ -379,6 +565,7 @@
    crossorigin='anonymous'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy'
    crossorigin='anonymous'></script>
+
 
 <script>
     let course = localStorage.getItem('currentCourse');

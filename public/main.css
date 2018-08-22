@@ -68,7 +68,6 @@ html {
 }
 
 #newRoundButton {
-    opacity: 1;
     padding: 0;
     margin: 0;
 }
@@ -84,6 +83,7 @@ html {
 
 .statistics {
     font-size: 15px;
+    width: 100%;
 }
 
 #statistics {
@@ -112,11 +112,13 @@ html {
 
 #statisticsModalDialog {
     margin: 0;
+    width: 100%;
 }
 
 #statisticsModalContent {
     border: none;
     border-radius: 0;
+    width: 100%;
 }
 
 #closeStatisticsModalButtonImage {
@@ -592,122 +594,4 @@ body {
 
 }
 
-
-#courseImage {
-    display: flex;
-    height: 90vh;
-    width: 70vw;
-}
-#imgDistanceCont {
-    display: flex;
-    flex-direction: row;
-}
-
-html {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-}
-
-body {
-    font-family: 'Alegreya Sans SC', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    overflow: hidden;
-    height: 100%;
-}
-
-#distanceContainer {
-    text-align: center;
-    margin-right: 10px;
-    margin-top: 20px;
-}
-
-.firstbox {
-    height: 20px;
-    width: 60px;
-    border: 1px solid black;
-}
-
-#scorecard {
-    height: 100%;
-    width: 100%;
-}
-
-.holes {
-    height: 20px;
-    width: 20px;
-    border: 1px solid black;
-}
-
-.scoreSelector {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: space-around;
-}
-
-.scorebtns {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-}
-
-
-.scoreBtn {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: none;
-}
-
-.scoreBtn:active {
-    color: #1bb06b;
-}
-
-.scoreBtn:hover {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: #1bb06b;
-    color: white;
-}
-.puttSelector {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: space-around;
-}
-.puttBtn {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: none;
-}
-
-.puttbtns {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-}
-
-.puttBtn:hover {
-    border: 1px solid #1bb06b;
-    border-radius: 5px;
-    background: #1bb06b;
-    color: white;
-}
-
-#checkText {
-    margin-bottom: 10px;
-}
- 
-#statCheckbox {
-    height: 30px;
-    width: 30px;
-    border: 1px solid #1bb06b;
-    background: none;
-}
 
