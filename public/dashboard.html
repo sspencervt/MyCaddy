@@ -65,19 +65,19 @@
         <div class="col-9" id="rightColumnButtonContainer">
             <div id="startARoundDiv">
                 <div class="col-12 well">
-                    <img src="StartARoundButton.png" id="startARoundButtonImage" onClick="setUpModal()" type="button" data-toggle="modal" data-target="#startaround">
+                    <img src="StartARoundButton.png" id="startARoundButtonImage" onClick="setUpModal()" data-toggle="modal" data-target="#startaround">
                 </div>
             </div>
             <div id="myStatsDiv" onClick="getStatistics()">
                 <div class="col-12 well" onClick="getStatistics()">
 
-                    <img onClick="getStatistics()" src="MyStatsButton.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics" type="button">
+                    <img onClick="getStatistics()" src="MyStatsButton.png" id="myStatsButtonImage" data-toggle="modal" data-target="#statistics">
 
                 </div>
             </div>
             <div id="myProfileButtonDiv">
                 <div class="col-12 well">
-                    <img src="MyProfileButton.png" id="myProfileButtonImage" type="button" data-toggle="modal" data-target="#profileModal">
+                    <img src="MyProfileButton.png" id="myProfileButtonImage" data-toggle="modal" data-target="#profileModal">
                 </div>
             </div>
         </div>
@@ -161,11 +161,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     Start A Round
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body col-12 row">
                     <div class="coursedropdown dropdown col-6" id="startRoundModalSelectCourseDiv">
-                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="selectCourseText">
+                        <button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="selectCourseText">
                             Select Courses
                         </button>
                         <ul class="dropdown-menu col-12" id="selectCourseDropdownData" aria-labelledby="courseDropdown">
@@ -178,7 +178,7 @@
                         </ul>
                     </div>
                     <div class="teedropdown dropdown col-5" id="teeDropDown">
-                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="selectTeesText">
+                        <button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="selectTeesText">
                             Select Tees
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="teeDropdown">
@@ -189,12 +189,12 @@
                 <!-- closes start a course modal body -->
                 <div class="modal-footer">
                     <a href="scorecard.html" class="col-4" id="StartARoundButtonA">
-                        <button type="button" id="newRoundButton" class="btn">
+                        <button id="newRoundButton" class="btn">
                             <img src="StartARoundModalButton.png" id="startARoundModalButtonImage">
                         </button>
                     </a>
                     <div class="col-4"></div>
-                    <button type="button" class="btn col-4" data-dismiss="modal" id="closeStartARoundModalButton">
+                    <button class="btn col-4" data-dismiss="modal" id="closeStartARoundModalButton">
                         <img src="CloseModalButton.png" id="closeStartARoundModalButtonImage">
                     </button>
                 </div>
@@ -291,7 +291,7 @@
             </div>
         </div>
         <div class="modal-footer" id="statisticsModalFooter">
-            <button type="button" class="btn col-12" data-dismiss="modal" id="closeStatisticsModalButton"><img src='closeStatisticsModalButton.png' id='closeStatisticsModalButtonImage'</button>
+            <button class="btn col-12" data-dismiss="modal" id="closeStatisticsModalButton"><img src='closeStatisticsModalButton.png' id='closeStatisticsModalButtonImage'</button>
         </div>
     </div>
     </div>
