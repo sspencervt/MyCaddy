@@ -45,18 +45,25 @@ app.post('/users/add', function (req, res) {
 })
 
 app.post('/users/verify', function(req, res) {
+    console.log('inside users verify')
+    console.log(req.body)
     db.Users.findOne({username:req.body.username}, (err, userObject) => {
+        console.log('inside db findOne')
         if(userObject){
             if (bcrypt.compareSync(req.body.password, userObject.password)){
+                console.log('successfully logged in')
                 res.cookie("currentUser",userObject.username);
                 res.cookie("loggedIn",'true');
                 res.redirect('/')
             } else {
+                console.log('there is a password error')
                 res.cookie("loggedIn","Incorrect_Password")
                 res.redirect('/')
+
             }
 
         } else {
+            console.log('there is a username error')
             res.cookie("loggedIn","Username_Error")
             res.redirect('/')
         }

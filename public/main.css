@@ -24,7 +24,7 @@ html {
 
 #nextHole {
     width: 100%;
-    
+
 }
 
 #selectCourseDropdownData {
@@ -475,22 +475,21 @@ body {
 }
 
 #signUpButton {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    margin: 0;
+    padding: 0;
     color: white;
+    width: 100%;
 }
 
 #signInHelp {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    margin: 0;
+    padding: 0;
     color: white;
+    width: 100%;
 }
 
 #signUpAndHelpDiv {
-    display: flex;
-    flex-direction: row;
+
     width: 100%;
     margin: 0;
 }

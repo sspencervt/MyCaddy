@@ -55,21 +55,15 @@
                 <img src="MyCaddyLoginPageLogo.png" id="myCaddyLogoLogInScreen">
             </div>
             <br>
-
-            <form method="POST" action="/users/verify" class="col-12" id="logInForm">
                 <input onClick="clearErrors()" id="usernameInput" name="username" placeholder="Username">
                 <p id="userNameError"></p>
                 <input onClick="clearErrors()" id="passwordInput" type="password" name="password" placeholder="Password">
                 <p id="passwordError"></p>
-                
-                    <img id="logInButtonLoginPageImage" src="LoginButtonLoginPage.png">
-        
+                    <img onClick="handleLogIn()" id="logInButtonLoginPageImage" src="LoginButtonLoginPage.png">
                 <br>
-            </form>
-
-            <div class="row" id="signUpAndHelpDiv">
-                <button data-target="#signupModal" data-toggle="modal" id="signUpButton" class="col-6 row">Sign Up</button>
-                <button id="signInHelp" class="col-6 row">Login Help</button>
+            <div id="signUpAndHelpDiv">
+                <img src="signUpButton.png" data-target="#signupModal" data-toggle="modal" id="signUpButton" class="col-5">
+                <img src="loginHelpButton.png" id="signInHelp" class="col-5">
             </div>
         </div>
         <div class='col-2'></div>
@@ -129,20 +123,42 @@
 
     <script>
 
+        checkLogIn();
+        clearErrors();
+        
+        function handleLogIn() {
+           let userName = $('#usernameInput').val();
+           let password = $('#passwordInput').val();
+           console.log(userName);
+           console.log(password);
+           fetch('/users/verify', {
+               method: "POST",
+               headers: { "Content-Type": "application/json" },
+               body: JSON.stringify({ "username": userName, "password": password })
+           }).then(function(response){
+               checkLogIn()
+            })
+        }
+
+
         function clearErrors() {
             $("#passwordError").text('');
             $("#userNameError").text('');
         }
 
-        let logInStatusArray = document.cookie.split(/[\s=;]/)
-        let indexOf = logInStatusArray.indexOf('loggedIn');
-        if (logInStatusArray[indexOf + 1] == 'true') {
-            window.location = '/dashboard.html'
-        } else if (logInStatusArray[indexOf + 1] == 'Incorrect_Password') {
-            $("#passwordError").text('Incorrect Password')
-        } else if (logInStatusArray[indexOf + 1] == 'Username_Error') {
-            $("#userNameError").text('Username Not Found')
+        function checkLogIn(){
+            let logInStatusArray = document.cookie.split(/[\s=;]/)
+            let indexOf = logInStatusArray.indexOf('loggedIn');
+            if (logInStatusArray[indexOf + 1] == 'true') {
+                window.location = '/dashboard.html'
+            } else if (logInStatusArray[indexOf + 1] == 'Incorrect_Password') {
+                $("#passwordError").text('Incorrect Password')
+            } else if (logInStatusArray[indexOf + 1] == 'Username_Error') {
+                $("#userNameError").text('Username Not Found')
+            }
+
         }
+
 
     </script>
 </body>

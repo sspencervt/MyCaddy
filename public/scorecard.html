@@ -39,7 +39,7 @@
             <img id="courseImage" src="WCCHole5.png">
         </div>
         <div id="holeNumber">
-            <div id="holeNumberForMap">10</div>
+            <div id="holeNumberForMap">1</div>
         </div>
 
         <div onClick="createCurrentLocation()" id="refreshButtonDiv" class="col-3">
@@ -598,6 +598,7 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
 
     function updateHole() {
         updateScorecard()
+        document.getElementById('holeNumberForMap').textContent = index+2;
         index++
         currentHole = golfCourseArray[index]
         document.getElementById('courseImage').setAttribute('src',courseObject.holes[currentHole].img)
