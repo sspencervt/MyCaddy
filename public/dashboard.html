@@ -57,12 +57,12 @@
                 <i class="fa fa-cog"></i>
             </div>
             <div id="settingsArrowDiv">
-                <i class="fas fa-caret-right"></i>
+                <i class="fas fa-caret-left"></i>
             </div>
-            <img src="SettingsButton.png" id="settingsButtonImage">
+            <!-- <img src="SettingsButton.png" id="settingsButtonImage"> -->
         </div>
-        <div class="col-2"></div>
-        <div class="col-9" id="rightColumnButtonContainer">
+        <div class="col-1"></div>
+        <div class="col-10" id="rightColumnButtonContainer">
             <div id="startARoundDiv">
                 <div class="col-12 well">
                     <img src="StartARoundButton.png" id="startARoundButtonImage" onClick="setUpModal()" data-toggle="modal" data-target="#startaround">
@@ -88,12 +88,14 @@
     <div id="mySidenav" class="sidenav column">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <table class="table table-borderless" id="sideNavTable">
+                <h1 style="font-family: 'Alegreya Sans SC', sans-serif; color: white; margin: 0; padding-left: 10px;">Customize Scorecard</h1>
+
             <tbody>
                 <tr>
                     <th scope="row" class="align-middle">Score</th>
                     <td class="align-middle">
                         <label class="switch">
-                            <input type="checkbox" data-toggle="toggle" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
+                            <input type="checkbox" checked data-toggle="toggle on" data-on="Included" data-off="Excluded" data-onstyle="success" data-offstyle="danger"></input>
                         </label>
                     </td>
                 </tr>
@@ -188,15 +190,17 @@
                 </div>
                 <!-- closes start a course modal body -->
                 <div class="modal-footer">
-                    <a href="scorecard.html" class="col-4" id="StartARoundButtonA">
+                        <div class="col-6"></div>
+                        
+                    <a href="scorecard.html" class="col-6" id="StartARoundButtonA">
                         <button id="newRoundButton" class="btn">
                             <img src="StartARoundModalButton.png" id="startARoundModalButtonImage">
                         </button>
                     </a>
-                    <div class="col-4"></div>
-                    <button class="btn col-4" data-dismiss="modal" id="closeStartARoundModalButton">
+
+                    <!-- <button class="btn col-4" data-dismiss="modal" id="closeStartARoundModalButton">
                         <img src="CloseModalButton.png" id="closeStartARoundModalButtonImage">
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>

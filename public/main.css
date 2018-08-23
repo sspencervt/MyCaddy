@@ -19,7 +19,7 @@ body {
     width: 90vw;
     background-color: white;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 #selectCourseText{
     width: 100%;
@@ -235,7 +235,9 @@ body {
     background-color: white; 
     border-bottom: solid lightgrey 1px;
     width: 100%;
-    height: auto;
+    height: 7vh;
+    display: flex;
+    align-content: center;
 }
 
 
@@ -282,6 +284,7 @@ body {
 
 #logInButtonDiv {
     top: 0px;
+    padding: 0;
 }
 
 #MyCaddyLogo {
@@ -306,7 +309,7 @@ body {
 
 
 #buttonContainer {
-    height: 90%;
+    height: 93vh;
     margin: 0;
     padding: 0;
     /* display: flex;
@@ -367,11 +370,29 @@ body {
     width: 100%;
 }
 
+#profileModal div {
+    padding: 5px;
+    margin: 0;
+}
+
+#profileModal div div {
+    padding: 0;
+    margin: 0;
+}
+
+#profileModal div div img {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
 #settingsButtonDiv {
     width: 100%;
     display: flex;
     padding: 0;
     padding-top: 10px;
+    background-color: #137b4b
+
 }
 
 #settingsButtonImage {
@@ -402,16 +423,20 @@ body {
     color: white;
 }
 
+.col-1 {
+    padding: 0 !important;
+}
+
 .col-3 {
-    padding: 0;
+    padding: 0 !important;
 }
 
 .col-6 {
-    padding: 0;
+    padding: 0 !important;
 }
 
-.col-9 {
-    padding: 0;
+.col-10 {
+    padding: 0 !important;
 }
 
 .sidenav {
