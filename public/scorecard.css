@@ -18,10 +18,19 @@ body {
     height: 100%;
 }
 
+h2 {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: white;
+}
+
+#playingPage {
+    height: 100%;
+}
 #courseImageDiv {
     width: 100%;
     height: auto;
     padding: 0 0 5px 0;
+    background-color: black;
 }
 
 #courseImage {
@@ -52,6 +61,8 @@ body {
     height: 50px;
     background-color: #137b4b;
     color: white;
+    border: 2px solid white;
+    font-size: 20px;
 }
 
 #viewHoleControls {
@@ -68,11 +79,12 @@ body {
     padding: 0;
     margin: 0;
     height: 24vh;
+    background-color: black;
 }
 
 #distanceContainer table {
     margin: 0;
-    border: none;
+    border: 3px solid white;
     border-spacing: 0;
 }
 
@@ -85,12 +97,22 @@ body {
 
 #distanceContainer table thead tr td {
     border: none;
-    background-color: #1bb06b;
+    background-color: #137b4b;
     color: white;
+    font-size: 20px;
 }
 
 #distanceContainer table tr {
-    height: 8vh;
+}
+
+#distanceToBack {
+    padding: 2px 0;
+}
+#distanceToCenter {
+    padding: 2px 0;
+}
+#distanceToFront {
+    padding: 2px 0;
 }
 
 #inputScoresAndScoreboardButtons {
@@ -106,16 +128,18 @@ body {
     margin: 0;
     border: none;
     border-spacing: 0;
+    padding: 0;
 }
 
 #inputScoresAndScoreboardButtons table thead tr th {
-    padding: 0;
+    padding: 0 !important;
     margin: 0;
-    border: none;
+    border: 2px solid white;
 }
 
 #inputScoresAndScoreboardButtons table tr {
-    height: 12vh;
+    height: 10vh;
+    padding: 0px;
 }
 
 
@@ -133,18 +157,22 @@ body {
 
 #inputScoresImage {
     width: 100%;
+    border: 2px solid white;
 }
 
 #scorecardButtonImage {
     width: 100%;
+    border: 1px solid white;
+
 }
 
 #refreshButtonDiv {
     position: absolute;
     right: 0;
-    top: 69%;
+    top: 60%;
     padding: 0;
     margin: 0;
+    border: 3px solid white;
 }
 
 #refreshButton {
@@ -172,7 +200,7 @@ body {
 #inputScoresTabs {
     margin: 0;
     width: 100%;
-    height: 45vh;
+    height: 50vh;
 }
 
 #inputScoresTabs label {

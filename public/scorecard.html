@@ -27,460 +27,462 @@
 
     <title>Document</title>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
-       crossorigin='anonymous'>
+        crossorigin='anonymous'>
 </head>
 
 <body>
-<div id="playingPage">
-    <div id="imgDistanceCont">
+    <div id="playingPage">
+        <div id="imgDistanceCont">
 
-    <div id="holeImage">
-        <div class="col-12" id="courseImageDiv">
-            <img id="courseImage" src="WCCHole5.png">
-        </div>
-        <div id="holeNumber">
-            <div id="holeNumberForMap">1</div>
-        </div>
-
-        <div onClick="createCurrentLocation()" id="refreshButtonDiv" class="col-3">
-            <img src="refreshButton.png" id="refreshButton">
-        </div>
-
-
-    </div>
-
-    <div class="col-12 row" id="viewHoleControls">
-
-        <div class="col-5" id="inputScoresAndScoreboardButtons">
-            <table class="table table-responsive table-borderless .align-bottom">
-                <thead>
-                    <tr>
-                        <th scope='col' class="align-middle">
-                            <div data-target="#statsModal" data-toggle="modal">
-                                <img src="inputScores.png" id="inputScoresImage">
-                            </div>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th scope='col' class="align-middle">
-                            <a onClick="showScorecard()">
-                                <div>
-                                    <img src="scorecardButton.png" id="scorecardButtonImage"> </div>
-                            </a>
-                        </th>
-
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="col-2"></div>
-        <div class="col-5" id="distanceContainer">
-            <table class="table table-responsive table-borderless">
-                <thead>
-                    <tr>
-                        <th scope='col' class="align-middle">
-                            <img src="backYardage.png" id="backYardageImage">
-                        </th>
-                        <td id="distanceToBack" class="align-middle">-?-</td>
-                    </tr>
-                    <tr>
-                        <th scope='col' class="align-middle">
-                            <img src="middleYardage.png" id="middleYardageImage">
-                        </th>
-                        <td id="distanceToCenter" class="align-middle">-?-</td>
-                    </tr>
-                    <tr>
-                        <th scope='col' class="align-middle">
-                            <img src="frontYardage.png" id="frontYardageImage">
-                        </th>
-                        <td id="distanceToFront" class="align-middle">-?-</td>
-                    </tr>
-                </thead>
-            </table>
-
-        </div>
-    </div>
-</div>
-
-
-    <!-- STATS MODAL -->
-
-    <div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog col-12" role="document">
-            <div class="modal-content">
-                <div class="modal-body" style="padding: 5px 10px">
-                    <div class="scoreSelector" id="scoreSelector">
-                        <h4>Score</h4>
-                        <div class="container row col-12" id="inputScoresDiv">
-                            <div id="inputScoresTabs" class="radio-group">
-                                <img src="scoreInputCircle.png" id="scoreInputCircle">
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" id="score1White" class="scoreWhite" onClick="setScoreValue(1); clickScore(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" id="score2White" class="scoreWhite" onClick="setScoreValue(2); clickScore(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score3White" onClick="setScoreValue(3); clickScore(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score4White" onClick="setScoreValue(4); clickScore(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score5White" onClick="setScoreValue(5); clickScore(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score6White" onClick="setScoreValue(6); clickScore(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score7White" onClick="setScoreValue(7); clickScore(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score8White" onClick="setScoreValue(8); clickScore(this.id)">
-                                </label>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="puttSelector">
-                        <h4>Putts</h4>
-                        <div class="container row col-12" id="inputPuttsDiv">
-                            <div id="inputPuttTabs">
-                                <img src="puttsInputRow.png" id="puttsInputRow">
-
-                                <label>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn1" class="puttsWhite" onClick="setPuttValue(1); clickPutt(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn2" class="puttsWhite" onClick="setPuttValue(2); clickPutt(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn3" class="puttsWhite" onClick="setPuttValue(3); clickPutt(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn4" class="puttsWhite" onClick="setPuttValue(4); clickPutt(this.id)">
-                                </label>
-
-                                <label>
-                                    <img src="puttsInputRowWhite.png" id="puttsBtn5" class="puttsWhite" onClick="setPuttValue(5); clickPutt(this.id)">
-                                </label>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div id="fairwayAndGIRDiv" class="row col-12" style="width: 100%">
-                        <div class="col-5">
-                            <h4>Fairway</h4>
-                            <div class="row">
-                                <div id="fairCheckContainer" class="align-middle">
-                                    <img src="yesOrNoButtons.png" id="yesOrNoButtons">
-                                    <label>
-                                        <img src="yesOrNoButtonsWhite.png" id="fairYes" class="fairway" onClick="setFairwayValue('true'); fairwayHit(this.id)">
-                                    </label>
-                                    <label>
-                                        <img src="yesOrNoButtonsWhite.png" id="fairNo" class="fairway" onClick="setFairwayValue('false'); fairwayHit(this.id)">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-5">
-                            <h4>GIR</h4>
-                            <div class="row">
-                                <div id="girCheckContainer">
-                                    <img src="yesOrNoButtons.png" id="yesOrNoButtons">
-                                    <label>
-                                        <img src="yesOrNoButtonsWhite.png" id="girYes" class="greens" onClick="setGirValue('true'); girHit(this.id)">
-                                    </label>
-                                    <label>
-                                        <img src="yesOrNoButtonsWhite.png" id="girNo" class="greens" onClick="setGirValue('false'); girHit(this.id)">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div id="holeImage">
+                <div class="col-12" id="courseImageDiv">
+                    <img id="courseImage" src="WCCHole5.png">
                 </div>
-                <div class="modal-footer col-12" id="nextHoleButtonDiv">
-                    <div class="col-6"></div>
-                    <img src="nextHoleButton.png" id="nextHole" data-dismiss="modal" onClick="setStats()" class="col-6">
+                <div id="holeNumber">
+                    <div id="holeNumberForMap">1</div>
+                </div>
+
+                <div onClick="createCurrentLocation()" id="refreshButtonDiv" class="col-3">
+                    <img src="refreshButton.png" id="refreshButton">
+                </div>
+
+
+            </div>
+
+            <div class="col-12 row" id="viewHoleControls">
+
+                <div class="col-12" id="inputScoresAndScoreboardButtons">
+                    <table class="table table-responsive table-borderless .align-bottom">
+                        <thead>
+                            <tr>
+                                <th scope='col' class="align-middle" style="padding: 0">
+                                    <div data-target="#statsModal" data-toggle="modal">
+                                        <img src="inputScores.png" id="inputScoresImage">
+                                    </div>
+                                </th>
+                                <th scope='col' class="align-middle">
+                                    <div onClick="showScorecard()">
+                                            <img src="scorecardButton.png" id="scorecardButtonImage">
+                                    </div>
+                                </th>
+                            </tr>
+
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-12" id="distanceContainer">
+                    <br>
+                    <table class="table table-responsive table-borderless">
+                        <thead>
+
+                            <tr>
+                                <th scope='col' class="align-middle">
+                                    <img src="backYardage.png" id="backYardageImage">
+                                </th>
+                                
+                                <th scope='col' class="align-middle">
+                                    <img src="middleYardage.png" id="middleYardageImage">
+                                </th>
+                                
+                                <th scope='col' class="align-middle">
+                                    <img src="frontYardage.png" id="frontYardageImage">
+                                </th>
+                                
+                            </tr>
+                            <tr>
+                                <td id="distanceToBack" class="align-middle">300</td>
+                                <td id="distanceToCenter" class="align-middle">300</td>
+                                <td id="distanceToFront" class="align-middle">300</td>
+                            </tr>
+
+                        </thead>
+                    </table>
+
                 </div>
             </div>
         </div>
+
+
+        <!-- STATS MODAL -->
+
+        <div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog col-12" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="padding: 5px 10px">
+                        <div class="scoreSelector" id="scoreSelector">
+                            <h4>Score</h4>
+                            <div class="container row col-12" id="inputScoresDiv">
+                                <div id="inputScoresTabs" class="radio-group">
+                                    <img src="scoreInputCircle.png" id="scoreInputCircle">
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" id="score1White" class="scoreWhite" onClick="setScoreValue(1); clickScore(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" id="score2White" class="scoreWhite" onClick="setScoreValue(2); clickScore(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score3White" onClick="setScoreValue(3); clickScore(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score4White" onClick="setScoreValue(4); clickScore(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score5White" onClick="setScoreValue(5); clickScore(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score6White" onClick="setScoreValue(6); clickScore(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score7White" onClick="setScoreValue(7); clickScore(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="scoreInputCircleWhite.png" class="scoreWhite" id="score8White" onClick="setScoreValue(8); clickScore(this.id)">
+                                    </label>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="puttSelector">
+                            <h4>Putts</h4>
+                            <div class="container row col-12" id="inputPuttsDiv">
+                                <div id="inputPuttTabs">
+                                    <img src="puttsInputRow.png" id="puttsInputRow">
+
+                                    <label>
+                                        <img src="puttsInputRowWhite.png" id="puttsBtn1" class="puttsWhite" onClick="setPuttValue(1); clickPutt(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="puttsInputRowWhite.png" id="puttsBtn2" class="puttsWhite" onClick="setPuttValue(2); clickPutt(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="puttsInputRowWhite.png" id="puttsBtn3" class="puttsWhite" onClick="setPuttValue(3); clickPutt(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="puttsInputRowWhite.png" id="puttsBtn4" class="puttsWhite" onClick="setPuttValue(4); clickPutt(this.id)">
+                                    </label>
+
+                                    <label>
+                                        <img src="puttsInputRowWhite.png" id="puttsBtn5" class="puttsWhite" onClick="setPuttValue(5); clickPutt(this.id)">
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="fairwayAndGIRDiv" class="row col-12" style="width: 100%">
+                            <div class="col-5">
+                                <h4>Fairway</h4>
+                                <div class="row">
+                                    <div id="fairCheckContainer" class="align-middle">
+                                        <img src="yesOrNoButtons.png" id="yesOrNoButtons">
+                                        <label>
+                                            <img src="yesOrNoButtonsWhite.png" id="fairYes" class="fairway" onClick="setFairwayValue('true'); fairwayHit(this.id)">
+                                        </label>
+                                        <label>
+                                            <img src="yesOrNoButtonsWhite.png" id="fairNo" class="fairway" onClick="setFairwayValue('false'); fairwayHit(this.id)">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2"></div>
+                            <div class="col-5">
+                                <h4>GIR</h4>
+                                <div class="row">
+                                    <div id="girCheckContainer">
+                                        <img src="yesOrNoButtons.png" id="yesOrNoButtons">
+                                        <label>
+                                            <img src="yesOrNoButtonsWhite.png" id="girYes" class="greens" onClick="setGirValue('true'); girHit(this.id)">
+                                        </label>
+                                        <label>
+                                            <img src="yesOrNoButtonsWhite.png" id="girNo" class="greens" onClick="setGirValue('false'); girHit(this.id)">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer col-12" id="nextHoleButtonDiv">
+                        <div class="col-6"></div>
+                        <img src="nextHoleButton.png" id="nextHole" data-dismiss="modal" onClick="setStats()" class="col-6">
+                    </div>
+                </div>
+            </div>
 
 
 </body>
 
 
 
-    </div>
+</div>
 </div>
 
 
 <div id="refinedScorecard">
-        <div class="container-fluid" id="navbarDiv">
-                <div class="row">
-                    <div class="col-3" id="profilePicDiv">
-                        <img src="MyCaddyWizardLogo.png" id="profilePic">
-                    </div>
-                    <div id="MyCaddyLogoDiv" class="col-6">
-                        <img id="MyCaddyLogo" src="MyCaddyLogo.png">
-                    </div>
-                    <div id="logInButtonDiv" class="col-3">
-                        <a id="logInButton" href="index.html" onClick="logOut()">
-                            <img src="LogoutButton.png" id="logInButtonTemplate">
-                        </a>
-                    </div>
-                </div>
+    <div class="container-fluid" id="navbarDiv">
+        <div class="row">
+            <div class="col-3" id="profilePicDiv">
+                <img src="MyCaddyWizardLogo.png" id="profilePic">
             </div>
-            <br>
-            <div id="scorecard">
-                <div class="table-responsive" id="backNineTable">
-                    <table class="table table-bordered" id="frontNineTableID">
-                        <thead>
-                            <tr id="frontNineHoleNumbers">
-                                <th scope="col" class="holeLabel">Hole</th>
-                                <th scope="col" id="numberHole1">1</th>
-                                <th scope="col" id="numberHole2">2</th>
-                                <th scope="col" id="numberHole3">3</th>
-                                <th scope="col" id="numberHole4">4</th>
-                                <th scope="col" id="numberHole5">5</th>
-                                <th scope="col" id="numberHole6">6</th>
-                                <th scope="col" id="numberHole7">7</th>
-                                <th scope="col" id="numberHole8">8</th>
-                                <th scope="col" id="numberHole9">9</th>
-                                <th scope="col" id="TotalsFrontNine">In</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr id="frontNinePar">
-                                <th scope="row">Par</th>
-                                <td id="parHole1"></td>
-                                <td id="parHole2"></td>
-                                <td id="parHole3"></td>
-                                <td id="parHole4"></td>
-                                <td id="parHole5"></td>
-                                <td id="parHole6"></td>
-                                <td id="parHole7"></td>
-                                <td id="parHole8"></td>
-                                <td id="parHole9"></td>
-                                <td id="parHoleTotalFrontNine"></td>
-                            </tr>
-                            <tr id="frontNineYardage">
-                                <th scope="row">Yardage</th>
-                                <td id="yardHole1"></td>
-                                <td id="yardHole2"></td>
-                                <td id="yardHole3"></td>
-                                <td id="yardHole4"></td>
-                                <td id="yardHole5"></td>
-                                <td id="yardHole6"></td>
-                                <td id="yardHole7"></td>
-                                <td id="yardHole8"></td>
-                                <td id="yardHole9"></td>
-                                <td id="yardHoleTotalFrontNine"></td>
-                            </tr>
-                            <tr id="frontNineHandicap">
-                                <th scope="row">Handicap</th>
-                                <td id="handicapHole1"></td>
-                                <td id="handicapHole2"></td>
-                                <td id="handicapHole3"></td>
-                                <td id="handicapHole4"></td>
-                                <td id="handicapHole5"></td>
-                                <td id="handicapHole6"></td>
-                                <td id="handicapHole7"></td>
-                                <td id="handicapHole8"></td>
-                                <td id="handicapHole9"></td>
-                                <td id="handicapTotalFrontNine"></td>
-                            </tr>
-                            <tr id="frontNineScore">
-                                <th scope="row">Score</th>
-                                <td id="scoreHole1"></td>
-                                <td id="scoreHole2"></td>
-                                <td id="scoreHole3"></td>
-                                <td id="scoreHole4"></td>
-                                <td id="scoreHole5"></td>
-                                <td id="scoreHole6"></td>
-                                <td id="scoreHole7"></td>
-                                <td id="scoreHole8"></td>
-                                <td id="scoreHole9"></td>
-                                <td id="scoreHoleTotalFrontNine"></td>
-                            </tr>
-                            <tr id="frontNinePutts">
-                                    <th scope="row">Putts</th>
-                                    <td id="puttsHole1"></td>
-                                    <td id="puttsHole2"></td>
-                                    <td id="puttsHole3"></td>
-                                    <td id="puttsHole4"></td>
-                                    <td id="puttsHole5"></td>
-                                    <td id="puttsHole6"></td>
-                                    <td id="puttsHole7"></td>
-                                    <td id="puttsHole8"></td>
-                                    <td id="puttsHole9"></td>
-                                    <td id="puttsTotalFrontNine"></td>
-                                </tr>
-                            <tr id="frontNineFairwaysHit">
-                                <th scope="row">Fairway</th>
-                                <td id="fairwayHole1"></td>
-                                <td id="fairwayHole2"></td>
-                                <td id="fairwayHole3"></td>
-                                <td id="fairwayHole4"></td>
-                                <td id="fairwayHole5"></td>
-                                <td id="fairwayHole6"></td>
-                                <td id="fairwayHole7"></td>
-                                <td id="fairwayHole8"></td>
-                                <td id="fairwayHole9"></td>
-                                <td id="fairwayTotalFrontNine"></td>
-                            </tr>
-                            <tr id="frontNineGIR">
-                                <th scope="row">GIR</th>
-                                <td id="girHole1"></td>
-                                <td id="girHole2"></td>
-                                <td id="girHole3"></td>
-                                <td id="girHole4"></td>
-                                <td id="girHole5"></td>
-                                <td id="girHole6"></td>
-                                <td id="girHole7"></td>
-                                <td id="girHole8"></td>
-                                <td id="girHole9"></td>
-                                <td id="girTotalFrontNine"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-responsive" id="backNineTable">
-                    <table class="table table-bordered" id="backNineTableID">
-                        <thead>
-                            <tr id="backNineHoleNumbers">
-                                <th scope="col" class="holeLabel">Hole</th>
-                                <th scope="col" id="numberHole10">10</th>
-                                <th scope="col" id="numberHole11">11</th>
-                                <th scope="col" id="numberHole12">12</th>
-                                <th scope="col" id="numberHole13">13</th>
-                                <th scope="col" id="numberHole14">14</th>
-                                <th scope="col" id="numberHole15">15</th>
-                                <th scope="col" id="numberHole16">16</th>
-                                <th scope="col" id="numberHole17">17</th>
-                                <th scope="col" id="numberHole18">18</th>
-                                <th scope="col" id="totalsBackNine">Out</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr id="backNinePar">
-                                <th scope="row">Par</th>
-                                <td id="parHole10"></td>
-                                <td id="parHole11"></td>
-                                <td id="parHole12"></td>
-                                <td id="parHole13"></td>
-                                <td id="parHole14"></td>
-                                <td id="parHole15"></td>
-                                <td id="parHole16"></td>
-                                <td id="parHole17"></td>
-                                <td id="parHole18"></td>
-                                <td id="parHoleTotalBackNine"></td>
-                            </tr>
-                            <tr id="backNineYardage">
-                                <th scope="row">Yardage</th>
-                                <td id="yardHole10"></td>
-                                <td id="yardHole11"></td>
-                                <td id="yardHole12"></td>
-                                <td id="yardHole13"></td>
-                                <td id="yardHole14"></td>
-                                <td id="yardHole15"></td>
-                                <td id="yardHole16"></td>
-                                <td id="yardHole17"></td>
-                                <td id="yardHole18"></td>
-                                <td id="yardageTotalBackNine"></td>
-                            </tr>
-                            <tr id="backNineHandicap">
-                                <th scope="row">Handicap</th>
-                                <td id="handicapHole10"></td>
-                                <td id="handicapHole11"></td>
-                                <td id="handicapHole12"></td>
-                                <td id="handicapHole13"></td>
-                                <td id="handicapHole14"></td>
-                                <td id="handicapHole15"></td>
-                                <td id="handicapHole16"></td>
-                                <td id="handicapHole17"></td>
-                                <td id="handicapHole18"></td>
-                                <td id="handicapTotalBackNine"></td>
-                            </tr>
-                            <tr id="backNineScore">
-                                <th scope="row">Score</th>
-                                <td id="scoreHole10"></td>
-                                <td id="scoreHole11"></td>
-                                <td id="scoreHole12"></td>
-                                <td id="scoreHole13"></td>
-                                <td id="scoreHole14"></td>
-                                <td id="scoreHole15"></td>
-                                <td id="scoreHole16"></td>
-                                <td id="scoreHole17"></td>
-                                <td id="scoreHole18"></td>
-                                <td id="scoreTotalBackNine"></td>
-                            </tr>
-                            <tr id="backNineFairwaysHit">
-                                <th scope="row">Fairway</th>
-                                <td id="fairwayHole10"></td>
-                                <td id="fairwayHole11"></td>
-                                <td id="fairwayHole12"></td>
-                                <td id="fairwayHole13"></td>
-                                <td id="fairwayHole14"></td>
-                                <td id="fairwayHole15"></td>
-                                <td id="fairwayHole16"></td>
-                                <td id="fairwayHole17"></td>
-                                <td id="fairwayHole18"></td>
-                                <td id="fairwayTotalBackNine"></td>
-                            </tr>
-                            <tr id="backNineGIR">
-                                <th scope="row">GIR</th>
-                                <td id="girHole10"></td>
-                                <td id="girHole11"></td>
-                                <td id="girHole12"></td>
-                                <td id="girHole13"></td>
-                                <td id="girHole14"></td>
-                                <td id="girHole15"></td>
-                                <td id="girHole16"></td>
-                                <td id="girHole17"></td>
-                                <td id="girHole18"></td>
-                                <td id="girTotalBackNine"></td>
-                            </tr>
-                            <tr id="backNinePutts">
-                                <th scope="row">Putts</th>
-                                <td id="puttsHole10"></td>
-                                <td id="puttsHole11"></td>
-                                <td id="puttsHole12"></td>
-                                <td id="puttsHole13"></td>
-                                <td id="puttsHole14"></td>
-                                <td id="puttsHole15"></td>
-                                <td id="puttsHole16"></td>
-                                <td id="puttsHole17"></td>
-                                <td id="puttsHole18"></td>
-                                <td id="puttsTotalBackNine"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="scorecardButtonDiv" class="row">
-                    <div class="col-5" id="returnButtonDiv">
-                        <a onClick="hideScorecard()"><img src="ReturnButton.png" id="returnButton"></a>
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-5" id="endRoundButtonDiv">
-                        <img src="EndRoundButton.png" id="endRoundButton" onClick="handleSubmitofScorecard()">
-                    </div>
-                </div>
+            <div id="MyCaddyLogoDiv" class="col-6">
+                <img id="MyCaddyLogo" src="MyCaddyLogo.png">
+            </div>
+            <div id="logInButtonDiv" class="col-3">
+                <a id="logInButton" href="index.html" onClick="logOut()">
+                    <img src="LogoutButton.png" id="logInButtonTemplate">
+                </a>
             </div>
         </div>
+    </div>
+    <br>
+    <div id="scorecard">
+        <div class="table-responsive" id="backNineTable">
+            <table class="table table-bordered" id="frontNineTableID">
+                <thead>
+                    <tr id="frontNineHoleNumbers">
+                        <th scope="col" class="holeLabel">Hole</th>
+                        <th scope="col" id="numberHole1">1</th>
+                        <th scope="col" id="numberHole2">2</th>
+                        <th scope="col" id="numberHole3">3</th>
+                        <th scope="col" id="numberHole4">4</th>
+                        <th scope="col" id="numberHole5">5</th>
+                        <th scope="col" id="numberHole6">6</th>
+                        <th scope="col" id="numberHole7">7</th>
+                        <th scope="col" id="numberHole8">8</th>
+                        <th scope="col" id="numberHole9">9</th>
+                        <th scope="col" id="TotalsFrontNine">In</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="frontNinePar">
+                        <th scope="row">Par</th>
+                        <td id="parHole1"></td>
+                        <td id="parHole2"></td>
+                        <td id="parHole3"></td>
+                        <td id="parHole4"></td>
+                        <td id="parHole5"></td>
+                        <td id="parHole6"></td>
+                        <td id="parHole7"></td>
+                        <td id="parHole8"></td>
+                        <td id="parHole9"></td>
+                        <td id="parHoleTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineYardage">
+                        <th scope="row">Yardage</th>
+                        <td id="yardHole1"></td>
+                        <td id="yardHole2"></td>
+                        <td id="yardHole3"></td>
+                        <td id="yardHole4"></td>
+                        <td id="yardHole5"></td>
+                        <td id="yardHole6"></td>
+                        <td id="yardHole7"></td>
+                        <td id="yardHole8"></td>
+                        <td id="yardHole9"></td>
+                        <td id="yardHoleTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineHandicap">
+                        <th scope="row">Handicap</th>
+                        <td id="handicapHole1"></td>
+                        <td id="handicapHole2"></td>
+                        <td id="handicapHole3"></td>
+                        <td id="handicapHole4"></td>
+                        <td id="handicapHole5"></td>
+                        <td id="handicapHole6"></td>
+                        <td id="handicapHole7"></td>
+                        <td id="handicapHole8"></td>
+                        <td id="handicapHole9"></td>
+                        <td id="handicapTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineScore">
+                        <th scope="row">Score</th>
+                        <td id="scoreHole1"></td>
+                        <td id="scoreHole2"></td>
+                        <td id="scoreHole3"></td>
+                        <td id="scoreHole4"></td>
+                        <td id="scoreHole5"></td>
+                        <td id="scoreHole6"></td>
+                        <td id="scoreHole7"></td>
+                        <td id="scoreHole8"></td>
+                        <td id="scoreHole9"></td>
+                        <td id="scoreHoleTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNinePutts">
+                        <th scope="row">Putts</th>
+                        <td id="puttsHole1"></td>
+                        <td id="puttsHole2"></td>
+                        <td id="puttsHole3"></td>
+                        <td id="puttsHole4"></td>
+                        <td id="puttsHole5"></td>
+                        <td id="puttsHole6"></td>
+                        <td id="puttsHole7"></td>
+                        <td id="puttsHole8"></td>
+                        <td id="puttsHole9"></td>
+                        <td id="puttsTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineFairwaysHit">
+                        <th scope="row">Fairway</th>
+                        <td id="fairwayHole1"></td>
+                        <td id="fairwayHole2"></td>
+                        <td id="fairwayHole3"></td>
+                        <td id="fairwayHole4"></td>
+                        <td id="fairwayHole5"></td>
+                        <td id="fairwayHole6"></td>
+                        <td id="fairwayHole7"></td>
+                        <td id="fairwayHole8"></td>
+                        <td id="fairwayHole9"></td>
+                        <td id="fairwayTotalFrontNine"></td>
+                    </tr>
+                    <tr id="frontNineGIR">
+                        <th scope="row">GIR</th>
+                        <td id="girHole1"></td>
+                        <td id="girHole2"></td>
+                        <td id="girHole3"></td>
+                        <td id="girHole4"></td>
+                        <td id="girHole5"></td>
+                        <td id="girHole6"></td>
+                        <td id="girHole7"></td>
+                        <td id="girHole8"></td>
+                        <td id="girHole9"></td>
+                        <td id="girTotalFrontNine"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive" id="backNineTable">
+            <table class="table table-bordered" id="backNineTableID">
+                <thead>
+                    <tr id="backNineHoleNumbers">
+                        <th scope="col" class="holeLabel">Hole</th>
+                        <th scope="col" id="numberHole10">10</th>
+                        <th scope="col" id="numberHole11">11</th>
+                        <th scope="col" id="numberHole12">12</th>
+                        <th scope="col" id="numberHole13">13</th>
+                        <th scope="col" id="numberHole14">14</th>
+                        <th scope="col" id="numberHole15">15</th>
+                        <th scope="col" id="numberHole16">16</th>
+                        <th scope="col" id="numberHole17">17</th>
+                        <th scope="col" id="numberHole18">18</th>
+                        <th scope="col" id="totalsBackNine">Out</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="backNinePar">
+                        <th scope="row">Par</th>
+                        <td id="parHole10"></td>
+                        <td id="parHole11"></td>
+                        <td id="parHole12"></td>
+                        <td id="parHole13"></td>
+                        <td id="parHole14"></td>
+                        <td id="parHole15"></td>
+                        <td id="parHole16"></td>
+                        <td id="parHole17"></td>
+                        <td id="parHole18"></td>
+                        <td id="parHoleTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineYardage">
+                        <th scope="row">Yardage</th>
+                        <td id="yardHole10"></td>
+                        <td id="yardHole11"></td>
+                        <td id="yardHole12"></td>
+                        <td id="yardHole13"></td>
+                        <td id="yardHole14"></td>
+                        <td id="yardHole15"></td>
+                        <td id="yardHole16"></td>
+                        <td id="yardHole17"></td>
+                        <td id="yardHole18"></td>
+                        <td id="yardageTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineHandicap">
+                        <th scope="row">Handicap</th>
+                        <td id="handicapHole10"></td>
+                        <td id="handicapHole11"></td>
+                        <td id="handicapHole12"></td>
+                        <td id="handicapHole13"></td>
+                        <td id="handicapHole14"></td>
+                        <td id="handicapHole15"></td>
+                        <td id="handicapHole16"></td>
+                        <td id="handicapHole17"></td>
+                        <td id="handicapHole18"></td>
+                        <td id="handicapTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineScore">
+                        <th scope="row">Score</th>
+                        <td id="scoreHole10"></td>
+                        <td id="scoreHole11"></td>
+                        <td id="scoreHole12"></td>
+                        <td id="scoreHole13"></td>
+                        <td id="scoreHole14"></td>
+                        <td id="scoreHole15"></td>
+                        <td id="scoreHole16"></td>
+                        <td id="scoreHole17"></td>
+                        <td id="scoreHole18"></td>
+                        <td id="scoreTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineFairwaysHit">
+                        <th scope="row">Fairway</th>
+                        <td id="fairwayHole10"></td>
+                        <td id="fairwayHole11"></td>
+                        <td id="fairwayHole12"></td>
+                        <td id="fairwayHole13"></td>
+                        <td id="fairwayHole14"></td>
+                        <td id="fairwayHole15"></td>
+                        <td id="fairwayHole16"></td>
+                        <td id="fairwayHole17"></td>
+                        <td id="fairwayHole18"></td>
+                        <td id="fairwayTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNineGIR">
+                        <th scope="row">GIR</th>
+                        <td id="girHole10"></td>
+                        <td id="girHole11"></td>
+                        <td id="girHole12"></td>
+                        <td id="girHole13"></td>
+                        <td id="girHole14"></td>
+                        <td id="girHole15"></td>
+                        <td id="girHole16"></td>
+                        <td id="girHole17"></td>
+                        <td id="girHole18"></td>
+                        <td id="girTotalBackNine"></td>
+                    </tr>
+                    <tr id="backNinePutts">
+                        <th scope="row">Putts</th>
+                        <td id="puttsHole10"></td>
+                        <td id="puttsHole11"></td>
+                        <td id="puttsHole12"></td>
+                        <td id="puttsHole13"></td>
+                        <td id="puttsHole14"></td>
+                        <td id="puttsHole15"></td>
+                        <td id="puttsHole16"></td>
+                        <td id="puttsHole17"></td>
+                        <td id="puttsHole18"></td>
+                        <td id="puttsTotalBackNine"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="scorecardButtonDiv" class="row">
+            <div class="col-5" id="returnButtonDiv">
+                <a onClick="hideScorecard()">
+                    <img src="ReturnButton.png" id="returnButton">
+                </a>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" id="endRoundButtonDiv">
+                <img src="EndRoundButton.png" id="endRoundButton" onClick="handleSubmitofScorecard()">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 <script> 
@@ -512,11 +514,11 @@
 <!-- BOOTSTRAP SCRIPTS -->
 
 <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'
-   crossorigin='anonymous'></script>
+    crossorigin='anonymous'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49'
-   crossorigin='anonymous'></script>
+    crossorigin='anonymous'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy'
-   crossorigin='anonymous'></script>
+    crossorigin='anonymous'></script>
 
 
 <script>
@@ -528,54 +530,54 @@
 
     let itemArray = document.cookie.split(/[\s=;]/)
     let indexOf = itemArray.indexOf('currentUser');
-    let currentUser = itemArray[indexOf+1];
+    let currentUser = itemArray[indexOf + 1];
 
-    let golfCourseArray = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen']
+    let golfCourseArray = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen']
     let index = 0;
     let currentHole = golfCourseArray[index]
-    document.getElementById('courseImage').setAttribute('src',courseObject.holes[currentHole].img)
+    document.getElementById('courseImage').setAttribute('src', courseObject.holes[currentHole].img)
 
-hideScorecard()
+    hideScorecard()
 
-function hideScorecard() {
-$('#refinedScorecard').hide()
-$('#playingPage').show()
-}
-
-function showScorecard() {
-    $('#playingPage').hide()
-    $('#refinedScorecard').show()
-    buildThePage(courseObject);
-}
-
-
-let scorecard = {
-    "course": currentCourse,
-    "userName": currentUser,
-    "datePlayed": new Date(),
-    "scores": {
-        "one":["one",courseObject.holes["one"].par],
-        "two":["two",courseObject.holes["two"].par],
-        "three":["three",courseObject.holes["three"].par],
-        "four":["four",courseObject.holes["four"].par],
-        "five":["five",courseObject.holes["five"].par],
-        "six":["six",courseObject.holes["six"].par],
-        "seven":["seven",courseObject.holes["seven"].par],
-        "eight":["eight",courseObject.holes["eight"].par],
-        "nine":["nine",courseObject.holes["nine"].par],
-        "ten":["ten",courseObject.holes["ten"].par],
-        "eleven":["eleven",courseObject.holes["eleven"].par],
-        "twelve":["twelve",courseObject.holes["twelve"].par],
-        "thirteen":["thirteen",courseObject.holes["thirteen"].par],
-        "fourteen":["fourteen",courseObject.holes["fourteen"].par],
-        "fifteen":["fifteen",courseObject.holes["fifteen"].par],
-        "sixteen":["sixteen",courseObject.holes["sixteen"].par],
-        "seventeen":["seventeen",courseObject.holes["seventeen"].par],
-        "eighteen":["eighteen",courseObject.holes["eighteen"].par]
+    function hideScorecard() {
+        $('#refinedScorecard').hide()
+        $('#playingPage').show()
     }
-}
 
-localStorage.setItem('scorecard',JSON.stringify(scorecard));
+    function showScorecard() {
+        $('#playingPage').hide()
+        $('#refinedScorecard').show()
+        buildThePage(courseObject);
+    }
+
+
+    let scorecard = {
+        "course": currentCourse,
+        "userName": currentUser,
+        "datePlayed": new Date(),
+        "scores": {
+            "one": ["one", courseObject.holes["one"].par],
+            "two": ["two", courseObject.holes["two"].par],
+            "three": ["three", courseObject.holes["three"].par],
+            "four": ["four", courseObject.holes["four"].par],
+            "five": ["five", courseObject.holes["five"].par],
+            "six": ["six", courseObject.holes["six"].par],
+            "seven": ["seven", courseObject.holes["seven"].par],
+            "eight": ["eight", courseObject.holes["eight"].par],
+            "nine": ["nine", courseObject.holes["nine"].par],
+            "ten": ["ten", courseObject.holes["ten"].par],
+            "eleven": ["eleven", courseObject.holes["eleven"].par],
+            "twelve": ["twelve", courseObject.holes["twelve"].par],
+            "thirteen": ["thirteen", courseObject.holes["thirteen"].par],
+            "fourteen": ["fourteen", courseObject.holes["fourteen"].par],
+            "fifteen": ["fifteen", courseObject.holes["fifteen"].par],
+            "sixteen": ["sixteen", courseObject.holes["sixteen"].par],
+            "seventeen": ["seventeen", courseObject.holes["seventeen"].par],
+            "eighteen": ["eighteen", courseObject.holes["eighteen"].par]
+        }
+    }
+
+    localStorage.setItem('scorecard', JSON.stringify(scorecard));
 
 
     function setScoreValue(value) {
@@ -585,24 +587,24 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
         localStorage.setItem("putts", value)
     }
     function setFairwayValue(value) {
-        localStorage.setItem("fairway", Boolean('true'==value))
+        localStorage.setItem("fairway", Boolean('true' == value))
     }
     function setGirValue(value) {
-        localStorage.setItem("gir", Boolean('true'==value))
+        localStorage.setItem("gir", Boolean('true' == value))
     }
-    
+
     function setStats() {
-        scorecard.scores[currentHole].push(Number(localStorage.getItem('score')), Number(localStorage.getItem('putts')), Boolean('true'==localStorage.getItem('fairway')), Boolean('true'==localStorage.getItem('gir')))
+        scorecard.scores[currentHole].push(Number(localStorage.getItem('score')), Number(localStorage.getItem('putts')), Boolean('true' == localStorage.getItem('fairway')), Boolean('true' == localStorage.getItem('gir')))
         updateHole()
     }
 
     function updateHole() {
         updateScorecard()
-        document.getElementById('holeNumberForMap').textContent = index+2;
+        document.getElementById('holeNumberForMap').textContent = index + 2;
         index++
         currentHole = golfCourseArray[index]
-        document.getElementById('courseImage').setAttribute('src',courseObject.holes[currentHole].img)
-        
+        document.getElementById('courseImage').setAttribute('src', courseObject.holes[currentHole].img)
+
     }
 
     function updateScorecard() {
@@ -645,45 +647,45 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
         document.getElementById('puttsHole17').textContent = scorecard.scores.seventeen[3]
         document.getElementById('puttsHole18').textContent = scorecard.scores.eighteen[3]
         //fair
-        document.getElementById('fairwayHole1').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.one[4] +'.png">'
-        document.getElementById('fairwayHole2').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.two[4] + '.png">'
-        document.getElementById('fairwayHole3').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.three[4] + '.png">'
-        document.getElementById('fairwayHole4').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.four[4] + '.png">'
-        document.getElementById('fairwayHole5').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.five[4] + '.png">'
-        document.getElementById('fairwayHole6').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.six[4] + '.png">'
-        document.getElementById('fairwayHole7').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seven[4] + '.png">'
-        document.getElementById('fairwayHole8').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eight[4] + '.png">'
-        document.getElementById('fairwayHole9').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.nine[4] + '.png">'
-        document.getElementById('fairwayHole10').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.ten[4] + '.png">'
-        document.getElementById('fairwayHole11').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eleven[4] + '.png">'
-        document.getElementById('fairwayHole12').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.twelve[4] + '.png">'
-        document.getElementById('fairwayHole13').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.thirteen[4] + '.png">'
-        document.getElementById('fairwayHole14').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fourteen[4] + '.png">'
-        document.getElementById('fairwayHole15').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fifteen[4] + '.png">'
-        document.getElementById('fairwayHole16').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.sixteen[4] + '.png">'
-        document.getElementById('fairwayHole17').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seventeen[4] + '.png">'
-        document.getElementById('fairwayHole18').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eighteen[4] + '.png">'
+        document.getElementById('fairwayHole1').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.one[4] + '.png">'
+        document.getElementById('fairwayHole2').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.two[4] + '.png">'
+        document.getElementById('fairwayHole3').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.three[4] + '.png">'
+        document.getElementById('fairwayHole4').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.four[4] + '.png">'
+        document.getElementById('fairwayHole5').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.five[4] + '.png">'
+        document.getElementById('fairwayHole6').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.six[4] + '.png">'
+        document.getElementById('fairwayHole7').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.seven[4] + '.png">'
+        document.getElementById('fairwayHole8').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.eight[4] + '.png">'
+        document.getElementById('fairwayHole9').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.nine[4] + '.png">'
+        document.getElementById('fairwayHole10').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.ten[4] + '.png">'
+        document.getElementById('fairwayHole11').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.eleven[4] + '.png">'
+        document.getElementById('fairwayHole12').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.twelve[4] + '.png">'
+        document.getElementById('fairwayHole13').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.thirteen[4] + '.png">'
+        document.getElementById('fairwayHole14').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.fourteen[4] + '.png">'
+        document.getElementById('fairwayHole15').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.fifteen[4] + '.png">'
+        document.getElementById('fairwayHole16').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.sixteen[4] + '.png">'
+        document.getElementById('fairwayHole17').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.seventeen[4] + '.png">'
+        document.getElementById('fairwayHole18').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.eighteen[4] + '.png">'
         //gir
-        document.getElementById('girHole1').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.one[5] + '.png">'
-        document.getElementById('girHole2').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.two[5] + '.png">'
-        document.getElementById('girHole3').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.three[5] + '.png">'
-        document.getElementById('girHole4').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.four[5] + '.png">'
-        document.getElementById('girHole5').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.five[5] + '.png">'
-        document.getElementById('girHole6').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.six[5] + '.png">'
-        document.getElementById('girHole7').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seven[5] + '.png">'
-        document.getElementById('girHole8').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eight[5] + '.png">'
-        document.getElementById('girHole9').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.nine[5] + '.png">'
-        document.getElementById('girHole10').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.ten[5] + '.png">'
-        document.getElementById('girHole11').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eleven[5] + '.png">'
-        document.getElementById('girHole12').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.twelve[5] + '.png">'
-        document.getElementById('girHole13').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.thirteen[5] + '.png">'
-        document.getElementById('girHole14').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fourteen[5] + '.png">'
-        document.getElementById('girHole15').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.fifteen[5] + '.png">'
-        document.getElementById('girHole16').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.sixteen[5] + '.png">'
-        document.getElementById('girHole17').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.seventeen[5] + '.png">'
-        document.getElementById('girHole18').innerHTML ='<img class="scoreLogo" src="' + scorecard.scores.eighteen[5] + '.png">'
+        document.getElementById('girHole1').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.one[5] + '.png">'
+        document.getElementById('girHole2').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.two[5] + '.png">'
+        document.getElementById('girHole3').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.three[5] + '.png">'
+        document.getElementById('girHole4').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.four[5] + '.png">'
+        document.getElementById('girHole5').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.five[5] + '.png">'
+        document.getElementById('girHole6').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.six[5] + '.png">'
+        document.getElementById('girHole7').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.seven[5] + '.png">'
+        document.getElementById('girHole8').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.eight[5] + '.png">'
+        document.getElementById('girHole9').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.nine[5] + '.png">'
+        document.getElementById('girHole10').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.ten[5] + '.png">'
+        document.getElementById('girHole11').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.eleven[5] + '.png">'
+        document.getElementById('girHole12').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.twelve[5] + '.png">'
+        document.getElementById('girHole13').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.thirteen[5] + '.png">'
+        document.getElementById('girHole14').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.fourteen[5] + '.png">'
+        document.getElementById('girHole15').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.fifteen[5] + '.png">'
+        document.getElementById('girHole16').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.sixteen[5] + '.png">'
+        document.getElementById('girHole17').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.seventeen[5] + '.png">'
+        document.getElementById('girHole18').innerHTML = '<img class="scoreLogo" src="' + scorecard.scores.eighteen[5] + '.png">'
 
-        localStorage.setItem('scorecard',JSON.stringify(scorecard));
+        localStorage.setItem('scorecard', JSON.stringify(scorecard));
     }
 
     function buildThePage(objects) {
@@ -770,7 +772,7 @@ localStorage.setItem('scorecard',JSON.stringify(scorecard));
         window.location = '/dashboard.html'
     }
 
-    </script>
-        
-        
+</script>
+
+
 </html>
