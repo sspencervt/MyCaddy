@@ -8,10 +8,14 @@ function numberOfRoundsPlayed(scorecardObject){
 function overallAverageComparedToPar(scorecardObject){
     let holesPlayed = 0;
     let netScore = 0;
+    console.log(overallAverageComparedToPar)
+    console.log(scorecardObject)
     for(let scorecards in scorecardObject){
         for(let holes in scorecardObject[scorecards].scores){
-            netScore += scorecardObject[scorecards].scores[holes][2]-scorecardObject[scorecards].scores[holes][1]
-            holesPlayed ++;
+            if(scorecardObject[scorecards].scores[holes][2]!=undefined){
+                netScore += scorecardObject[scorecards].scores[holes][2]-scorecardObject[scorecards].scores[holes][1]
+                holesPlayed ++;
+            }
         }
     }
     let overallAverage = Math.round((netScore / holesPlayed) * 1800) / 100;
@@ -22,9 +26,11 @@ function overallAverageComparedToPar(scorecardObject){
 function parThreeScoringAverage(scorecardObject){
     let totalStrokes = 0;
     let counter = 0;
+    console.log(parThreeScoringAverage)
+    console.log(scorecardObject)
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if (scorecardObject[scorecards].scores[holes][1]==3) {
+            if (scorecardObject[scorecards].scores[holes][1]==3 && scorecardObject[scorecards].scores[holes][2]!=undefined) {
                 counter++;
                 totalStrokes += scorecardObject[scorecards].scores[holes][2]
             }
@@ -39,9 +45,11 @@ function parThreeScoringAverage(scorecardObject){
 function parFourScoringAverage(scorecardObject){
     let totalStrokes = 0;
     let counter = 0;
+    console.log(parFourScoringAverage)
+    console.log(scorecardObject)
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if (scorecardObject[scorecards].scores[holes][1]==4) {
+            if (scorecardObject[scorecards].scores[holes][1]==4 && scorecardObject[scorecards].scores[holes][2]!=undefined) {
                 counter++;
                 totalStrokes += scorecardObject[scorecards].scores[holes][2]
             }
@@ -55,9 +63,11 @@ function parFourScoringAverage(scorecardObject){
 function parFiveScoringAverage(scorecardObject){
     let totalStrokes = 0;
     let counter = 0;
+    console.log(scorecardObject)
+    console.log(scorecardObject)
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if (scorecardObject[scorecards].scores[holes][1]==5) {
+            if (scorecardObject[scorecards].scores[holes][1]==5 && scorecardObject[scorecards].scores[holes][2]!=undefined) {
                 counter++;
                 totalStrokes += scorecardObject[scorecards].scores[holes][2]
             }
@@ -73,8 +83,10 @@ function averageNumberOfPutts(scorecardObject){
     let totalNumberOfPutts = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores){
-            counter++
-            totalNumberOfPutts += scorecardObject[scorecards].scores[holes][3]
+            if(scorecardObject[scorecards].scores[holes][3]!=undefined){
+                counter++
+                totalNumberOfPutts += scorecardObject[scorecards].scores[holes][3]
+            }
         }
     }
     let averagePutts = Math.round((totalNumberOfPutts / counter) *100)/100;
@@ -87,9 +99,11 @@ function overallGIR(scorecardObject){
     let totalGreensHit = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            counter++
-            if (scorecardObject[scorecards].scores[holes][4] === true) {
-                totalGreensHit++
+            if(scorecardObject[scorecards].scores[holes][4]!=undefined){
+                counter++
+                if (scorecardObject[scorecards].scores[holes][4] === true) {
+                    totalGreensHit++
+                }
             }
         }
     }
@@ -103,7 +117,7 @@ function parThreeGIR(scorecardObject){
     let totalGreensHit = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if(scorecardObject[scorecards].scores[holes][1]===3){
+            if(scorecardObject[scorecards].scores[holes][1]===3 && scorecardObject[scorecards].scores[holes][4]!=undefined){
                 if (scorecardObject[scorecards].scores[holes][4] === true) {
                     totalGreensHit++
                 }
@@ -121,7 +135,7 @@ function parFourGIR(scorecardObject){
     let totalGreensHit = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if(scorecardObject[scorecards].scores[holes][1]===4){
+            if(scorecardObject[scorecards].scores[holes][1]=== 4 && scorecardObject[scorecards].scores[holes][4]!=undefined){
                 if (scorecardObject[scorecards].scores[holes][4] === true) {
                     totalGreensHit++
                 }
@@ -140,7 +154,7 @@ function parFiveGIR(scorecardObject){
     let totalGreensHit = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if(scorecardObject[scorecards].scores[holes][1]===5){
+            if(scorecardObject[scorecards].scores[holes][1]===5 && scorecardObject[scorecards].scores[holes][4]!=undefined){
                 if (scorecardObject[scorecards].scores[holes][4] === true) {
                     totalGreensHit++
                 }
@@ -158,7 +172,7 @@ function upAndDown(scorecardObject){
     let parCount = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if(scorecardObject[scorecards].scores[holes][4]==false){
+            if(scorecardObject[scorecards].scores[holes][4]==false && scorecardObject[scorecards].scores[holes][2]!= undefined){
                 counter ++;
                 if(scorecardObject[scorecards].scores[holes][2]==scorecardObject[scorecards].scores[holes][1]){
                     parCount ++;
@@ -176,7 +190,7 @@ function overallFairwaysHit(scorecardObject){
     let fairwayCounter = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if(scorecardObject[scorecards].scores[holes][1]!=3){
+            if(scorecardObject[scorecards].scores[holes][1]!=3 && scorecardObject[scorecards].scores[holes][5]!= undefined){
                 counter++
                 if(scorecardObject[scorecards].scores[holes][5]==true){
                     fairwayCounter ++;
@@ -194,7 +208,7 @@ function missedFairwaysParConvert(scorecardObject){
     let missedParConvert = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if(scorecardObject[scorecards].scores[holes][5]==false){
+            if(scorecardObject[scorecards].scores[holes][5]==false && scorecardObject[scorecards].scores[holes][2]!=undefined){
                 counter ++;
                 if(scorecardObject[scorecards].scores[holes][2]==scorecardObject[scorecards].scores[holes][1]){
                     missedParConvert ++;
@@ -212,7 +226,7 @@ function hitFairwaysParConvert(scorecardObject){
     let hitParConvert = 0;
     for (let scorecards in scorecardObject) {
         for (let holes in scorecardObject[scorecards].scores) {
-            if(scorecardObject[scorecards].scores[holes][5]==false){
+            if(scorecardObject[scorecards].scores[holes][5]==false && scorecardObject[scorecards].scores[holes][2]!=undefined){
                 counter ++;
                 if(scorecardObject[scorecards].scores[holes][2]==scorecardObject[scorecards].scores[holes][1]){
                     hitParConvert ++;
